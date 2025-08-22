@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4842108949711177697}
   - component: {fileID: 8895137913285075442}
   - component: {fileID: 7714841996543439911}
+  - component: {fileID: -5517634229661954415}
   m_Layer: 0
   m_Name: WareHouse
   m_TagString: Untagged
@@ -100,5 +101,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6370d9b85db244eb8ca1eba9ad7cab83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _workingCount: 1
+  _citizens: []
   _foodStockAdded: 20
   _woodStockAdded: 30
+--- !u!65 &-5517634229661954415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848381806166980127}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

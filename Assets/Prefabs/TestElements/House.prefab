@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3639845421619307279}
   - component: {fileID: 4999410685711128658}
   - component: {fileID: 8111252471305734947}
+  - component: {fileID: 4178011936499745649}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -102,3 +103,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CitizenCount: 2
   _citizens: []
+--- !u!65 &4178011936499745649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601969524549468022}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

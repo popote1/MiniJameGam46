@@ -14,6 +14,9 @@ public class Citizen {
     private WorkingBuilding _workPlace;
     private House _house;
     
+    public House House { get => _house; }
+    public WorkingBuilding WorkingBuilding { get => _workPlace; }
+
     public void AddSicknessLevel(float value) {
         _sicknessLevel += value;
         if(_sicknessLevel>StaticData.DEADTHREASHOLD)ChangeCitizenStat(CitizenStat.Dead);
