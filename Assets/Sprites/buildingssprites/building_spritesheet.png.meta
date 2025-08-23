@@ -121,15 +121,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: building_spritesheet_0
+      name: MerchantDock
       rect:
         serializedVersion: 2
         x: 210
         y: 1259
         width: 1310
         height: 1826
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5429771, y: 0.28477547}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -143,15 +143,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_spritesheet_1
+      name: Farm
       rect:
         serializedVersion: 2
         x: 1858
         y: 1259
         width: 1134
         height: 724
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.71823204}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,15 +165,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_spritesheet_2
+      name: Infirmery
       rect:
         serializedVersion: 2
         x: 3079
-        y: 1239
+        y: 1260
         width: 1206
-        height: 1222
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 1205
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43153527}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,15 +187,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_spritesheet_3
+      name: Church
       rect:
         serializedVersion: 2
         x: 4454
         y: 1259
         width: 1337
         height: 1996
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.26052105}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,15 +209,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_spritesheet_4
+      name: SawMill
       rect:
         serializedVersion: 2
         x: 406
         y: 45
         width: 1198
         height: 1094
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47531992}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,15 +231,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_spritesheet_5
+      name: Storage
       rect:
         serializedVersion: 2
         x: 1769
         y: 45
         width: 1312
         height: 1065
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48826292}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,15 +253,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_spritesheet_6
+      name: LittleHouse
       rect:
         serializedVersion: 2
         x: 3079
-        y: 52
+        y: 57
         width: 1255
         height: 927
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5609493}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,15 +275,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_spritesheet_7
+      name: BigHouse
       rect:
         serializedVersion: 2
-        x: 4621
+        x: 4626
         y: 45
         width: 1004
         height: 1101
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4722979}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      building_spritesheet_0: 2213144706323568004
-      building_spritesheet_1: -8772229888888271120
-      building_spritesheet_2: -7915632388399215561
-      building_spritesheet_3: -7472361734509081346
-      building_spritesheet_4: 1807567938574298098
-      building_spritesheet_5: -4989390270196720523
-      building_spritesheet_6: 5079764280860202602
-      building_spritesheet_7: 8540634088288235822
+      BigHouse: 8540634088288235822
+      Church: -7472361734509081346
+      Farm: -8772229888888271120
+      Infirmery: -7915632388399215561
+      LittleHouse: 5079764280860202602
+      MerchantDock: 2213144706323568004
+      SawMill: 1807567938574298098
+      Storage: -4989390270196720523
       building_spritesheet_8: -1177067532
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
