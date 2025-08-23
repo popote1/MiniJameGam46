@@ -39,6 +39,8 @@ public class WorkingBuilding:MonoBehaviour
         }
         return productivity / _workingCount;
     }
+
+   
     protected virtual void OnDestroy() {
         StaticData.RemoveWorkingBuilding(this);
         StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;

@@ -26,7 +26,12 @@ public static class StaticData {
         NoWinter, Winter
     }
 
+    public enum GameStat {
+        Stop, Playing, Paused
+    }
+
     private static Saison _currentSaison;
+    private static GameStat _currentgameStat;
     private static int _currentWood;
     private static int _currentFood;
     private static int _currentGold;
@@ -36,10 +41,11 @@ public static class StaticData {
 
     public static float TaxesProgress;
     public static float SaisonProgress;
-    
+
     private static List<Citizen> _citizens = new List<Citizen>();
     private static List<WorkingBuilding> _workingBuildings = new List<WorkingBuilding>();
-    
+
+    public static GameStat CurrentGameStat => _currentgameStat; 
     public static int Gold => _currentGold;
     public static int CurrentWood => _currentWood;
     public static int CurrentFood=> _currentFood;
@@ -58,10 +64,15 @@ public static class StaticData {
         _foodStock = Mathf.Clamp(_foodStock + value,0,MAXSTOCKVALUE);
         _currentFood = Mathf.Clamp(_currentFood ,0,_foodStock);
     }
-
+    
     public static void ChangeSaison(Saison saison) {
         _currentSaison = saison;
         StaticEvent.DoSaisonChange( _currentSaison);
+    }
+
+    public static void ChangerGameStat(GameStat stat) {
+        _currentgameStat = stat;
+        StaticEvent.DoChangeGameStat(stat);
     }
 
     public static int GetCitizenCount { get => _citizens.Count; }
@@ -75,6 +86,16 @@ public static class StaticData {
             if( workingBuilding.IsLookingForWorker)buildings.Add(workingBuilding);
         }
         return buildings;
+    }
+    public static void ClearAllData() {
+        _currentFood = 0;
+        _currentWood = 0;
+        _foodStock = 10;
+        _woodStock = 10;
+        _currentSaison = Saison.NoWinter;
+        _currentgameStat = GameStat.Paused;
+        _citizens.Clear();
+        _workingBuildings.Clear();
     }
 
     public static string GetRandomName() {

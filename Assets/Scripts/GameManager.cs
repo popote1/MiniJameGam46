@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private bool _playOnAwake;
     [SerializeField] private float _tickRate = 0.25f;
-    [SerializeField] private bool _doTicks = true;
 
     [Space(10), Header("Taxes timer")] [SerializeField]
     private int _tickToTaxe =240;
@@ -12,12 +12,29 @@ public class GameManager : MonoBehaviour
     [Space(10), Header("Saison Timers")]
     [SerializeField] private int _winterTickDuration = 240;
     [SerializeField] private int _noWinterTickDuration = 480;
+    [SerializeField] private StaticData.GameStat _currentGameStat;
     private float _timer ;
     private int _taxTimer;
     private int _saisonTimer;
 
+    private void Awake()
+    {
+        StaticData.ClearAllData();
+    }
+
     public void Start() {
         StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
+        StaticEvent.OnChangeGameStat += StaticEventOnOnChangeGameStat;
+        if (_playOnAwake)StaticData.ChangerGameStat(StaticData.GameStat.Playing);
+    }
+
+    private void OnDestroy() {
+        StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;
+        StaticEvent.OnChangeGameStat -= StaticEventOnOnChangeGameStat;
+    }
+
+    private void StaticEventOnOnChangeGameStat(object sender, StaticData.GameStat newGameStat) {
+        _currentGameStat = newGameStat;
     }
 
     private void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
@@ -40,7 +57,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void ManagerTick() {
-        if (!_doTicks) return;
+        if (_currentGameStat!=StaticData.GameStat.Playing) return;
         _timer += Time.deltaTime;
         if (_timer > _tickRate) {
             StaticEvent.DoGameTick();
@@ -67,8 +84,7 @@ public class GameManager : MonoBehaviour
     }
     
     [ContextMenu("PassToTheNextSaison")]
-    private void PassToNextSaison()
-    {
+    private void PassToNextSaison() {
         if (StaticData.CurrentSaison == StaticData.Saison.Winter) {
             StaticData.ChangeSaison(StaticData.Saison.NoWinter);
                 _saisonTimer = 0;
@@ -76,6 +92,11 @@ public class GameManager : MonoBehaviour
             StaticData.ChangeSaison(StaticData.Saison.Winter);
         }
         _saisonTimer = 0;
+    }
+
+    [ContextMenu("Debug ApplyCurrentGameStat")]
+    private void DebugApplyCurrentGameStat() {
+        StaticData.ChangerGameStat(_currentGameStat);
     }
     
 }
