@@ -80,6 +80,28 @@ public static class StaticData {
     public static void RemoveCitizen(Citizen citizen) => _citizens.Remove(citizen);
     public static void AddWorkingBuilding(WorkingBuilding building) => _workingBuildings.Add(building);
     public static void RemoveWorkingBuilding(WorkingBuilding building) => _workingBuildings.Remove(building);
+
+    public static List<Citizen> GetSickCitizen() {
+        List<Citizen> sickCitizens = new List<Citizen>();
+        foreach (var citizen in _citizens) {
+            if( citizen.Stat== Citizen.CitizenStat.Sick) sickCitizens.Add(citizen);
+        }
+        return sickCitizens;
+    }
+    public static List<Citizen> GetDeadCitizen() {
+        List<Citizen> DeadCitizens = new List<Citizen>();
+        foreach (var citizen in _citizens) {
+            if( citizen.Stat== Citizen.CitizenStat.Dead) DeadCitizens.Add(citizen);
+        }
+        return DeadCitizens;
+    }
+    public static List<Citizen> GetCurringCitizen() {
+        List<Citizen> curringCitizens = new List<Citizen>();
+        foreach (var citizen in _citizens) {
+            if( citizen.Stat== Citizen.CitizenStat.Curring) curringCitizens.Add(citizen);
+        }
+        return curringCitizens;
+    }
     public static List<WorkingBuilding> GetWorkingBuildingsLookingForWorkers() {
         List<WorkingBuilding> buildings = new List<WorkingBuilding>();
         foreach (var workingBuilding in _workingBuildings) {
@@ -87,6 +109,8 @@ public static class StaticData {
         }
         return buildings;
     }
+    
+    
     public static void ClearAllData() {
         _currentFood = 0;
         _currentWood = 0;

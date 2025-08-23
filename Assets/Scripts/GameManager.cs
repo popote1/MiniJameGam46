@@ -69,13 +69,16 @@ public class GameManager : MonoBehaviour
 
     private void ManagerSaisonTimer() {
         _saisonTimer++;
-        if (StaticData.CurrentSaison == StaticData.Saison.Winter) {
+        if (StaticData.CurrentSaison == StaticData.Saison.Winter)
+        {
+            StaticData.SaisonProgress = (float) _saisonTimer / _winterTickDuration;
             if (_saisonTimer >= _winterTickDuration) {
                 StaticData.ChangeSaison(StaticData.Saison.NoWinter);
                 _saisonTimer = 0;
             }
         }
         if (StaticData.CurrentSaison == StaticData.Saison.NoWinter) {
+            StaticData.SaisonProgress = (float) _saisonTimer / _noWinterTickDuration;
             if (_saisonTimer >= _noWinterTickDuration) {
                 StaticData.ChangeSaison(StaticData.Saison.Winter);
                 _saisonTimer = 0;
