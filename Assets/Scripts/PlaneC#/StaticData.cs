@@ -40,7 +40,7 @@ public static class StaticData {
     
     public static void ChangeFoodValue(int value)=> _currentFood = Mathf.Clamp(_currentFood + value,0,FoodStock);
     public static void ChangeWoodValue(int value) => _currentWood = Mathf.Clamp(_currentWood + value,0,WoodStock);
-    public static void ChangeGoldValue(int value) => _currentWood = Mathf.Max(_currentWood + value,0);
+    public static void ChangeGoldValue(int value) => _currentGold = Mathf.Max(_currentGold + value,0);
     public static void ChangeWoodStockValue(int value) {
         _woodStock = Mathf.Clamp(_woodStock + value,0,MAXSTOCKVALUE);
         _currentWood = Mathf.Clamp(_currentWood ,0,_woodStock);

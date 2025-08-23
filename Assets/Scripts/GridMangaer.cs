@@ -14,24 +14,23 @@ public class GridMangaer: MonoBehaviour
 
     [SerializeField] TMP_Text text;
 
-    [SerializeField] List<string> buildingNames;
+    //[SerializeField] List<string> buildingNames;
 
-    [SerializeField] TileBase ground;
-    [SerializeField] TileBase bigHouse;
-    [SerializeField] TileBase littleHouse;
-    [SerializeField] TileBase warehouse;
-    [SerializeField] TileBase sawmill;
-    [SerializeField] TileBase farm;
-    [SerializeField] TileBase fishDocks;
-    [SerializeField] TileBase church;
-    [SerializeField] TileBase merchantDock;
-    [SerializeField] TileBase infirmary;
-
-    
+    //[SerializeField] TileBase ground;
+    //[SerializeField] TileBase bigHouse;
+    //[SerializeField] TileBase littleHouse;
+    //[SerializeField] TileBase warehouse;
+    //[SerializeField] TileBase sawmill;
+    //[SerializeField] TileBase farm;
+    //[SerializeField] TileBase fishDocks;
+    //[SerializeField] TileBase church;
+    //[SerializeField] TileBase merchantDock;
+    //[SerializeField] TileBase infirmary;
 
     [SerializeField] TileBase placeableSquare;
 
-    List<TileBase> buildings = new List<TileBase>();
+    [SerializeField] List<Building> buildings;
+    List<Building> buildableBuildíngs = new List<Building>();
     List<Cell.TileType> noDemolish = new List<Cell.TileType> { Cell.TileType.Air, Cell.TileType.Ground, Cell.TileType.Church };
 
     [SerializeField] Tilemap tilemap;
@@ -41,7 +40,20 @@ public class GridMangaer: MonoBehaviour
     Cell[,] cellGrid;
     void Start()
     {
-        buildings = new List<TileBase> { bigHouse, littleHouse, warehouse, sawmill, farm, fishDocks, merchantDock, infirmary, null };
+        StaticData.ChangeFoodStockValue(50);
+        StaticData.ChangeWoodStockValue(50);
+        StaticData.ChangeFoodValue(50);
+        StaticData.ChangeWoodValue(50);
+        StaticData.ChangeGoldValue(50);
+        foreach (Building building in buildings)
+        {
+            //Debug.Log(building.name);
+            if (building.canBuild)
+            {
+                
+                buildableBuildíngs.Add(building);
+            }
+        }
         cellGrid = new Cell[mapWidth, mapHeight];
         ReadMap();
     }
@@ -54,66 +66,18 @@ public class GridMangaer: MonoBehaviour
             {
                 TileBase currentTile = tilemap.GetTile(new Vector3Int(i, j));
                 Cell newCell = new Cell();
-                if (ground == currentTile)
+                foreach (Building building in buildings)
                 {
-                    newCell.type = Cell.TileType.Ground;
-                }
-                else if (currentTile == bigHouse)
-                {
-                    newCell.type = Cell.TileType.BigHouse;
-                }
-                else if (currentTile == littleHouse)
-                {
-                    newCell.type = Cell.TileType.LittleHouse;
-                    newCell.canBuildAbove = false;
-                }
-                else if (currentTile == warehouse)
-                {
-                    newCell.type = Cell.TileType.Warehouse;
-                }
-                else if (currentTile == sawmill)
-                {
-                    newCell.type = Cell.TileType.Sawmill;
-                }
-                else if (currentTile == farm)
-                {
-                    newCell.type = Cell.TileType.Farm;
-                    newCell.canBuildAbove = false;
-                }
-                else if (currentTile == fishDocks)
-                {
-                    newCell.type = Cell.TileType.FishDocks;
-                    newCell.canBuildAbove = false;
-                }
-                else if (currentTile == church)
-                {
-                    newCell.type = Cell.TileType.Church;
-                    newCell.canBuildAbove = false;
-                }
-                else if (currentTile == infirmary)
-                {
-                    newCell.type = Cell.TileType.Infirmary;
-                    newCell.canBuildAbove = false;
-                }
-                else if (currentTile == merchantDock)
-                {
-                    newCell.type = Cell.TileType.MerchantDock;
-                    newCell.canBuildAbove = false;
-                }
-                else if (currentTile == placeableSquare)
-                {
-                    newCell.type = Cell.TileType.PlaceableSquare;
-                    newCell.canBuildAbove = false;
-                }
-                else
-                {
-                    newCell.type = Cell.TileType.Air;
-                    newCell.canBuildAbove = false;
+                    if (currentTile == building.tile)
+                    {
+                        newCell.type = building.type;
+                        newCell.canBuildAbove = building.canBuildAbove;
+                    }
                 }
                 newCell.position[0] = i;
                 newCell.position[1] = j;
                 cellGrid[i, j] = newCell;
-                Debug.Log(newCell.position[0] + "," + newCell.position[1] + " | " + newCell.type);
+                //Debug.Log(newCell.position[0] + "," + newCell.position[1] + " | " + newCell.type);
             }
         }
     }
@@ -122,9 +86,9 @@ public class GridMangaer: MonoBehaviour
     {
         if (selectedBuilding == 0 && direction == -1)
         {
-            selectedBuilding = buildings.Count - 1;
+            selectedBuilding = buildableBuildíngs.Count - 1;
         }
-        else if (selectedBuilding == buildings.Count - 1 && direction == 1)
+        else if (selectedBuilding == buildableBuildíngs.Count - 1 && direction == 1)
         {
             selectedBuilding = 0;
         }
@@ -132,15 +96,14 @@ public class GridMangaer: MonoBehaviour
         {
             selectedBuilding += direction;
         }
-        text.text = buildingNames[selectedBuilding];
+        text.text = buildableBuildíngs[selectedBuilding].name;
         DetectPlaceableSquares();
     }
     
     void DetectPlaceableSquares()
     {
-        bool canBePlacedInland = buildingNames[selectedBuilding] != "Fish docks";
-        Debug.Log(canBePlacedInland);
-        if (buildings[selectedBuilding] == null)
+        bool requiresWater = buildableBuildíngs[selectedBuilding].requiresWater;
+        if (buildableBuildíngs[selectedBuilding].tile == null)
         {
             for (int i = 0; i < cellGrid.GetLength(0); i++)
             {
@@ -154,7 +117,7 @@ public class GridMangaer: MonoBehaviour
                 }
             }
         }
-        else if (canBePlacedInland)
+        else if (!requiresWater)
         {
             for (int i = 0; i < cellGrid.GetLength(0); i++)
             {
@@ -182,7 +145,6 @@ public class GridMangaer: MonoBehaviour
                     {
                         ReplaceTile(null, new Vector3Int(i, j));
                     }
-                    
                 }
             }
         }
@@ -196,15 +158,21 @@ public class GridMangaer: MonoBehaviour
             Vector3Int mousePos = tilemap.WorldToCell(mainCamera.ScreenToWorldPoint(Mouse.current.position.value));
             if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1))
             {
-                Debug.Log(mousePos);
-                if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.PlaceableSquare)
+                Building toBuild = buildableBuildíngs[selectedBuilding];
+                //Debug.Log(mousePos);
+                if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.PlaceableSquare && toBuild.woodCost <= StaticData.WoodStock && toBuild.foodCost <= StaticData.FoodStock && toBuild.goldCost <= StaticData.Gold)
                 {
-                    ReplaceTile(buildings[selectedBuilding], mousePos);
+                    ReplaceTile(toBuild.tile, mousePos);
                     ReadMap();
                     DetectPlaceableSquares();
+                    StaticData.ChangeFoodValue(-toBuild.foodCost);
+                    StaticData.ChangeWoodValue(-toBuild.woodCost);
+                    StaticData.ChangeGoldValue(-toBuild.goldCost);
+                    cellGrid[mousePos.x, mousePos.y].currentBuildingObj = Instantiate(toBuild.obj, tilemap.CellToWorld(mousePos), transform.rotation);
                 }
-                else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && buildings[selectedBuilding] == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) -   1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1) ) {
-                    ReplaceTile(buildings[selectedBuilding], mousePos);
+                else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) -   1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1) ) {
+                    ReplaceTile(toBuild.tile, mousePos);
+                    Destroy(cellGrid[mousePos.x, mousePos.y].currentBuildingObj.gameObject);
                     ReadMap();
                 }
             }

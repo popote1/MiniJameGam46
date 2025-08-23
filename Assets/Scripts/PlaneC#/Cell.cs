@@ -20,4 +20,5 @@ public class Cell
     public int[] position = { 0, 0 };
     public TileType type = TileType.Air;
     public bool canBuildAbove = true;
+    public GameObject currentBuildingObj;
 }
