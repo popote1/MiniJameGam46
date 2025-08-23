@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public static class StaticData {
@@ -23,32 +20,35 @@ public static class StaticData {
     };
     
     //-----------------------StaticData------------------------------------//
-    public static int CurrentWood;
-    public static int CurrentFood;
-    private static int CurrentGold;
+    private static int _currentWood;
+    private static int _currentFood;
+    private static int _currentGold;
 
-    public static int WoodStock=10;
-    public static int FoodStock=10;
+    public static int _woodStock=10;
+    public static int _foodStock=10;
 
     public static float TaxesProgress;
     
     private static List<Citizen> _citizens = new List<Citizen>();
     private static List<WorkingBuilding> _workingBuildings = new List<WorkingBuilding>();
     
+    public static int Gold => _currentGold;
+    public static int CurrentWood => _currentWood;
+    public static int CurrentFood=> _currentFood;
+    public static int WoodStock=>_woodStock;
+    public static int FoodStock=>_foodStock;
     
-    public static void ChangeFoodValue(int value)=> CurrentFood = Mathf.Clamp(CurrentFood + value,0,FoodStock);
-    public static void ChangeWoodValue(int value) => CurrentWood = Mathf.Clamp(CurrentWood + value,0,WoodStock);
-    public static void ChangeGoldValue(int value) => CurrentGold = Mathf.Max(CurrentGold + value,0);
+    public static void ChangeFoodValue(int value)=> _currentFood = Mathf.Clamp(_currentFood + value,0,FoodStock);
+    public static void ChangeWoodValue(int value) => _currentWood = Mathf.Clamp(_currentWood + value,0,WoodStock);
+    public static void ChangeGoldValue(int value) => _currentWood = Mathf.Max(_currentWood + value,0);
     public static void ChangeWoodStockValue(int value) {
-        WoodStock = Mathf.Clamp(WoodStock + value,0,MAXSTOCKVALUE);
-        CurrentWood = Mathf.Clamp(CurrentWood ,0,WoodStock);
+        _woodStock = Mathf.Clamp(_woodStock + value,0,MAXSTOCKVALUE);
+        _currentWood = Mathf.Clamp(_currentWood ,0,_woodStock);
     }
     public static void ChangeFoodStockValue(int value) {
-        FoodStock = Mathf.Clamp(FoodStock + value,0,MAXSTOCKVALUE);
-        CurrentFood = Mathf.Clamp(CurrentFood ,0,FoodStock);
+        _foodStock = Mathf.Clamp(_foodStock + value,0,MAXSTOCKVALUE);
+        _currentFood = Mathf.Clamp(_currentFood ,0,_foodStock);
     }
-
-    public static int Gold => CurrentGold;
     public static int GetCitizenCount { get => _citizens.Count; }
     public static void AddCitizen(Citizen citizen) => _citizens.Add(citizen);
     public static void RemoveCitizen(Citizen citizen) => _citizens.Remove(citizen);
