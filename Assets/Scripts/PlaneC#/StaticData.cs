@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,8 +19,16 @@ public static class StaticData {
         "Geruuara", "Gerlinda", "Erchembrog", "Gundobad", "Griffon", "Samson", "Trutgaudus", "Fridolin", "Enurchus",
         "Ansovald", "Walaric", "Gereon", "Richomeres"
     };
+
+    
     
     //-----------------------StaticData------------------------------------//
+    
+    public enum Saison {
+        NoWinter, Winter
+    }
+
+    private static Saison _currentSaison;
     private static int _currentWood;
     private static int _currentFood;
     private static int _currentGold;
@@ -28,6 +37,7 @@ public static class StaticData {
     public static int _foodStock=10;
 
     public static float TaxesProgress;
+    public static float SaisonProgress;
     
     private static List<Citizen> _citizens = new List<Citizen>();
     private static List<WorkingBuilding> _workingBuildings = new List<WorkingBuilding>();
@@ -37,6 +47,7 @@ public static class StaticData {
     public static int CurrentFood=> _currentFood;
     public static int WoodStock=>_woodStock;
     public static int FoodStock=>_foodStock;
+    public static Saison CurrentSaison => _currentSaison;
     
     public static void ChangeFoodValue(int value)=> _currentFood = Mathf.Clamp(_currentFood + value,0,FoodStock);
     public static void ChangeWoodValue(int value) => _currentWood = Mathf.Clamp(_currentWood + value,0,WoodStock);
@@ -49,6 +60,12 @@ public static class StaticData {
         _foodStock = Mathf.Clamp(_foodStock + value,0,MAXSTOCKVALUE);
         _currentFood = Mathf.Clamp(_currentFood ,0,_foodStock);
     }
+
+    public static void ChangeSaison(Saison saison) {
+        _currentSaison = saison;
+        StaticEvent.DoSaisonChange( _currentSaison);
+    }
+
     public static int GetCitizenCount { get => _citizens.Count; }
     public static void AddCitizen(Citizen citizen) => _citizens.Add(citizen);
     public static void RemoveCitizen(Citizen citizen) => _citizens.Remove(citizen);
