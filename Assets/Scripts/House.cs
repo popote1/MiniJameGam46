@@ -10,11 +10,16 @@ public class House {
 
     private int _foodTimer;
 
+    public float sicknessPoints;
+    float neighborSicknessPoints;
+
     public Cell cell;
     
     public List<Citizen> GetCitizens { get => _citizens; }
     public void OnCreate() {
         StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
+        StaticEvent.OnDoLateGameTick+= StaticEventOnOnDoLateGameTick;
+        StaticEvent.OnDoVeryLateGameTick+= StaticEventOnOnDoVeryLateGameTick;
         StaticEvent.OnTimeToTax+= StaticEventOnOnTimeToTax;
         
         for (int i = 0; i < CitizenCount; i++) {
@@ -48,8 +53,58 @@ public class House {
             StaticData.ChangeFoodValue(-foodNeed);
             _foodTimer=0;
         }
+        CalculateSickness();
     }
-
+    private void StaticEventOnOnDoLateGameTick(object sender, EventArgs e)
+    {
+        Debug.Log("hello");
+        foreach (var neighbor in cell.gridManager.GetAdjacentCells(cell))
+        {
+            //Debug.Log(cell.type);
+            if (neighbor.currentBuilding != null)
+            {
+                neighborSicknessPoints += neighbor.currentBuilding.sicknessPoints * StaticData.SICKNESSPREDFRACTION;
+            }
+            else if (neighbor.currentHouse != null)
+            {
+                
+                neighborSicknessPoints += neighbor.currentHouse.sicknessPoints * StaticData.SICKNESSPREDFRACTION;
+            }
+        }
+        Debug.Log(neighborSicknessPoints);
+    }
+    protected virtual void StaticEventOnOnDoVeryLateGameTick(object sender, EventArgs e)
+    {
+        foreach (var citizen in _citizens)
+        {
+            citizen.AddSicknessLevel(sicknessPoints + neighborSicknessPoints);
+        }
+        sicknessPoints = 0;
+        neighborSicknessPoints = 0;
+    }
+    private void CalculateSickness()
+    {
+        if (StaticData.CurrentSaison == StaticData.Saison.Winter)
+        {
+            sicknessPoints++;
+        }
+        foreach (var citizen in _citizens)
+        {
+            if (citizen.IsMalnourish)
+            {
+                sicknessPoints++;
+            }
+            if (citizen.Stat == Citizen.CitizenStat.Sick)
+            {
+                sicknessPoints++;
+            }
+            if (citizen.Stat == Citizen.CitizenStat.Dead)
+            {
+                sicknessPoints += 2;
+            }
+        }
+        //Debug.Log(sicknessPoints);
+    }
     private void CreateNewCitizen() {
         Citizen citizen = new Citizen(this);
         _citizens.Add(citizen);
@@ -62,6 +117,9 @@ public class House {
     
     public void OnRemove()
     {
-
+        StaticEvent.OnDoGameTick -= StaticEventOnOnDoGameTick;
+        StaticEvent.OnDoLateGameTick -= StaticEventOnOnDoLateGameTick;
+        StaticEvent.OnDoVeryLateGameTick -= StaticEventOnOnDoVeryLateGameTick;
+        StaticEvent.OnTimeToTax -= StaticEventOnOnTimeToTax;
     }
 }

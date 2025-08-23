@@ -12,5 +12,6 @@ public class Sawmill : WorkingBuilding {
             _timer = 0;
             StaticData.ChangeWoodValue(_productionAmout);
         }
+        base.StaticEventOnOnDoGameTick(sender, e);
     }
 }

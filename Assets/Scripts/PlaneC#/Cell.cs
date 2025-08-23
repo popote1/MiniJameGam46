@@ -22,4 +22,7 @@ public class Cell
     public bool canBuildAbove = true;
     public WorkingBuilding currentBuilding;
     public House currentHouse;
+    public GridMangaer gridManager;
+
+
 }

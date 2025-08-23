@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class Warehouse : WorkingBuilding {
+
+    //public Warehouse(GridMangaer gridManager)
+    //{
+    //    grid = gridManager;
+    //}
+
     [SerializeField] private int _foodStockAdded = 20;
     [SerializeField] private int _woodStockAdded = 30;
 

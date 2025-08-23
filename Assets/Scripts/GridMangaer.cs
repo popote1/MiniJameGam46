@@ -7,13 +7,6 @@ public class GridMangaer: MonoBehaviour
 {
     bool infoMode = true;
 
-    Warehouse warehouse = new Warehouse();
-    Sawmill sawmill = new Sawmill();
-    Farme farme = new Farme();
-
-    House littleHouse = new House();
-    House bigHouse = new House {CitizenCount = 4, _taxeByCitizens = 3 };
-
     [SerializeField] Camera mainCamera;
 
     [SerializeField] int mapHeight;
@@ -33,7 +26,18 @@ public class GridMangaer: MonoBehaviour
 
     int selectedBuilding = 0;
 
-    Cell[,] cellGrid;
+    public List<Cell> GetAdjacentCells(Cell origin)
+    {
+        List<Cell> cells = new List<Cell>();
+        //Debug.Log(Mathf.Min(origin.position.y + 1, cellGrid.GetLength(1) - 1));
+        cells.Add(cellGrid[origin.position.x, Mathf.Min(origin.position.y + 1, cellGrid.GetLength(1) - 1)]);
+        cells.Add(cellGrid[origin.position.x, Mathf.Max(origin.position.y - 1, 0)]);
+        cells.Add(cellGrid[Mathf.Max(origin.position.x - 1, 0), origin.position.y]);
+        cells.Add(cellGrid[Mathf.Min(origin.position.x + 1, cellGrid.GetLength(0) - 1), origin.position.y]);
+        return cells;
+    }
+
+    public Cell[,] cellGrid;
     void Start()
     {
         StaticData.ChangeFoodStockValue(50);
@@ -64,6 +68,7 @@ public class GridMangaer: MonoBehaviour
                 if (!initialRead)
                 {
                     newCell.currentBuilding = cellGrid[i, j].currentBuilding;
+                    newCell.currentHouse = cellGrid[i, j].currentHouse;
                 }
                 TileBase currentTile = tilemap.GetTile(new Vector3Int(i, j));
 
@@ -77,6 +82,7 @@ public class GridMangaer: MonoBehaviour
                 }
                 newCell.position[0] = i;
                 newCell.position[1] = j;
+                newCell.gridManager = this;
                 cellGrid[i, j] = newCell;
                 //Debug.Log(newCell.position[0] + "," + newCell.position[1] + " | " + newCell.type);
             }
@@ -170,25 +176,27 @@ public class GridMangaer: MonoBehaviour
                     StaticData.ChangeWoodValue(-toBuild.woodCost);
                     StaticData.ChangeGoldValue(-toBuild.goldCost);
 
+
                     switch (toBuild.type)
                     {
                         case Cell.TileType.Warehouse:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = warehouse;
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Warehouse();
                             break;
                         case Cell.TileType.Farm:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = farme;
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Farme();
                             break;
                         case Cell.TileType.Sawmill:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = sawmill;
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Sawmill();
                             break;
                         case Cell.TileType.BigHouse:
-                            cellGrid[mousePos.x, mousePos.y].currentHouse = bigHouse;
+                            cellGrid[mousePos.x, mousePos.y].currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
                             break;
                         case Cell.TileType.LittleHouse:
-                            cellGrid[mousePos.x, mousePos.y].currentHouse = littleHouse;
+                            cellGrid[mousePos.x, mousePos.y].currentHouse = new House();
                             break;
                         default:
                             break;
+                        
                     }
                     if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
                     {
@@ -211,6 +219,11 @@ public class GridMangaer: MonoBehaviour
                         cellGrid[mousePos.x, mousePos.y].currentBuilding.OnRemove();
                         cellGrid[mousePos.x, mousePos.y].currentBuilding = null;
                     }
+                    if (cellGrid[mousePos.x, mousePos.y].currentHouse != null)
+                    {
+                        cellGrid[mousePos.x, mousePos.y].currentHouse.OnRemove();
+                        cellGrid[mousePos.x, mousePos.y].currentHouse = null;
+                    }
                     ReadMap(false);
                 }
             }
@@ -229,13 +242,12 @@ public class GridMangaer: MonoBehaviour
                 }
             }
             Debug.Log(StaticData.GetCitizenCount);
-            Debug.Log(StaticData.GetWorkingBuildingsLookingForWorkers().ToString()  + " are looking for work");
             Debug.Log("done");
         }
-        if (Keyboard.current.lKey.wasPressedThisFrame)
-        {
+        //if (Keyboard.current.lKey.wasPressedThisFrame)
+        //{
 
-        }
+        //}
     }
 
     public void ReplaceTile(TileBase newTile, Vector3Int coordinates)

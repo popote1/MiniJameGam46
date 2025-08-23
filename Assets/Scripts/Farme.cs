@@ -14,6 +14,7 @@ public class Farme : WorkingBuilding {
             _timer = 0;
             StaticData.ChangeFoodValue(_productionAmout);
         }
+        base.StaticEventOnOnDoGameTick(sender, e);
     }
     
 }
