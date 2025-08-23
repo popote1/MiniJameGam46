@@ -11,8 +11,8 @@ public class HUDWorkingPlaceToolTips : MonoBehaviour
     
     public void DisplayHouseInfo(WorkingBuilding building) {
         gameObject.SetActive(true);
-        _txtBuildingName.text = building.name;
-        _textCoordiates.text = building.transform.position.ToString();
+        _txtBuildingName.text = building.cell.type.ToString();
+        _textCoordiates.text = building.cell.position.ToString();
         _txtWorkerCount.text = building.Workers.Count + "/" + building.MaxWorker;
         _txtProductionFactor.text = building.GetProductionFactor().ToString();
         for (int i = 0; i < _citizenPanel.Length; i++) {

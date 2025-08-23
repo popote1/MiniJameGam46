@@ -9,8 +9,8 @@ public class HUDHouseToolTips : MonoBehaviour
 
     public void DisplayHouseInfo(House house) {
         gameObject.SetActive(true);
-        _txtHouseName.text = house.name;
-        _textCoordiates.text = house.transform.position.ToString();
+        _txtHouseName.text = house.cell.type.ToString();
+        _textCoordiates.text = house.cell.position.ToString();
         for (int i = 0; i < _citizenPanel.Length; i++) {
             if (house.GetCitizens.Count > i && house.GetCitizens[i] != null) {
                 _citizenPanel[i].DisplayCitizen(house.GetCitizens[i]);

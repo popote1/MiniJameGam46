@@ -13,5 +13,4 @@ public class Building
     public bool canBuildAbove;
     public bool requiresWater;
     public Cell.TileType type;
-    public GameObject obj;
 }

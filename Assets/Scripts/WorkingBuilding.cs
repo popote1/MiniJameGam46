@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class WorkingBuilding:MonoBehaviour
+[System.Serializable]
+public class WorkingBuilding
 {
     [SerializeField] protected int _workingCount =1;
     [SerializeField] protected List<Citizen> _citizens = new List<Citizen>();
     [SerializeField] protected int _tickToPoduc = 40;
-    
+
+    public Cell cell;
     
     
     public List<Citizen> Workers { get => _citizens; }
@@ -18,7 +19,7 @@ public class WorkingBuilding:MonoBehaviour
     public virtual void AddCitizenToWork(Citizen citizen)=> _citizens.Add(citizen);
     public virtual void RemoveCitizenToWork(Citizen citizen)=> _citizens.Remove(citizen);
 
-    protected virtual void Start() {
+    public virtual void OnCreate() {
         StaticData.AddWorkingBuilding(this);
         StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
     }
@@ -39,7 +40,7 @@ public class WorkingBuilding:MonoBehaviour
         }
         return productivity / _workingCount;
     }
-    protected virtual void OnDestroy() {
+    public virtual void OnRemove() {
         StaticData.RemoveWorkingBuilding(this);
         StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;
     }

@@ -650,7 +650,7 @@ MonoBehaviour:
     canBuild: 1
     canBuildAbove: 1
     requiresWater: 0
-    type: 2
+    type: 6
   - name: Sawmill
     tile: {fileID: 11400000, guid: be1dfab3b69c2e6428ca77e0b7743adc, type: 2}
     woodCost: 2

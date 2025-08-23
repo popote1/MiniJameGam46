@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             StaticEvent.DoGameTick();
             StaticEvent.DoLateGameTick();
             _timer -= _tickRate;
-            Debug.Log("Tick");
+            //Debug.Log("Tick");
         }
     }
 

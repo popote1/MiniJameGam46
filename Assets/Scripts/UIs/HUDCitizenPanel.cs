@@ -13,11 +13,11 @@ public class HUDCitizenPanel : MonoBehaviour
         gameObject.SetActive(true);
         _txtName.text = citizen.Name;
         _txtStat.text = citizen.Stat.ToString();
-        _txtHouseCoordonates.text = citizen.House.transform.position.ToString();
+        _txtHouseCoordonates.text = citizen.House.cell.position.ToString();
         if (citizen.WorkingBuilding == null) _txtWorkBuilding.text = "NoWork";
         else {
             _txtWorkBuilding.text = citizen.WorkingBuilding.ToString() + " coordirante : " +
-                                    citizen.WorkingBuilding.transform.position;
+                                    citizen.WorkingBuilding.cell.position;
         }
     }
 

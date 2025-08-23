@@ -5,6 +5,15 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class GridMangaer: MonoBehaviour
 {
+    bool infoMode = true;
+
+    Warehouse warehouse = new Warehouse();
+    Sawmill sawmill = new Sawmill();
+    Farme farme = new Farme();
+
+    House littleHouse = new House();
+    House bigHouse = new House {CitizenCount = 4, _taxeByCitizens = 3 };
+
     [SerializeField] Camera mainCamera;
 
     [SerializeField] int mapHeight;
@@ -13,19 +22,6 @@ public class GridMangaer: MonoBehaviour
     [SerializeField] int waterLevel;
 
     [SerializeField] TMP_Text text;
-
-    //[SerializeField] List<string> buildingNames;
-
-    //[SerializeField] TileBase ground;
-    //[SerializeField] TileBase bigHouse;
-    //[SerializeField] TileBase littleHouse;
-    //[SerializeField] TileBase warehouse;
-    //[SerializeField] TileBase sawmill;
-    //[SerializeField] TileBase farm;
-    //[SerializeField] TileBase fishDocks;
-    //[SerializeField] TileBase church;
-    //[SerializeField] TileBase merchantDock;
-    //[SerializeField] TileBase infirmary;
 
     [SerializeField] TileBase placeableSquare;
 
@@ -55,17 +51,22 @@ public class GridMangaer: MonoBehaviour
             }
         }
         cellGrid = new Cell[mapWidth, mapHeight];
-        ReadMap();
+        ReadMap(true);
     }
 
-    private void ReadMap()
+    private void ReadMap(bool initialRead)
     {
         for (int i = 0; i < cellGrid.GetLength(0); i++)
         {
             for (int j = 0; j < cellGrid.GetLength(1); j++)
             {
-                TileBase currentTile = tilemap.GetTile(new Vector3Int(i, j));
                 Cell newCell = new Cell();
+                if (!initialRead)
+                {
+                    newCell.currentBuilding = cellGrid[i, j].currentBuilding;
+                }
+                TileBase currentTile = tilemap.GetTile(new Vector3Int(i, j));
+
                 foreach (Building building in buildings)
                 {
                     if (currentTile == building.tile)
@@ -148,7 +149,7 @@ public class GridMangaer: MonoBehaviour
                 }
             }
         }
-        ReadMap();
+        ReadMap(false);
     }
 
     private void Update()
@@ -163,19 +164,77 @@ public class GridMangaer: MonoBehaviour
                 if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.PlaceableSquare && toBuild.woodCost <= StaticData.WoodStock && toBuild.foodCost <= StaticData.FoodStock && toBuild.goldCost <= StaticData.Gold)
                 {
                     ReplaceTile(toBuild.tile, mousePos);
-                    ReadMap();
+                    ReadMap(false);
                     DetectPlaceableSquares();
                     StaticData.ChangeFoodValue(-toBuild.foodCost);
                     StaticData.ChangeWoodValue(-toBuild.woodCost);
                     StaticData.ChangeGoldValue(-toBuild.goldCost);
-                    cellGrid[mousePos.x, mousePos.y].currentBuildingObj = Instantiate(toBuild.obj, tilemap.CellToWorld(mousePos), transform.rotation);
+
+                    switch (toBuild.type)
+                    {
+                        case Cell.TileType.Warehouse:
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = warehouse;
+                            break;
+                        case Cell.TileType.Farm:
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = farme;
+                            break;
+                        case Cell.TileType.Sawmill:
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = sawmill;
+                            break;
+                        case Cell.TileType.BigHouse:
+                            cellGrid[mousePos.x, mousePos.y].currentHouse = bigHouse;
+                            break;
+                        case Cell.TileType.LittleHouse:
+                            cellGrid[mousePos.x, mousePos.y].currentHouse = littleHouse;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
+                    {
+                        cellGrid[mousePos.x, mousePos.y].currentBuilding.cell = cellGrid[mousePos.x, mousePos.y];
+                        cellGrid[mousePos.x, mousePos.y].currentBuilding.OnCreate();
+                        //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding.cell.position);
+                    }
+                    else if (cellGrid[mousePos.x, mousePos.y].currentHouse != null)
+                    {
+                        cellGrid[mousePos.x, mousePos.y].currentHouse.cell = cellGrid[mousePos.x, mousePos.y];
+                        cellGrid[mousePos.x, mousePos.y].currentHouse.OnCreate();
+                    }
                 }
                 else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) -   1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1) ) {
                     ReplaceTile(toBuild.tile, mousePos);
-                    Destroy(cellGrid[mousePos.x, mousePos.y].currentBuildingObj.gameObject);
-                    ReadMap();
+                    if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
+                    {
+                        //Debug.Log(mousePos);
+                        //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding);
+                        cellGrid[mousePos.x, mousePos.y].currentBuilding.OnRemove();
+                        cellGrid[mousePos.x, mousePos.y].currentBuilding = null;
+                    }
+                    ReadMap(false);
                 }
             }
+        }
+        if (Keyboard.current.gKey.wasPressedThisFrame)
+        {
+            for (int i = 0; i < cellGrid.GetLength(0); i++)
+            {
+                for (int j = 1; j < cellGrid.GetLength(1); j++)
+                {
+                    if (cellGrid[i, j].currentBuilding != null)
+                    {
+                        Debug.Log(i + " " + j);
+                        Debug.Log(cellGrid[i, j].currentBuilding);
+                    }
+                }
+            }
+            Debug.Log(StaticData.GetCitizenCount);
+            Debug.Log(StaticData.GetWorkingBuildingsLookingForWorkers().ToString()  + " are looking for work");
+            Debug.Log("done");
+        }
+        if (Keyboard.current.lKey.wasPressedThisFrame)
+        {
+
         }
     }
 

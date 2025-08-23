@@ -9,31 +9,31 @@ public class HUDToolsTips : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        
-        RaycastHit hit;
-        if (Physics.Raycast(_camera.ScreenPointToRay(Mouse.current.position.value), out hit)) {
-            if( hit.collider.GetComponent<House>()) {
-                _panelHouse.transform.position = Mouse.current.position.value;
-                _panelHouse.DisplayHouseInfo(hit.collider.GetComponent<House>());
-                Debug.Log("DisplayPanel House");
-            }
-            else {
-                _panelHouse.HidePanel();
-            }
 
-            if (hit.collider.GetComponent<WorkingBuilding>()) {
-                _panelWorkingBuilding.transform.position = Mouse.current.position.value;
-                _panelWorkingBuilding.DisplayHouseInfo(hit.collider.GetComponent<WorkingBuilding>());
-                Debug.Log("DisplayPanel building");
-            }
-            else {
-                _panelWorkingBuilding.HidePanel();
-            }
-        }
-        else
-        {
-            _panelWorkingBuilding.HidePanel();
-            _panelHouse.HidePanel();
-        }
+        //RaycastHit hit;
+        //if (Physics.Raycast(_camera.ScreenPointToRay(Mouse.current.position.value), out hit)) {
+        //    if( hit.collider.GetComponent<House>()) {
+        //        _panelHouse.transform.position = Mouse.current.position.value;
+        //        _panelHouse.DisplayHouseInfo(hit.collider.GetComponent<House>());
+        //        Debug.Log("DisplayPanel House");
+        //    }
+        //    else {
+        //        _panelHouse.HidePanel();
+        //    }
+
+        //    //if (hit.collider.GetComponent<WorkingBuilding>()) {
+        //    //    _panelWorkingBuilding.transform.position = Mouse.current.position.value;
+        //    //    _panelWorkingBuilding.DisplayHouseInfo(hit.collider.GetComponent<WorkingBuilding>());
+        //    //    Debug.Log("DisplayPanel building");
+        //    //}
+        //    else {
+        //        _panelWorkingBuilding.HidePanel();
+        //    }
+        //}
+        //else
+        //{
+        //    _panelWorkingBuilding.HidePanel();
+        //    _panelHouse.HidePanel();
+        //}
     }
 }

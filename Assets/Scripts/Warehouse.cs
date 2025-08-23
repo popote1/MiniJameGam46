@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Warehouse :WorkingBuilding {
+public class Warehouse : WorkingBuilding {
     [SerializeField] private int _foodStockAdded = 20;
     [SerializeField] private int _woodStockAdded = 30;
 
     
 
-    protected override void OnDestroy() {
+    public override void OnRemove() {
         StaticData.ChangeFoodStockValue(-_foodStockAdded);
         StaticData.ChangeWoodStockValue(-_woodStockAdded);
-        base.OnDestroy();
+        base.OnRemove();
     }
 
     public override void AddCitizenToWork(Citizen citizen) {

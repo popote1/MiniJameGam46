@@ -17,8 +17,9 @@ public class Cell
         PlaceableSquare // can't build and can't build
     }
 
-    public int[] position = { 0, 0 };
+    public Vector3Int position = new Vector3Int(0, 0 );
     public TileType type = TileType.Air;
     public bool canBuildAbove = true;
-    public GameObject currentBuildingObj;
+    public WorkingBuilding currentBuilding;
+    public House currentHouse;
 }

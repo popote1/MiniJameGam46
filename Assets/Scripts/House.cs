@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class House : MonoBehaviour {
-    [SerializeField] private int CitizenCount = 2;
+public class House {
+    public int CitizenCount = 2;
     [SerializeField] private List<Citizen> _citizens = new List<Citizen>();
-    [SerializeField] private int _taxeByCitizens = 2;
+    public int _taxeByCitizens = 2;
     [SerializeField] private int _tickBeforeFood = 8;
 
     private int _foodTimer;
+
+    public Cell cell;
     
     public List<Citizen> GetCitizens { get => _citizens; }
-    private void Start() {
+    public void OnCreate() {
         StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
         StaticEvent.OnTimeToTax+= StaticEventOnOnTimeToTax;
         
@@ -58,4 +60,8 @@ public class House : MonoBehaviour {
         _citizens.Remove(citizen);
     }
     
+    public void OnRemove()
+    {
+
+    }
 }
