@@ -9,6 +9,7 @@ public class Citizen {
 
     public string Name;
     public CitizenStat Stat;
+    public bool IsMalnourish;
     
     private float _sicknessLevel;
     private WorkingBuilding _workPlace;

@@ -103,8 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _workingCount: 2
   _citizens: []
-  _productionSpeed: 2
-  _productionAmout: 3
+  _tickToPoduc: 24
+  _productionAmout: 20
 --- !u!65 &-4933585855070212874
 BoxCollider:
   m_ObjectHideFlags: 0

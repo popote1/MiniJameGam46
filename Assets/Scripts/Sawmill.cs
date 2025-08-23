@@ -2,13 +2,14 @@
 using UnityEngine;
 
 public class Sawmill : WorkingBuilding {
-    [SerializeField] private float _productionSpeed=3;
-    [SerializeField] private int _productionAmout =2;
+    
 
+    [SerializeField] private int _productionAmout = 3;
     private float _timer;
-    private void Update() {
-        _timer += Time.deltaTime*GetProductionFactor();
-        if (_timer >= _productionSpeed) {
+
+    protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
+        _timer+=GetProductionFactor();
+        if (_timer >= _tickToPoduc) {
             _timer = 0;
             StaticData.ChangeWoodValue(_productionAmout);
         }

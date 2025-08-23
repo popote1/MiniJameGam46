@@ -25,9 +25,12 @@ public static class StaticData {
     //-----------------------StaticData------------------------------------//
     public static int CurrentWood;
     public static int CurrentFood;
+    private static int CurrentGold;
 
     public static int WoodStock=10;
     public static int FoodStock=10;
+
+    public static float TaxesProgress;
     
     private static List<Citizen> _citizens = new List<Citizen>();
     private static List<WorkingBuilding> _workingBuildings = new List<WorkingBuilding>();
@@ -35,6 +38,7 @@ public static class StaticData {
     
     public static void ChangeFoodValue(int value)=> CurrentFood = Mathf.Clamp(CurrentFood + value,0,FoodStock);
     public static void ChangeWoodValue(int value) => CurrentWood = Mathf.Clamp(CurrentWood + value,0,WoodStock);
+    public static void ChangeGoldValue(int value) => CurrentGold = Mathf.Max(CurrentGold + value,0);
     public static void ChangeWoodStockValue(int value) {
         WoodStock = Mathf.Clamp(WoodStock + value,0,MAXSTOCKVALUE);
         CurrentWood = Mathf.Clamp(CurrentWood ,0,WoodStock);
@@ -43,7 +47,8 @@ public static class StaticData {
         FoodStock = Mathf.Clamp(FoodStock + value,0,MAXSTOCKVALUE);
         CurrentFood = Mathf.Clamp(CurrentFood ,0,FoodStock);
     }
-    
+
+    public static int Gold => CurrentGold;
     public static int GetCitizenCount { get => _citizens.Count; }
     public static void AddCitizen(Citizen citizen) => _citizens.Add(citizen);
     public static void RemoveCitizen(Citizen citizen) => _citizens.Remove(citizen);
