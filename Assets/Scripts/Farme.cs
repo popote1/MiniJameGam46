@@ -1,14 +1,13 @@
 using System;
 using UnityEngine;
 
-public class Farme : MonoBehaviour {
-    [SerializeField] private float _productionSpeed=2;
+public class Farme : WorkingBuilding {
     [SerializeField] private int _productionAmout = 3;
-
     private float _timer;
-    private void Update() {
-        _timer += Time.deltaTime;
-        if (_timer >= _productionSpeed) {
+
+    protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
+        _timer+=GetProductionFactor();
+        if (_timer >= _tickToPoduc) {
             _timer = 0;
             StaticData.ChangeFoodValue(_productionAmout);
         }

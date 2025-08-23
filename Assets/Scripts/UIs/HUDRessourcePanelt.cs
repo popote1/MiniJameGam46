@@ -1,5 +1,3 @@
-using System;
-using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +8,9 @@ public class HUDRessourcePanelt : MonoBehaviour {
     
     [SerializeField]private Image _imageWood;
     [SerializeField] private TMP_Text _txtWood;
+    
+    [SerializeField]private Image _imageGold;
+    [SerializeField] private TMP_Text _txtGold;
 
 
     private void Update() {
@@ -17,12 +18,14 @@ public class HUDRessourcePanelt : MonoBehaviour {
     }
 
     private void DisplayRessource() {
-        
         _imageFood.fillAmount = (float)StaticData.CurrentFood / StaticData.FoodStock;
         _txtFood.text = StaticData.CurrentFood +"/"+ StaticData.FoodStock;
         
         _imageWood.fillAmount =(float) StaticData.CurrentWood / StaticData.WoodStock;
         _txtWood.text = StaticData.CurrentWood+"/"+ StaticData.WoodStock;
+
+        _imageGold.fillAmount = StaticData.TaxesProgress;
+        _txtGold.text = StaticData.Gold.ToString();
         
     }
 }
