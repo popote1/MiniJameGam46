@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 4537683385659078216}
   - component: {fileID: 1273207121510945720}
   - component: {fileID: 7859028519652745168}
+  - component: {fileID: 4688796281739664173}
   m_Layer: 5
   m_Name: BpQuit
   m_TagString: Untagged
@@ -393,6 +394,56 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4688796281739664173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761346381032198047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd2692844554ed496fbe2346ab38dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aniamtionTime: 0.2
+  _maxSize: 1.1
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6525802
+      value: 1.0203187
+      inSlope: -3.8611133
+      outSlope: -3.8611133
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.12976225
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -2.0178957
+      outSlope: -2.0178957
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2908756
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _onPointerSFX:
+    Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
+    Volume: 0.75
 --- !u!1 &2953451295310282429
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +809,9 @@ MonoBehaviour:
   _uiLevelSelection: {fileID: 0}
   _uiOption: {fileID: 0}
   _uiCredit: {fileID: 0}
+  _OnOpenSFX:
+    Clip: {fileID: 8300000, guid: 5bd7713f0ca3634499946079de06c5cc, type: 3}
+    Volume: 0.75
 --- !u!114 &5178454518931615339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +860,7 @@ MonoBehaviour:
     m_Top: 100
     m_Bottom: 20
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -976,6 +1030,7 @@ GameObject:
   - component: {fileID: 7701320896655199960}
   - component: {fileID: 8693953653449795902}
   - component: {fileID: 7615309615315999644}
+  - component: {fileID: 7161057891856226033}
   m_Layer: 5
   m_Name: BpOption
   m_TagString: Untagged
@@ -1085,6 +1140,56 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7161057891856226033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8357629452384739361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd2692844554ed496fbe2346ab38dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aniamtionTime: 0.2
+  _maxSize: 1.1
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6525802
+      value: 1.0203187
+      inSlope: -3.8611133
+      outSlope: -3.8611133
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.12976225
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -2.0178957
+      outSlope: -2.0178957
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2908756
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _onPointerSFX:
+    Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
+    Volume: 0.75
 --- !u!1 &8359965845772092296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1202,7 @@ GameObject:
   - component: {fileID: 3442822038716314260}
   - component: {fileID: 9098080531635771177}
   - component: {fileID: 2863534460067549658}
+  - component: {fileID: 4927635232980894989}
   m_Layer: 5
   m_Name: BpPlay
   m_TagString: Untagged
@@ -1206,6 +1312,56 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4927635232980894989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359965845772092296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd2692844554ed496fbe2346ab38dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aniamtionTime: 0.2
+  _maxSize: 1.1
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6525802
+      value: 1.0203187
+      inSlope: -3.8611133
+      outSlope: -3.8611133
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.12976225
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -2.0178957
+      outSlope: -2.0178957
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2908756
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _onPointerSFX:
+    Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
+    Volume: 0.75
 --- !u!1 &8496985314127076671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1374,7 @@ GameObject:
   - component: {fileID: 918154461670665363}
   - component: {fileID: 8410786579153605841}
   - component: {fileID: 4560165985058431171}
+  - component: {fileID: 7169107433512212149}
   m_Layer: 5
   m_Name: BPCredit
   m_TagString: Untagged
@@ -1327,3 +1484,53 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7169107433512212149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496985314127076671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd2692844554ed496fbe2346ab38dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aniamtionTime: 0.2
+  _maxSize: 1.1
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6525802
+      value: 1.0203187
+      inSlope: -3.8611133
+      outSlope: -3.8611133
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.12976225
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -2.0178957
+      outSlope: -2.0178957
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2908756
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _onPointerSFX:
+    Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
+    Volume: 0.75

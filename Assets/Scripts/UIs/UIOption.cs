@@ -12,9 +12,11 @@ public class UIOption : MonoBehaviour
     [SerializeField] private Slider _sliderAudioAmbiance;
     [SerializeField] private Slider _sliderAudioMusic;
     [SerializeField] private Slider _sliderAudioSFX;
+    [SerializeField] private AudioElementSFX _OnOpenSFX;
     
     public void OpenPanel() {
         gameObject.SetActive(true);
+        _OnOpenSFX.Play();
     }
 
     private void Start() {

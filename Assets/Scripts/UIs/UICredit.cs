@@ -6,8 +6,10 @@ public class UICredit : MonoBehaviour
 {
     public event EventHandler OnPanelClose;
     [SerializeField] private Button _bpReturn;
+    [SerializeField] private AudioElementSFX _OnOpenSFX;
     public void OpenPanel() {
         gameObject.SetActive(true);
+        _OnOpenSFX.Play();
     }
     private void Start()
     {

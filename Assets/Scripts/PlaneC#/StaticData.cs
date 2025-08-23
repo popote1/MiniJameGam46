@@ -19,8 +19,6 @@ public static class StaticData {
         "Geruuara", "Gerlinda", "Erchembrog", "Gundobad", "Griffon", "Samson", "Trutgaudus", "Fridolin", "Enurchus",
         "Ansovald", "Walaric", "Gereon", "Richomeres"
     };
-
-    
     
     //-----------------------StaticData------------------------------------//
     
