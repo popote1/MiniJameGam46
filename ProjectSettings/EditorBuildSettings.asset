@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f0531fb7df33f4749ba2e795d86a926e
+  - enabled: 1
     path: Assets/Scenes/PopoteStuff.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/KeybatsStuff.unity
+    guid: 4e7e3a1f6ef842241a89d4f8c371ad13
+  - enabled: 1
+    path: Assets/Scenes/Tilemaptest.unity
+    guid: 8af8df10841ff0e41884e1bd6578303d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6da49e7df64156d46ab101cff2b66cbd, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
