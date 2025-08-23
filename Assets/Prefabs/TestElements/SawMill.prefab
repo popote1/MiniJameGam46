@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2442905476245290593}
   - component: {fileID: 6969480180444514214}
   - component: {fileID: 5690693272661532457}
+  - component: {fileID: -7840506160606742240}
   m_Layer: 0
   m_Name: SawMill
   m_TagString: Untagged
@@ -100,5 +101,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c235dce1e4e48e6aa12db9224eaba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productionSpeed: 3
-  _productionAmout: 2
+  _workingCount: 3
+  _citizens: []
+  _tickToPoduc: 20
+  _productionAmout: 4
+--- !u!65 &-7840506160606742240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776614186514702258}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
