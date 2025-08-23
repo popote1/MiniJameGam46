@@ -1,6 +1,8 @@
 ﻿using System;
 
-public static class StaticEvent {
+public static class StaticEvent
+{
+    public static event EventHandler<StaticData.GameStat> OnChangeGameStat; 
     public static event EventHandler OnDoGameTick;
     public static event EventHandler OnDoLateGameTick;
     public static event EventHandler OnTimeToTax;
@@ -19,6 +21,10 @@ public static class StaticEvent {
 
     public static void DoSaisonChange(StaticData.Saison newSaison) {
         OnSaisonChange?.Invoke(null,newSaison);
+    }
+
+    public static void DoChangeGameStat(StaticData.GameStat newStat) {
+        OnChangeGameStat?.Invoke(null, newStat);
     }
     
     

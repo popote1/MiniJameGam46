@@ -26,6 +26,7 @@ public class UILevelSelection :MonoBehaviour
     [SerializeField] private Button _bpReturn;
 
     [SerializeField] private LevelInfoData[] _levelInfoDatas;
+    [SerializeField] private AudioElementSFX _OnOpenSFX;
 
     private List<UILevelSelectionButton> _buttons = new List<UILevelSelectionButton>();
     private LevelInfoData _selectedData;
@@ -43,6 +44,7 @@ public class UILevelSelection :MonoBehaviour
         _txtLeveldescription.text = "";
         _bpPlay.interactable = false;
         _selectedData = new LevelInfoData();
+        _OnOpenSFX.Play();
     }
 
     private void PopulateButtons() {
@@ -62,12 +64,12 @@ public class UILevelSelection :MonoBehaviour
     }
 
     private void ClearButtons() {
-        for (int i = _buttons.Count-1; i < 0; i++) {
+        Debug.Log("Button destroy");
+        for (int i = _buttons.Count-1; i >= 0; i--) {
             _buttons[i].OnLevelSelection -= ButtonOnOnLevelSelection;
             Destroy(_buttons[i].gameObject);
         }
         _buttons.Clear();
-        
     }
 
     
