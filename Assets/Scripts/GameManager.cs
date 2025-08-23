@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _winterTickDuration = 240;
     [SerializeField] private int _noWinterTickDuration = 480;
     [SerializeField] private StaticData.GameStat _currentGameStat;
+    [SerializeField] private bool _debugIngnorLoseConditions;
     private float _timer ;
     private int _taxTimer;
     private int _saisonTimer;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
        ManagerTaxes();
        ManagerSaisonTimer();
+       ManageLoseCondition();
     }
 
     private void ManagerTaxes()
@@ -85,6 +87,24 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    private void ManageLoseCondition()
+    {
+        if (_debugIngnorLoseConditions) return;
+        if (StaticData.GetCitizenCount <= 0) {
+            DebugPlayLose();
+            return;
+        }
+        
+        
+        if (StaticData.GetSickCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDSICKTOLOSE / 100) {
+            DebugPlayLose();
+        }
+
+        if (StaticData.GetDeadCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDSICKTOLOSE / 100) {
+            DebugPlayLose();
+        }
+    }
     
     [ContextMenu("PassToTheNextSaison")]
     private void PassToNextSaison() {
@@ -101,5 +121,14 @@ public class GameManager : MonoBehaviour
     private void DebugApplyCurrentGameStat() {
         StaticData.ChangerGameStat(_currentGameStat);
     }
-    
+    [ContextMenu("Debug Play Win")]
+    private void DebugPlayWin() {
+        StaticData.ChangerGameStat(StaticData.GameStat.Stop);
+        StaticEvent.DoEndGame(new EndGameMessage(true, "Debug Win Test"));
+    }
+    [ContextMenu("Debug Play Lose")]
+    private void DebugPlayLose() {
+        StaticData.ChangerGameStat(StaticData.GameStat.Stop);
+        StaticEvent.DoEndGame(new EndGameMessage(false, "Debug lose Test"));
+    }
 }

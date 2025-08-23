@@ -2,8 +2,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine;
 
 [System.Serializable]
-public class Building
-{
+public class Building {
     public string name;
     public TileBase tile;
     public int woodCost;

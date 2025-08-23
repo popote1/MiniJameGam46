@@ -24,4 +24,6 @@ public class Warehouse : WorkingBuilding {
         StaticData.ChangeWoodStockValue(-_woodStockAdded);
         base.AddCitizenToWork(citizen);
     }
+
+   
 }

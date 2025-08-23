@@ -7,7 +7,6 @@ public class WorkingBuilding
     [SerializeField] protected int _workingCount =1;
     [SerializeField] protected List<Citizen> _citizens = new List<Citizen>();
     [SerializeField] protected int _tickToPoduc = 40;
-
     public Cell cell;
     
     

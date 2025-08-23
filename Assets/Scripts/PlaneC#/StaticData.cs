@@ -9,6 +9,9 @@ public static class StaticData {
     public const int MAXSTOCKVALUE = 20000;
     public const int SICKTHREASHOLD = 100;
     public const int DEADTHREASHOLD = 200;
+    // threshHold in 100%
+    public const float THRESHHOLDSICKTOLOSE = 80;
+    public const float THRESHHOLDEADTOLOSE = 20;
 
     public static string[] CitizenNames = new[] {
         "Anskar", "Adalgrimus", "Sigebert", "Asselin", "Eberulf", "Notker", "Feroardus", "Suidger", "Rigunth", "Hubert",

@@ -35,14 +35,16 @@ public class HUDSaisonAnnonser : MonoBehaviour {
     }
 
     private void PlayAnnonser(string label) {
+        _canvasGroup.gameObject.SetActive(true);
         _txtLable.text = label;
         _canvasGroup.transform.DOPause();
         _canvasGroup.transform.localEulerAngles = new Vector3(0, 90, 0);
         _canvasGroup.alpha = 0;
         _canvasGroup.DOFade(1, _fadeInAniamtionTime);
         _canvasGroup.transform.DOLocalRotate(new Vector3(0, 0, 0), _fadeInAniamtionTime);
-        _canvasGroup.DOFade(0, _fadeOutAnimationTime).SetDelay(_delayBeforeEnd);
+        _canvasGroup.DOFade(0, _fadeOutAnimationTime).SetDelay(_delayBeforeEnd).OnComplete(delegate {_canvasGroup.gameObject.SetActive(false);});
     }
+    
 
     
     void Update()
