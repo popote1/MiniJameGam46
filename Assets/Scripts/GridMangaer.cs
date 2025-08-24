@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class GridMangaer: MonoBehaviour
     Building selectedBuilding;
 
     List<Vector3Int> demolishTileLocations = new List<Vector3Int>();
+    private Cell _currenHoverCell;
 
 
 
@@ -284,8 +286,7 @@ public class GridMangaer: MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Vector3Int mousePos = tilemap.WorldToCell(mainCamera.ScreenToWorldPoint(Mouse.current.position.value));
-            if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1))
-            {
+            if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1)) {
                 
                 if (selectedBuilding != null)
                 {
@@ -373,6 +374,7 @@ public class GridMangaer: MonoBehaviour
         {
             SelectBuilding();
         }
+        ManagerOnHover();
     }
 
     public void ReplaceTile(TileBase newTile, Vector3Int coordinates)
@@ -397,4 +399,26 @@ public class GridMangaer: MonoBehaviour
             }
         }
     }
+
+    private void ManagerOnHover()
+    {
+        Vector3Int mousePos = tilemap.WorldToCell(mainCamera.ScreenToWorldPoint(Mouse.current.position.value));
+        if (0 <= mousePos.x 
+            && mousePos.x < cellGrid.GetLength(0) 
+            && 0 <= mousePos.y 
+            && mousePos.y < cellGrid.GetLength(1)
+            && selectedBuilding==null)
+            
+        {
+            if (cellGrid[mousePos.x, mousePos.y] == _currenHoverCell) return;
+            _currenHoverCell = cellGrid[mousePos.x, mousePos.y];
+            StaticEvent.DoHoverCell(_currenHoverCell);
+        }
+        else {
+            StaticEvent.DoHoverCell(_currenHoverCell);
+        }
+           
+    }
+    
+    
 }

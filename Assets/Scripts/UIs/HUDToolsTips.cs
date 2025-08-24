@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,33 +8,48 @@ public class HUDToolsTips : MonoBehaviour
     [SerializeField] private HUDHouseToolTips _panelHouse;
     [SerializeField] private HUDWorkingPlaceToolTips _panelWorkingBuilding;
 
+    private void Start() {
+        StaticEvent.OnHoverCell+= StaticEventOnOnHoverCell;
+    }
+
+    private void OnDestroy() {
+        StaticEvent.OnHoverCell-= StaticEventOnOnHoverCell;
+    }
+
+    private void StaticEventOnOnHoverCell(object sender, Cell e)
+    {
+        if (e == null) {
+            _panelHouse.HidePanel();
+            _panelWorkingBuilding.HidePanel();
+            return;
+        }
+
+        if (e.type == Cell.TileType.LittleHouse || e.type == Cell.TileType.BigHouse) {
+            _panelHouse.DisplayHouseInfo(e.currentHouse);
+            _panelWorkingBuilding.HidePanel();
+            return;
+        }
+
+        if (e.type == Cell.TileType.Church
+            || e.type == Cell.TileType.Farm
+            || e.type == Cell.TileType.Infirmary
+            || e.type == Cell.TileType.Sawmill
+            || e.type == Cell.TileType.Warehouse
+            || e.type == Cell.TileType.FishDocks
+            || e.type == Cell.TileType.MerchantDock)
+        {
+            _panelWorkingBuilding.DisplayHouseInfo(e.currentBuilding);
+            _panelHouse.HidePanel();
+            return;
+        }
+        _panelHouse.HidePanel();
+        _panelWorkingBuilding.HidePanel();
+    }
+
     // Update is called once per frame
-    void Update() {
-
-        //RaycastHit hit;
-        //if (Physics.Raycast(_camera.ScreenPointToRay(Mouse.current.position.value), out hit)) {
-        //    if( hit.collider.GetComponent<House>()) {
-        //        _panelHouse.transform.position = Mouse.current.position.value;
-        //        _panelHouse.DisplayHouseInfo(hit.collider.GetComponent<House>());
-        //        Debug.Log("DisplayPanel House");
-        //    }
-        //    else {
-        //        _panelHouse.HidePanel();
-        //    }
-
-        //    //if (hit.collider.GetComponent<WorkingBuilding>()) {
-        //    //    _panelWorkingBuilding.transform.position = Mouse.current.position.value;
-        //    //    _panelWorkingBuilding.DisplayHouseInfo(hit.collider.GetComponent<WorkingBuilding>());
-        //    //    Debug.Log("DisplayPanel building");
-        //    //}
-        //    else {
-        //        _panelWorkingBuilding.HidePanel();
-        //    }
-        //}
-        //else
-        //{
-        //    _panelWorkingBuilding.HidePanel();
-        //    _panelHouse.HidePanel();
-        //}
+    void Update()
+    {
+        if (_panelHouse.gameObject.activeSelf) _panelHouse.transform.position = Mouse.current.position.value;
+        if (_panelWorkingBuilding.gameObject.activeSelf) _panelWorkingBuilding.transform.position = Mouse.current.position.value;
     }
 }
