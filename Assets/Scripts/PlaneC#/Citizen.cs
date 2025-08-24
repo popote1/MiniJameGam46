@@ -23,6 +23,7 @@ public class Citizen {
         if(_sicknessLevel>StaticData.DEADTHREASHOLD)ChangeCitizenStat(CitizenStat.Dead);
         if(_sicknessLevel>StaticData.SICKTHREASHOLD)ChangeCitizenStat(CitizenStat.Sick);
         if(_sicknessLevel<StaticData.SICKTHREASHOLD)ChangeCitizenStat(CitizenStat.Fine);
+        //Debug.Log(_sicknessLevel);
     }
 
     private void ChangeCitizenStat(CitizenStat newStat) {

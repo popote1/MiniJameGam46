@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.NetworkInformation;
 
 public static class StaticEvent
@@ -6,6 +6,7 @@ public static class StaticEvent
     public static event EventHandler<StaticData.GameStat> OnChangeGameStat; 
     public static event EventHandler OnDoGameTick;
     public static event EventHandler OnDoLateGameTick;
+    public static event EventHandler OnDoVeryLateGameTick;
     public static event EventHandler OnTimeToTax;
     public static event EventHandler<StaticData.Saison> OnSaisonChange;
     public static event EventHandler<EndGameMessage> OnEndGame;
@@ -18,6 +19,11 @@ public static class StaticEvent
     public static void DoLateGameTick() {
         OnDoLateGameTick?.Invoke(null, EventArgs.Empty);
     }
+    public static void DoVeryLateGameTick()
+    {
+        OnDoVeryLateGameTick?.Invoke(null, EventArgs.Empty);
+    }
+
     public static void DoTimeToTax() {
         OnTimeToTax?.Invoke(null, EventArgs.Empty);
     }

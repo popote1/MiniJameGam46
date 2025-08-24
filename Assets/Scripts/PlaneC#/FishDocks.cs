@@ -1,0 +1,23 @@
+using System;
+using UnityEngine;
+
+public class FishDocks : WorkingBuilding
+{
+    float _timer = 0f;
+    int _productionAmount = 24;
+    protected override void CalculateSickness()
+    {
+        sicknessPoints += 2;
+        base.CalculateSickness();
+    }
+    protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e)
+    {
+        _timer += GetProductionFactor();
+        if (_timer >= _tickToPoduc)
+        {
+            _timer = 0;
+            StaticData.ChangeFoodValue(_productionAmount);
+        }
+        base.StaticEventOnOnDoGameTick(sender, e);
+    }
+}

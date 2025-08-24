@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class Warehouse : WorkingBuilding {
+
     [SerializeField] private int _foodStockAdded = 20;
     [SerializeField] private int _woodStockAdded = 30;
 
@@ -24,6 +26,4 @@ public class Warehouse : WorkingBuilding {
         StaticData.ChangeWoodStockValue(-_woodStockAdded);
         base.AddCitizenToWork(citizen);
     }
-
-   
 }
