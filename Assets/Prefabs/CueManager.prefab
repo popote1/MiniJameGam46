@@ -94,3 +94,4 @@ MonoBehaviour:
   _aesWarehouse:
     Clip: {fileID: 8300000, guid: e4be0ad780c101d4697362d166c206f7, type: 3}
     Volume: 0.75
+  _prfMerchantShip: {fileID: 1197932069811250898, guid: 17ed81e14f3e1b34a9af5ed98dc3a305, type: 3}

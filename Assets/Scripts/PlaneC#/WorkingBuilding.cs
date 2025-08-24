@@ -97,4 +97,5 @@ public class WorkingBuilding
         StaticEvent.OnDoLateGameTick-= StaticEventOnOnDoLateGameTick;
         StaticEvent.OnDoVeryLateGameTick-= StaticEventOnOnDoVeryLateGameTick;
     }
+    
 }

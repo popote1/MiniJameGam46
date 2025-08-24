@@ -131,6 +131,10 @@ public static class StaticData {
         _currentSaison = Saison.NoWinter;
         _currentgameStat = GameStat.Paused;
         _citizens.Clear();
+        for ( int i = _workingBuildings.Count-1; i >= 0; i--)
+        {
+            _workingBuildings[i].OnRemove();
+        }
         _workingBuildings.Clear();
     }
 

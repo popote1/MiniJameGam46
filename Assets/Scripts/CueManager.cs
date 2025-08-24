@@ -1,6 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,9 +29,22 @@ public class CueManager : MonoBehaviour {
     [SerializeField] private AudioElementSFX _aesMerchantDock;
     [SerializeField] private AudioElementSFX _aesInfirmery;
     [SerializeField] private AudioElementSFX _aesWarehouse;
-    
+
+    [Space(10), SerializeField] private MarchantShipEvent _prfMerchantShip;
+
     public void Awake() {
         StaticEvent.OnPlayCue+= StaticEventOnOnPlayCue;
+        StaticEvent.OnCallMerchant+= StaticEventOnOnCallMerchant;
+    }
+
+    public void OnDestroy() {
+        StaticEvent.OnPlayCue-= StaticEventOnOnPlayCue;
+        StaticEvent.OnCallMerchant-= StaticEventOnOnCallMerchant;
+    }
+
+    private void StaticEventOnOnCallMerchant(object sender, MerchantDocks e) {
+        MarchantShipEvent ship =Instantiate(_prfMerchantShip);
+        ship.StartMarchantAnimation(e);
     }
 
     private void StaticEventOnOnPlayCue(object sender, StructCueInformation e) {

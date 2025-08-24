@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.U2D;
+using Spline = UnityEngine.Splines.Spline;
 
 public class GameManager : MonoBehaviour
 {
