@@ -1,0 +1,231 @@
+fileFormatVersion: 2
+guid: ee85ac903bd31474e96d9c7113b12479
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7818020883417420231
+    second: Rocks_spritesheet_0
+  - first:
+      213: -2048014071329119714
+    second: Rocks_spritesheet_1
+  - first:
+      213: -1085724880162841704
+    second: Rocks_spritesheet_2
+  - first:
+      213: 3582380387248790768
+    second: Rocks_spritesheet_3
+  - first:
+      213: 3768525624789790515
+    second: Rocks_spritesheet_4
+  - first:
+      213: -1464449523790550663
+    second: Rocks_spritesheet_5
+  - first:
+      213: 5642667520167121447
+    second: Rocks_spritesheet_6
+  - first:
+      213: 4105413895217070652
+    second: Rocks_spritesheet_7
+  - first:
+      213: -8963421188249551412
+    second: Rocks_spritesheet_8
+  - first:
+      213: 554294919818555007
+    second: Rocks_spritesheet_9
+  - first:
+      213: -8176732660169686143
+    second: Rocks_spritesheet_10
+  - first:
+      213: -3463575521380263443
+    second: Rocks_spritesheet_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rocks_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 317
+        width: 2190
+        height: 926
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e122d6f8d0ef393e0800000000000000
+      internalID: -2048014071329119714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocks_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 183
+        width: 2515
+        height: 1703
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc5a406bfb27b130800000000000000
+      internalID: 3582380387248790768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocks_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 4804
+        y: 206
+        width: 2036
+        height: 1020
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7221235a638ce4e40800000000000000
+      internalID: 5642667520167121447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8d0a7087bedbff64a969b2966eb7fa84
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Rocks_spritesheet_0: 7818020883417420231
+      Rocks_spritesheet_1: -2048014071329119714
+      Rocks_spritesheet_10: -8176732660169686143
+      Rocks_spritesheet_11: -3463575521380263443
+      Rocks_spritesheet_2: -1085724880162841704
+      Rocks_spritesheet_3: 3582380387248790768
+      Rocks_spritesheet_4: 3768525624789790515
+      Rocks_spritesheet_5: -1464449523790550663
+      Rocks_spritesheet_6: 5642667520167121447
+      Rocks_spritesheet_7: 4105413895217070652
+      Rocks_spritesheet_8: -8963421188249551412
+      Rocks_spritesheet_9: 554294919818555007
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
