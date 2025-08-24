@@ -968,11 +968,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3391ed80028d6c34598b7640e3c3e814, type: 3}
     - target: {fileID: 1532150015313095385, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1972714310714232559, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2636027704080918835, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_fontAsset
@@ -1004,7 +1004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2749292260053556860, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3251613508906470001, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_fontAsset
@@ -1120,7 +1120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3918480053045901065, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4027658208680558170, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_fontAsset
@@ -1168,7 +1168,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3391ed80028d6c34598b7640e3c3e814, type: 3}
     - target: {fileID: 5102377640282053968, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5808077203547669397, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_Sprite
@@ -1180,11 +1180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7094475401126294701, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7205120081735596341, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7296877374434900742, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_Sprite
@@ -1264,11 +1264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8146398937242949640, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9219542132295276345, guid: d1995b45895f99545977e15b85f3c551, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
