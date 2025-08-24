@@ -99,6 +99,12 @@ public class GridMangaer: MonoBehaviour
                         case Cell.TileType.Church:
                             newCell.currentBuilding = new Church();
                             break;
+                        case Cell.TileType.MerchantDock:
+                            newCell.currentBuilding = new MerchantDocks();
+                            break;
+                        case Cell.TileType.FishDocks:
+                            newCell.currentBuilding = new FishDocks();
+                            break;
                         case Cell.TileType.BigHouse:
                             newCell.currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
                             break;
@@ -234,93 +240,107 @@ public class GridMangaer: MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Vector3Int mousePos = tilemap.WorldToCell(mainCamera.ScreenToWorldPoint(Mouse.current.position.value));
-            if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1) && selectedBuilding != null)
+            if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1))
             {
-                Building toBuild = selectedBuilding;
-                //Debug.Log(mousePos);
-                if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.PlaceableSquare)
+                
+                if (selectedBuilding != null)
                 {
-                    ReplaceTile(toBuild.tile, mousePos);
-                    ReadMap(false);
-                    StaticData.ChangeGoldValue(-selectedBuilding.goldCost);
-                    StaticData.ChangeWoodValue(-selectedBuilding.woodCost);
-                    selectedBuilding = null;
-                    DetectPlaceableSquares();
+                    Building toBuild = selectedBuilding;
+                    //Debug.Log(mousePos);
+                    if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.PlaceableSquare)
+                    {
+                        ReplaceTile(toBuild.tile, mousePos);
+                        ReadMap(false);
+                        StaticData.ChangeGoldValue(-selectedBuilding.goldCost);
+                        StaticData.ChangeWoodValue(-selectedBuilding.woodCost);
+                        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(mousePos.x, mousePos.y), StructCueInformation.CueType.Building, toBuild.type));
+                        selectedBuilding = null;
+                        DetectPlaceableSquares();
 
-                    switch (toBuild.type)
-                    {
-                        case Cell.TileType.Warehouse:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Warehouse();
-                            break;
-                        case Cell.TileType.Farm:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Farme();
-                            break;
-                        case Cell.TileType.Sawmill:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Sawmill();
-                            break;
-                        case Cell.TileType.FishDocks:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new FishDocks();
-                            break;
-                        case Cell.TileType.Infirmary:
-                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Infirmary();
-                            break;
-                        case Cell.TileType.BigHouse:
-                            cellGrid[mousePos.x, mousePos.y].currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
-                            break;
-                        case Cell.TileType.LittleHouse:
-                            cellGrid[mousePos.x, mousePos.y].currentHouse = new House();
-                            break;
-                        default:
-                            break;
-                        
+                        switch (toBuild.type)
+                        {
+                            case Cell.TileType.Warehouse:
+                                cellGrid[mousePos.x, mousePos.y].currentBuilding = new Warehouse();
+                                break;
+                            case Cell.TileType.Farm:
+                                cellGrid[mousePos.x, mousePos.y].currentBuilding = new Farme();
+                                break;
+                            case Cell.TileType.Sawmill:
+                                cellGrid[mousePos.x, mousePos.y].currentBuilding = new Sawmill();
+                                break;
+                            case Cell.TileType.FishDocks:
+                                cellGrid[mousePos.x, mousePos.y].currentBuilding = new FishDocks();
+                                break;
+                            case Cell.TileType.Infirmary:
+                                cellGrid[mousePos.x, mousePos.y].currentBuilding = new Infirmary();
+                                break;
+                            case Cell.TileType.MerchantDock:
+                                cellGrid[mousePos.x, mousePos.y].currentBuilding = new MerchantDocks();
+                                break;
+                            case Cell.TileType.BigHouse:
+                                cellGrid[mousePos.x, mousePos.y].currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
+                                break;
+                            case Cell.TileType.LittleHouse:
+                                cellGrid[mousePos.x, mousePos.y].currentHouse = new House();
+                                break;
+                            default:
+                                break;
+
+                        }
+                        if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
+                        {
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding.cell = cellGrid[mousePos.x, mousePos.y];
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding.OnCreate();
+                            //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding.cell.position);
+                        }
+                        else if (cellGrid[mousePos.x, mousePos.y].currentHouse != null)
+                        {
+                            cellGrid[mousePos.x, mousePos.y].currentHouse.cell = cellGrid[mousePos.x, mousePos.y];
+                            cellGrid[mousePos.x, mousePos.y].currentHouse.OnCreate();
+                        }
                     }
-                    if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
+                    else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) - 1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1))
                     {
-                        cellGrid[mousePos.x, mousePos.y].currentBuilding.cell = cellGrid[mousePos.x, mousePos.y];
-                        cellGrid[mousePos.x, mousePos.y].currentBuilding.OnCreate();
-                        //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding.cell.position);
-                    }
-                    else if (cellGrid[mousePos.x, mousePos.y].currentHouse != null)
-                    {
-                        cellGrid[mousePos.x, mousePos.y].currentHouse.cell = cellGrid[mousePos.x, mousePos.y];
-                        cellGrid[mousePos.x, mousePos.y].currentHouse.OnCreate();
+                        ReplaceTile(toBuild.tile, mousePos);
+                        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(mousePos.x, mousePos.y), StructCueInformation.CueType.Destroy, toBuild.type));
+                        selectedBuilding = null;
+                        if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
+                        {
+                            //Debug.Log(mousePos);
+                            //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding);
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding.OnRemove();
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = null;
+                        }
+                        if (cellGrid[mousePos.x, mousePos.y].currentHouse != null)
+                        {
+                            cellGrid[mousePos.x, mousePos.y].currentHouse.OnRemove();
+                            cellGrid[mousePos.x, mousePos.y].currentHouse = null;
+                        }
+                        ReadMap(false);
                     }
                 }
-                else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) -   1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1) ) {
-                    ReplaceTile(toBuild.tile, mousePos);
-                    selectedBuilding = null;
-                    if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
-                    {
-                        //Debug.Log(mousePos);
-                        //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding);
-                        cellGrid[mousePos.x, mousePos.y].currentBuilding.OnRemove();
-                        cellGrid[mousePos.x, mousePos.y].currentBuilding = null;
-                    }
-                    if (cellGrid[mousePos.x, mousePos.y].currentHouse != null)
-                    {
-                        cellGrid[mousePos.x, mousePos.y].currentHouse.OnRemove();
-                        cellGrid[mousePos.x, mousePos.y].currentHouse = null;
-                    }
-                    ReadMap(false);
-                }
-            }
-        }
-        if (Keyboard.current.gKey.wasPressedThisFrame)
-        {
-            for (int i = 0; i < cellGrid.GetLength(0); i++)
-            {
-                for (int j = 1; j < cellGrid.GetLength(1); j++)
+                else if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.MerchantDock)
                 {
-                    if (cellGrid[i, j].currentBuilding != null)
-                    {
-                        Debug.Log(i + " " + j);
-                        Debug.Log(cellGrid[i, j].currentBuilding);
-                    }
+                    StaticEvent.DoOpenMerchant(cellGrid[mousePos.x, mousePos.y].currentBuilding);
                 }
             }
-            Debug.Log(StaticData.GetCitizenCount);
-            Debug.Log("done");
         }
+    //    if (Keyboard.current.gKey.wasPressedThisFrame)
+    //    {
+    //        for (int i = 0; i < cellGrid.GetLength(0); i++)
+    //        {
+    //            for (int j = 1; j < cellGrid.GetLength(1); j++)
+    //            {
+    //                if (cellGrid[i, j].currentBuilding != null)
+    //                {
+    //                    Debug.Log(i + " " + j);
+    //                    Debug.Log(cellGrid[i, j].currentBuilding);
+    //                }
+    //            }
+    //        }
+    //        Debug.Log(StaticData.GetCitizenCount);
+    //        Debug.Log("done");
+    //    }
     }
 
     public void ReplaceTile(TileBase newTile, Vector3Int coordinates)

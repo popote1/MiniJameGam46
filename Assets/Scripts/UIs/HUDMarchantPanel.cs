@@ -13,8 +13,8 @@ public class HUDMarchantPanel : MonoBehaviour
     [SerializeField] private Button _bpClose;
 
     [SerializeField] private Transform _panelTransform;
-    
-    
+
+    WorkingBuilding _targetMerchant;
     
     void Start() {
         StaticEvent.OnOpenMarchent+= StaticEventOnOnOpenMarchent;
@@ -26,10 +26,15 @@ public class HUDMarchantPanel : MonoBehaviour
         _toggleDontTrade.onValueChanged.AddListener(UIOnDontTradeSelected);
     }
 
-    private void StaticEventOnOnOpenMarchent(object sender, StaticData.MerchantStat e) {
-        
+    private void StaticEventOnOnOpenMarchent(object sender, WorkingBuilding targetMerchant) {
+
+        StaticData.MerchantStat e = targetMerchant.tradeType;
+        _targetMerchant = targetMerchant;
+
         StaticData.ChangerGameStat(StaticData.GameStat.Stop);
         _panelTransform.gameObject.SetActive(true);
+
+        
 
         switch (e) {
             case StaticData.MerchantStat.FoodToGold: _toggleFoodToGold.SetIsOnWithoutNotify( true); break;
@@ -46,11 +51,11 @@ public class HUDMarchantPanel : MonoBehaviour
         StaticData.ChangerGameStat(StaticData.GameStat.Playing);
         _panelTransform.gameObject.SetActive(false);
     }
-    private void UIOnFoodToGoldSelected(bool value){if( value)Debug.Log("Merchant Set On ");} 
-    private void UIOnWoodToGoldSelected(bool value){if( value)Debug.Log("Merchant Set On ");} 
-    private void UIOnGoldToFoodSelected(bool value){if( value)Debug.Log("Merchant Set On ");} 
-    private void UIOnGoldToWoodSelected(bool value){if( value)Debug.Log("Merchant Set On ");} 
-    private void UIOnDontTradeSelected(bool value){if( value)Debug.Log("Merchant Set On ");} 
+    private void UIOnFoodToGoldSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.FoodToGold; } 
+    private void UIOnWoodToGoldSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.WoodToGold; } 
+    private void UIOnGoldToFoodSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.GoldToFood; } 
+    private void UIOnGoldToWoodSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.GoldToWood; } 
+    private void UIOnDontTradeSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.DontTrade; } 
 
 }
 
