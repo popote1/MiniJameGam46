@@ -253,6 +253,7 @@ public class GridMangaer: MonoBehaviour
                         ReadMap(false);
                         StaticData.ChangeGoldValue(-selectedBuilding.goldCost);
                         StaticData.ChangeWoodValue(-selectedBuilding.woodCost);
+                        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(mousePos.x, mousePos.y), StructCueInformation.CueType.Building, toBuild.type));
                         selectedBuilding = null;
                         DetectPlaceableSquares();
 
@@ -301,6 +302,7 @@ public class GridMangaer: MonoBehaviour
                     else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) - 1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1))
                     {
                         ReplaceTile(toBuild.tile, mousePos);
+                        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(mousePos.x, mousePos.y), StructCueInformation.CueType.Destroy, toBuild.type));
                         selectedBuilding = null;
                         if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
                         {

@@ -118,19 +118,19 @@ public class House {
     
     public void OnResidentSick()
     {
-
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y) , StructCueInformation.CueType.Sick, cell.type));
     }
     public void OnResidentDead()
     {
-
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Dead, cell.type));
     }
     public void OnResidentCuring()
     {
-
+        
     }
     public void OnResidantCured()
     {
-
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Cure, cell.type));
     }
 
     public void OnRemove()

@@ -17,6 +17,7 @@ public class FishDocks : WorkingBuilding
         if (_timer >= _tickToPoduc)
         {
             _timer = 0;
+            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.ProdFish, cell.type));
             StaticData.ChangeFoodValue(_productionAmount);
         }
         base.StaticEventOnOnDoGameTick(sender, e);

@@ -11,6 +11,7 @@ public class Sawmill : WorkingBuilding {
         if (_timer >= _tickToPoduc) {
             _timer = 0;
             StaticData.ChangeWoodValue(_productionAmout);
+            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.ProdWoof, cell.type));
         }
         base.StaticEventOnOnDoGameTick(sender, e);
     }
