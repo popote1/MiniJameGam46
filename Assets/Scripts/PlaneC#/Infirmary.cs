@@ -35,7 +35,7 @@ public class Infirmary : WorkingBuilding
                 bestDistance = Vector3.Distance(cell.position, citizen.House.cell.position);
             }
         }
-        if (bestPatient == null)
+        if (bestPatient != null)
         {
             Debug.Log("found patient living in " + bestPatient.House.cell.position);
             patient = bestPatient;

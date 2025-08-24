@@ -75,9 +75,9 @@ public class House {
     }
     protected virtual void StaticEventOnOnDoVeryLateGameTick(object sender, EventArgs e)
     {
-        foreach (var citizen in _citizens)
+        for (int i = _citizens.Count; i > 0; i--)
         {
-            citizen.AddSicknessLevel(sicknessPoints + neighborSicknessPoints);
+            _citizens[i - 1].AddSicknessLevel(sicknessPoints + neighborSicknessPoints);
         }
         sicknessPoints = 0;
         neighborSicknessPoints = 0;
@@ -117,6 +117,11 @@ public class House {
     
     public void OnRemove()
     {
+        for (int i = _citizens.Count; i > 0; i--)
+        {
+            _citizens[i].OnRemoveCitizen();
+        }
+
         StaticEvent.OnDoGameTick -= StaticEventOnOnDoGameTick;
         StaticEvent.OnDoLateGameTick -= StaticEventOnOnDoLateGameTick;
         StaticEvent.OnDoVeryLateGameTick -= StaticEventOnOnDoVeryLateGameTick;

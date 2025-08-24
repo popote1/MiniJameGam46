@@ -9,11 +9,11 @@ public class Warehouse : WorkingBuilding {
 
     
 
-    public override void OnRemove() {
-        StaticData.ChangeFoodStockValue(-_foodStockAdded);
-        StaticData.ChangeWoodStockValue(-_woodStockAdded);
-        base.OnRemove();
-    }
+    //public override void OnRemove() {
+    //    StaticData.ChangeFoodStockValue(-_foodStockAdded);
+    //    StaticData.ChangeWoodStockValue(-_woodStockAdded);
+    //    base.OnRemove();
+    //}
 
     public override void AddCitizenToWork(Citizen citizen) {
         StaticData.ChangeFoodStockValue(_foodStockAdded);

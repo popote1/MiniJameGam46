@@ -53,7 +53,7 @@ public class WorkingBuilding
     {
         for ( int i = _citizens.Count; i > 0; i--)
         {
-            _citizens[i].AddSicknessLevel(sicknessPoints + neighboringSicknessPoints);
+            _citizens[i - 1].AddSicknessLevel(sicknessPoints + neighboringSicknessPoints);
         }
         sicknessPoints = 0;
         neighboringSicknessPoints = 0;

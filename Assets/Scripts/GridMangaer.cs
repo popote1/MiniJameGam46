@@ -23,7 +23,9 @@ public class GridMangaer: MonoBehaviour
 
     [SerializeField] Tilemap tilemap;
 
-    int selectedBuilding = 0;
+    int OLDSelectedBuilding = 0;
+
+    Building selectedBuilding;
 
     public List<Cell> GetAdjacentCells(Cell origin)
     {
@@ -86,26 +88,38 @@ public class GridMangaer: MonoBehaviour
                     switch (newCell.type)
                     {
                         case Cell.TileType.Warehouse:
-                            cellGrid[i, j].currentBuilding = new Warehouse();
+                            newCell.currentBuilding = new Warehouse();
                             break;
                         case Cell.TileType.Farm:
-                            cellGrid[i, j].currentBuilding = new Farme();
+                            newCell.currentBuilding = new Farme();
                             break;
                         case Cell.TileType.Sawmill:
-                            cellGrid[i, j].currentBuilding = new Sawmill();
+                            newCell.currentBuilding = new Sawmill();
                             break;
                         case Cell.TileType.Church:
-                            cellGrid[i, j].currentBuilding = new Church();
+                            newCell.currentBuilding = new Church();
                             break;
                         case Cell.TileType.BigHouse:
-                            cellGrid[i, j].currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
+                            newCell.currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
                             break;
                         case Cell.TileType.LittleHouse:
-                            cellGrid[i, j].currentHouse = new House();
+                            newCell.currentHouse = new House();
                             break;
                         default:
                             break;
                     }
+                    if (newCell.currentBuilding != null)
+                    {
+                        newCell.currentBuilding.cell = newCell;
+                        newCell.currentBuilding.OnCreate();
+                        //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding.cell.position);
+                    }
+                    else if (newCell.currentHouse != null)
+                    {
+                        newCell.currentHouse.cell = newCell;
+                        newCell.currentHouse.OnCreate();
+                    }
+                    //Debug.Log(newCell.currentBuilding);
                 }
 
                 newCell.position[0] = i;
@@ -117,28 +131,42 @@ public class GridMangaer: MonoBehaviour
         }
     }
 
-    public void CycleBuilding(int direction)
+    //public void CycleBuilding(int direction)
+    //{
+    //    if (OLDSelectedBuilding == 0 && direction == -1)
+    //    {
+    //        OLDSelectedBuilding = buildableBuildíngs.Count - 1;
+    //    }
+    //    else if (OLDSelectedBuilding == buildableBuildíngs.Count - 1 && direction == 1)
+    //    {
+    //        OLDSelectedBuilding = 0;
+    //    }
+    //    else
+    //    {
+    //        OLDSelectedBuilding += direction;
+    //    }
+    //    text.text = buildableBuildíngs[OLDSelectedBuilding].name;
+    //    DetectPlaceableSquares();
+    //}
+
+    public void SelectBuilding(Cell.TileType toBuild, BuildingCost cost)
     {
-        if (selectedBuilding == 0 && direction == -1)
+        foreach(Building building in buildableBuildíngs)
         {
-            selectedBuilding = buildableBuildíngs.Count - 1;
+            if(building.type == toBuild)
+            {
+                selectedBuilding = building;
+            }
         }
-        else if (selectedBuilding == buildableBuildíngs.Count - 1 && direction == 1)
-        {
-            selectedBuilding = 0;
-        }
-        else
-        {
-            selectedBuilding += direction;
-        }
-        text.text = buildableBuildíngs[selectedBuilding].name;
+        selectedBuilding.woodCost = cost.WoodCost;
+        selectedBuilding.goldCost = cost.GoldCost;
         DetectPlaceableSquares();
     }
     
     void DetectPlaceableSquares()
     {
-        bool requiresWater = buildableBuildíngs[selectedBuilding].requiresWater;
-        if (buildableBuildíngs[selectedBuilding].tile == null)
+        
+        if (selectedBuilding == null)
         {
             for (int i = 0; i < cellGrid.GetLength(0); i++)
             {
@@ -152,7 +180,22 @@ public class GridMangaer: MonoBehaviour
                 }
             }
         }
-        else if (!requiresWater)
+        
+        else if (selectedBuilding.tile == null)
+        {
+            for (int i = 0; i < cellGrid.GetLength(0); i++)
+            {
+                for (int j = 1; j < cellGrid.GetLength(1); j++)
+                {
+                    if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare)
+                    {
+                        ReplaceTile(null, new Vector3Int(i, j));
+                    }
+
+                }
+            }
+        }
+        else if (!selectedBuilding.requiresWater)
         {
             for (int i = 0; i < cellGrid.GetLength(0); i++)
             {
@@ -191,19 +234,18 @@ public class GridMangaer: MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Vector3Int mousePos = tilemap.WorldToCell(mainCamera.ScreenToWorldPoint(Mouse.current.position.value));
-            if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1))
+            if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1) && selectedBuilding != null)
             {
-                Building toBuild = buildableBuildíngs[selectedBuilding];
+                Building toBuild = selectedBuilding;
                 //Debug.Log(mousePos);
-                if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.PlaceableSquare && toBuild.woodCost <= StaticData.WoodStock && toBuild.foodCost <= StaticData.FoodStock && toBuild.goldCost <= StaticData.Gold)
+                if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.PlaceableSquare)
                 {
                     ReplaceTile(toBuild.tile, mousePos);
                     ReadMap(false);
+                    StaticData.ChangeGoldValue(-selectedBuilding.goldCost);
+                    StaticData.ChangeWoodValue(-selectedBuilding.woodCost);
+                    selectedBuilding = null;
                     DetectPlaceableSquares();
-                    StaticData.ChangeFoodValue(-toBuild.foodCost);
-                    StaticData.ChangeWoodValue(-toBuild.woodCost);
-                    StaticData.ChangeGoldValue(-toBuild.goldCost);
-
 
                     switch (toBuild.type)
                     {
@@ -215,6 +257,12 @@ public class GridMangaer: MonoBehaviour
                             break;
                         case Cell.TileType.Sawmill:
                             cellGrid[mousePos.x, mousePos.y].currentBuilding = new Sawmill();
+                            break;
+                        case Cell.TileType.FishDocks:
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new FishDocks();
+                            break;
+                        case Cell.TileType.Infirmary:
+                            cellGrid[mousePos.x, mousePos.y].currentBuilding = new Infirmary();
                             break;
                         case Cell.TileType.BigHouse:
                             cellGrid[mousePos.x, mousePos.y].currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
@@ -240,6 +288,7 @@ public class GridMangaer: MonoBehaviour
                 }
                 else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) -   1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1) ) {
                     ReplaceTile(toBuild.tile, mousePos);
+                    selectedBuilding = null;
                     if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
                     {
                         //Debug.Log(mousePos);

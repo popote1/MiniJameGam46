@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 
 public class HUDBuildPanel : MonoBehaviour{
+    [SerializeField] private GridMangaer gridMangaer;
+
     [SerializeField] private Button _bpSmallHouse;
     [SerializeField] private Button _bpBigHouse;
     [SerializeField] private Button _bpFarm;
@@ -59,13 +61,13 @@ public class HUDBuildPanel : MonoBehaviour{
         }
     }
 
-    private void UIBuildSmallBuilding() { }
-    private void UIBuildBigBuilding() { }
-    private void UIBuildFarmlBuilding() { }
-    private void UIBuildSawMillBuilding() { }
-    private void UIBuildWarehouseBuilding() { }
-    private void UIBuildFishingDockBuilding() { }
-    private void UIBuildMerchantDockBuilding() { }
-    private void UIBuildInfiermeryBuilding() { }
-    private void UIBuildDestructionBuilding() { }
+    private void UIBuildSmallBuilding() { gridMangaer.SelectBuilding(Cell.TileType.LittleHouse, _costSmallHouse); }
+    private void UIBuildBigBuilding() { gridMangaer.SelectBuilding(Cell.TileType.BigHouse, _costBigHouse); }
+    private void UIBuildFarmlBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Farm, _costFarm); }
+    private void UIBuildSawMillBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Sawmill, _costSawMill); }
+    private void UIBuildWarehouseBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Warehouse, _costWareHouse); }
+    private void UIBuildFishingDockBuilding() { gridMangaer.SelectBuilding(Cell.TileType.FishDocks, _costFishingDocks); }
+    private void UIBuildMerchantDockBuilding() { gridMangaer.SelectBuilding(Cell.TileType.MerchantDock, _costMerchantDocks); }
+    private void UIBuildInfiermeryBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Infirmary, _costInfermery); }
+    private void UIBuildDestructionBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Air, new BuildingCost {WoodCost = 0, GoldCost = 0 }); }
 }

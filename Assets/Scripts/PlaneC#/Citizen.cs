@@ -19,11 +19,13 @@ public class Citizen {
     public WorkingBuilding WorkingBuilding { get => _workPlace; }
 
     public void AddSicknessLevel(float value) {
-        _sicknessLevel += value;
-        if(_sicknessLevel>StaticData.DEADTHREASHOLD)ChangeCitizenStat(CitizenStat.Dead);
-        if(_sicknessLevel>StaticData.SICKTHREASHOLD)ChangeCitizenStat(CitizenStat.Sick);
-        if(_sicknessLevel<StaticData.SICKTHREASHOLD)ChangeCitizenStat(CitizenStat.Fine);
-        //Debug.Log(_sicknessLevel);
+        if (Stat != CitizenStat.Curring)
+        {
+            _sicknessLevel += value;
+            if (_sicknessLevel > StaticData.DEADTHREASHOLD) ChangeCitizenStat(CitizenStat.Dead);
+            else if (_sicknessLevel > StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Sick);
+            else if (_sicknessLevel < StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Fine);
+        }
     }
 
     private void ChangeCitizenStat(CitizenStat newStat) {
@@ -31,8 +33,12 @@ public class Citizen {
             if (_workPlace != null) {
                 _workPlace.RemoveCitizenToWork(this);
             }
+        }
+        if (newStat != Stat)
+        {
             Stat = newStat;
         }
+
     }
 
     public Citizen(House house) {
@@ -63,7 +69,7 @@ public class Citizen {
         }
     }
 
-    private void OnRemoveCitizen() {
+    public void OnRemoveCitizen() {
         if (_workPlace!=null) _workPlace.RemoveCitizenToWork(this);
         _house.RemoveCitizenFromHouse(this);
         StaticData.RemoveCitizen(this);
