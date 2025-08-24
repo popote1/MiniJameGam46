@@ -93,17 +93,17 @@ public class GameManager : MonoBehaviour
     {
         if (_debugIngnorLoseConditions) return;
         if (StaticData.GetCitizenCount <= 0) {
-            DebugPlayLose();
+            StaticEvent.DoEndGame(new EndGameMessage(false, "You don't have any citizens left"));
             return;
         }
         
         
         if (StaticData.GetSickCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDSICKTOLOSE / 100) {
-            DebugPlayLose();
+            StaticEvent.DoEndGame(new EndGameMessage(false, "Over 8 of 10 of your citizens are sick"));
         }
 
         if (StaticData.GetDeadCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDEADTOLOSE / 100) {
-            DebugPlayLose();
+            StaticEvent.DoEndGame(new EndGameMessage(false, "2 of 10 of your cititzens are dead"));
         }
     }
     

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class House {
@@ -134,7 +135,7 @@ public class House {
 
     public void OnRemove()
     {
-        for (int i = _citizens.Count; i > 0; i--)
+        for (int i = _citizens.Count-1; i >= 0; i--)
         {
             _citizens[i].OnRemoveCitizen();
         }

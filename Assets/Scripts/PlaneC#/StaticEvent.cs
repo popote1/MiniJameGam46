@@ -11,7 +11,8 @@ public static class StaticEvent
     public static event EventHandler<StaticData.Saison> OnSaisonChange;
     public static event EventHandler<EndGameMessage> OnEndGame;
     public static event EventHandler<String> OnPlayDialogue;
-    public static event EventHandler<WorkingBuilding> OnOpenMarchent;
+    public static event EventHandler<StaticData.MerchantStat> OnOpenMarchent;
+    public static event EventHandler<StructCueInformation> OnPlayCue; 
 
     public static void DoGameTick() {
         OnDoGameTick?.Invoke(null, EventArgs.Empty);
@@ -41,6 +42,8 @@ public static class StaticEvent
         OnPlayDialogue?.Invoke(null, dialogue);
     }
 
+    public static void DoOpenMerchant(StaticData.MerchantStat data) => OnOpenMarchent?.Invoke(null, data);
+    public static void DoPlayCue(StructCueInformation cue) => OnPlayCue?.Invoke(null, cue);
     public static void DoOpenMerchant( WorkingBuilding targetMerchant) => OnOpenMarchent?.Invoke(null,  targetMerchant );
 
 

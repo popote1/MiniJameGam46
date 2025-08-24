@@ -88,6 +88,7 @@ public class Citizen {
 
     public void OnRemoveCitizen() {
         if (_workPlace!=null) _workPlace.RemoveCitizenToWork(this);
+        StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;
         _house.RemoveCitizenFromHouse(this);
         StaticData.RemoveCitizen(this);
     }
