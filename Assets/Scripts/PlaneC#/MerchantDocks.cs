@@ -22,10 +22,10 @@ public class MerchantDocks : WorkingBuilding
     {
         if (StaticData.CurrentSaison == StaticData.Saison.Winter) return;
         if (tradeType == StaticData.MerchantStat.DontTrade) return;
-        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Merchant, cell.type));
         _timer += GetProductionFactor();
         if (_timer >= _tickToPoduc)
         {
+            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Merchant, cell.type));
             _timer = 0;
             if(tradeType == StaticData.MerchantStat.FoodToGold)
             {

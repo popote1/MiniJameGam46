@@ -6,6 +6,14 @@ public class FishDocks : WorkingBuilding
     int _tickToPoduc = 12;
     float _timer = 0f;
     int _productionAmount = 24;
+    int _maxWorkers = 3;
+
+    public override void OnCreate()
+    {
+        ChangeMaxWorkers(_workingCount);
+        base.OnCreate();
+    }
+
     protected override void CalculateSickness()
     {
         sicknessPoints += 2;

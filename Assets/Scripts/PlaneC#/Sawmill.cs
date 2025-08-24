@@ -5,6 +5,13 @@ public class Sawmill : WorkingBuilding {
     private int _tickToPoduc = 20;
     private int _productionAmout = 3;
     private float _timer;
+    private int _maxWorkers = 3;
+
+    public override void OnCreate () 
+    {
+        ChangeMaxWorkers(_maxWorkers);
+        base.OnCreate ();
+    }
 
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
         _timer+=GetProductionFactor();

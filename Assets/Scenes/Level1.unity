@@ -496,7 +496,7 @@ MonoBehaviour:
     requiresWater: 0
     type: 5
   - name: Fish Docks
-    tile: {fileID: 11400000, guid: bb96a7ef7cd199141ba7aec2f02898f1, type: 2}
+    tile: {fileID: 11400000, guid: 15b9f5145be26f048afca86c288f6590, type: 2}
     woodCost: 1
     goldCost: 1
     canBuild: 1
