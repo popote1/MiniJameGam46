@@ -603,7 +603,7 @@ MonoBehaviour:
   mapWidth: 20
   waterLevel: 3
   text: {fileID: 0}
-  placeableSquare: {fileID: 11400000, guid: f1d0afcd47793f44b9ae0c77c3d9d821, type: 2}
+  placeableSquare: {fileID: 11400000, guid: 8dcb6879c51a6c04395d5d051aa75cde, type: 2}
   buildings:
   - name: Big house
     tile: {fileID: 11400000, guid: d197d40ceba03cb4195ddf2301f3c6bb, type: 2}
@@ -686,7 +686,7 @@ MonoBehaviour:
     requiresWater: 0
     type: 0
   - name: PlaceableSquare
-    tile: {fileID: 11400000, guid: f1d0afcd47793f44b9ae0c77c3d9d821, type: 2}
+    tile: {fileID: 11400000, guid: 8dcb6879c51a6c04395d5d051aa75cde, type: 2}
     woodCost: 0
     goldCost: 0
     canBuild: 0

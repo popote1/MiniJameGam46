@@ -156,6 +156,12 @@ public class GridMangaer: MonoBehaviour
     //    DetectPlaceableSquares();
     //}
 
+    public void SelectBuilding()
+    {
+        selectedBuilding = null;
+        DetectPlaceableSquares();
+    }
+
     public void SelectBuilding(Cell.TileType toBuild, BuildingCost cost)
     {
         foreach(Building building in buildableBuildíngs)
@@ -326,22 +332,10 @@ public class GridMangaer: MonoBehaviour
                 }
             }
         }
-    //    if (Keyboard.current.gKey.wasPressedThisFrame)
-    //    {
-    //        for (int i = 0; i < cellGrid.GetLength(0); i++)
-    //        {
-    //            for (int j = 1; j < cellGrid.GetLength(1); j++)
-    //            {
-    //                if (cellGrid[i, j].currentBuilding != null)
-    //                {
-    //                    Debug.Log(i + " " + j);
-    //                    Debug.Log(cellGrid[i, j].currentBuilding);
-    //                }
-    //            }
-    //        }
-    //        Debug.Log(StaticData.GetCitizenCount);
-    //        Debug.Log("done");
-    //    }
+        if(Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            SelectBuilding();
+        }
     }
 
     public void ReplaceTile(TileBase newTile, Vector3Int coordinates)
