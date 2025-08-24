@@ -35,6 +35,7 @@ public class HUDContructionInfoPanel : MonoBehaviour
             _panel.SetActive(false);
             return;
         }
+        _panel.SetActive(true);
         _aesOnOpenPanel.Play();
         _txtBuildingName.text = e.name;
         _txtGoldCost.text = e.goldCost.ToString();
