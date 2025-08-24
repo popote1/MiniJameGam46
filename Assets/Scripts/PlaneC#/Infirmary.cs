@@ -20,6 +20,7 @@ public class Infirmary : WorkingBuilding
             {
                 _timer = 0;
                 patient.Stat = Citizen.CitizenStat.Fine;
+                patient.GetCured();
             }
         }
         base.StaticEventOnOnDoGameTick(sender, e);

@@ -36,6 +36,7 @@ public class House {
             taxegain += _taxeByCitizens;
         }
         StaticData.ChangeGoldValue(taxegain);
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Gold, cell.type));
     }
 
     private void StaticEventOnOnDoGameTick(object sender, EventArgs e) {

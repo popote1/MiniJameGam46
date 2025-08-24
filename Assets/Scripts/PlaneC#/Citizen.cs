@@ -18,6 +18,13 @@ public class Citizen {
     public House House { get => _house; }
     public WorkingBuilding WorkingBuilding { get => _workPlace; }
 
+    public void GetCured()
+    {
+        _sicknessLevel = 0;
+        ChangeCitizenStat(CitizenStat.Fine);
+        House.OnResidantCured();
+    }
+
     public void AddSicknessLevel(float value) {
         if (Stat != CitizenStat.Curring)
         {
