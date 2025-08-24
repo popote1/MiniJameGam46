@@ -73,7 +73,7 @@ public class House {
                 neighborSicknessPoints += neighbor.currentHouse.sicknessPoints * StaticData.SICKNESSPREDFRACTION;
             }
         }
-        Debug.Log(neighborSicknessPoints);
+        //Debug.Log(neighborSicknessPoints);
     }
     protected virtual void StaticEventOnOnDoVeryLateGameTick(object sender, EventArgs e)
     {
