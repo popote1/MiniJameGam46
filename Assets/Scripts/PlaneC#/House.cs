@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class House {
     public int CitizenCount = 2;
-    [SerializeField] private List<Citizen> _citizens = new List<Citizen>();
+    private List<Citizen> _citizens = new List<Citizen>();
     public int _taxeByCitizens = 2;
-    [SerializeField] private int _tickBeforeFood = 8;
+    private int _tickBeforeFood = 8;
 
     private int _foodTimer;
 
@@ -57,7 +57,7 @@ public class House {
     }
     private void StaticEventOnOnDoLateGameTick(object sender, EventArgs e)
     {
-        Debug.Log("hello");
+        //Debug.Log("hello");
         foreach (var neighbor in cell.gridManager.GetAdjacentCells(cell))
         {
             //Debug.Log(cell.type);

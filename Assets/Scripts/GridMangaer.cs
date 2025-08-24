@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class GridMangaer: MonoBehaviour
 {
-    bool infoMode = true;
 
     [SerializeField] Camera mainCamera;
 
@@ -70,6 +69,7 @@ public class GridMangaer: MonoBehaviour
                     newCell.currentBuilding = cellGrid[i, j].currentBuilding;
                     newCell.currentHouse = cellGrid[i, j].currentHouse;
                 }
+
                 TileBase currentTile = tilemap.GetTile(new Vector3Int(i, j));
 
                 foreach (Building building in buildings)
@@ -80,6 +80,34 @@ public class GridMangaer: MonoBehaviour
                         newCell.canBuildAbove = building.canBuildAbove;
                     }
                 }
+
+                if(initialRead)
+                {
+                    switch (newCell.type)
+                    {
+                        case Cell.TileType.Warehouse:
+                            cellGrid[i, j].currentBuilding = new Warehouse();
+                            break;
+                        case Cell.TileType.Farm:
+                            cellGrid[i, j].currentBuilding = new Farme();
+                            break;
+                        case Cell.TileType.Sawmill:
+                            cellGrid[i, j].currentBuilding = new Sawmill();
+                            break;
+                        case Cell.TileType.Church:
+                            cellGrid[i, j].currentBuilding = new Church();
+                            break;
+                        case Cell.TileType.BigHouse:
+                            cellGrid[i, j].currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
+                            break;
+                        case Cell.TileType.LittleHouse:
+                            cellGrid[i, j].currentHouse = new House();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
                 newCell.position[0] = i;
                 newCell.position[1] = j;
                 newCell.gridManager = this;
@@ -244,10 +272,6 @@ public class GridMangaer: MonoBehaviour
             Debug.Log(StaticData.GetCitizenCount);
             Debug.Log("done");
         }
-        //if (Keyboard.current.lKey.wasPressedThisFrame)
-        //{
-
-        //}
     }
 
     public void ReplaceTile(TileBase newTile, Vector3Int coordinates)

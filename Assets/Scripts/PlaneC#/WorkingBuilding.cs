@@ -34,7 +34,7 @@ public class WorkingBuilding
         CalculateSickness();
     }
 
-    private void StaticEventOnOnDoLateGameTick(object sender, EventArgs e) {
+    protected void StaticEventOnOnDoLateGameTick(object sender, EventArgs e) {
         
         foreach (var neighbor in cell.gridManager.GetAdjacentCells(cell))
         {
