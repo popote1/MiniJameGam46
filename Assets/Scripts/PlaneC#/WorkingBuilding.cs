@@ -18,6 +18,10 @@ public class WorkingBuilding
     public int MaxWorker { get => _workingCount; }
     public bool IsLookingForWorker => _citizens.Count < _workingCount;
     
+    protected void ChangeMaxWorkers( int newMax)
+    {
+        _workingCount = newMax;
+    }
     
     public virtual void AddCitizenToWork(Citizen citizen)=> _citizens.Add(citizen);
     public virtual void RemoveCitizenToWork(Citizen citizen)=> _citizens.Remove(citizen);

@@ -4,7 +4,8 @@ using UnityEngine;
 public class Farme : WorkingBuilding {
     [SerializeField] private int _productionAmout = 3;
     private float _timer;
-    
+    private int _tickToPoduc = 24;
+
     
 
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
