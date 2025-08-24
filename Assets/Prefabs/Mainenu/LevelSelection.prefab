@@ -412,6 +412,15 @@ MonoBehaviour:
   - LevelName: Level 1
     Description: Survive your 3 first winters .
     SceneName: Level1
+  - LevelName: Level 2
+    Description: Collect 600 food
+    SceneName: Level2
+  - LevelName: Level 3
+    Description: Collect 600 Gold
+    SceneName: Level3
+  - LevelName: Level4
+    Description: Survive for 10 winters
+    SceneName: Level4
   _OnOpenSFX:
     Clip: {fileID: 8300000, guid: 5bd7713f0ca3634499946079de06c5cc, type: 3}
     Volume: 0.75
