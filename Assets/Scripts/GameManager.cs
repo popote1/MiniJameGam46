@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
             DebugPlayLose();
         }
 
-        if (StaticData.GetDeadCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDSICKTOLOSE / 100) {
+        if (StaticData.GetDeadCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDEADTOLOSE / 100) {
             DebugPlayLose();
         }
     }

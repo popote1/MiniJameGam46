@@ -12,6 +12,7 @@ public static class StaticData {
     // threshHold in 100%
     public const float THRESHHOLDSICKTOLOSE = 80;
     public const float THRESHHOLDEADTOLOSE = 20;
+    
 
     public static string[] CitizenNames = new[] {
         "Anskar", "Adalgrimus", "Sigebert", "Asselin", "Eberulf", "Notker", "Feroardus", "Suidger", "Rigunth", "Hubert",
@@ -23,7 +24,7 @@ public static class StaticData {
         "Ansovald", "Walaric", "Gereon", "Richomeres"
     };
     
-    //-----------------------StaticData------------------------------------//
+    //-----------------------Enums------------------------------------//
     
     public enum Saison {
         NoWinter, Winter
@@ -33,6 +34,11 @@ public static class StaticData {
         Stop, Playing, Paused
     }
 
+    public enum MerchantStat {
+        FoodToGold, WoodToGold, GoldToFood, GoldToWood, DontTrade
+    }
+    
+   //--------------------------StaticData--------------------------------//
     private static Saison _currentSaison;
     private static GameStat _currentgameStat;
     private static int _currentWood;
