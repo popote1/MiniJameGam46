@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Splines;
 public class GridMangaer: MonoBehaviour
 {
-
     [SerializeField] Camera mainCamera;
 
     [SerializeField] int mapHeight;
@@ -81,6 +81,7 @@ public class GridMangaer: MonoBehaviour
                         newCell.type = building.type;
                         newCell.canBuildAbove = building.canBuildAbove;
                     }
+                    
                 }
 
                 if(initialRead)
@@ -346,5 +347,23 @@ public class GridMangaer: MonoBehaviour
     public void ReplaceTile(TileBase newTile, Vector3Int coordinates)
     {
         tilemap.SetTile(coordinates, newTile);
+    }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < cellGrid.GetLength(0); i++)
+        {
+            for (int j = 1; j < cellGrid.GetLength(1); j++)
+            {
+                if (cellGrid[i, j].currentHouse != null)
+                {
+                    cellGrid[i, j].currentHouse.OnRemove();
+                }
+                if (cellGrid[i, j].currentBuilding != null)
+                {
+                    cellGrid[i, j].currentBuilding.OnRemove();
+                }
+            }
+        }
     }
 }
