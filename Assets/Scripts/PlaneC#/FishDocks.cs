@@ -10,7 +10,7 @@ public class FishDocks : WorkingBuilding
 
     public override void OnCreate()
     {
-        ChangeMaxWorkers(_workingCount);
+        ChangeMaxWorkers(_maxWorkers);
         base.OnCreate();
     }
 

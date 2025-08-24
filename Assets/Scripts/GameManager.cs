@@ -102,12 +102,12 @@ public class GameManager : MonoBehaviour
 
         if (StaticData.GetSickCitizen().Count / (float)StaticData.GetCitizenCount >= (float)StaticData.THRESHHOLDSICKTOLOSE / 100) {
             StaticData.ChangerGameStat(StaticData.GameStat.Stop);
-            StaticEvent.DoEndGame(new EndGameMessage(false, "Over 8 of 10 of your citizens are sick"));
+            StaticEvent.DoEndGame(new EndGameMessage(false, "All of your citizens are sick"));
         }
 
         if (StaticData.GetDeadCitizen().Count / (float)StaticData.GetCitizenCount >= (float)StaticData.THRESHHOLDEADTOLOSE / 100) {
             StaticData.ChangerGameStat(StaticData.GameStat.Stop);
-            StaticEvent.DoEndGame(new EndGameMessage(false, "2 of 10 of your cititzens are dead"));
+            StaticEvent.DoEndGame(new EndGameMessage(false, "half of your cititzens are dead"));
         }
     }
     

@@ -10,8 +10,8 @@ public static class StaticData {
     public const int SICKTHREASHOLD = 400;
     public const int DEADTHREASHOLD = 1000;
     // threshHold in 100%
-    public const float THRESHHOLDSICKTOLOSE = 80;
-    public const float THRESHHOLDEADTOLOSE = 20;
+    public const float THRESHHOLDSICKTOLOSE = 100;
+    public const float THRESHHOLDEADTOLOSE = 50;
     
     public const float SICKNESSPREDFRACTION = 0.5f;
     public const float MERCHANTSICKNESCHANCE = 0.4f; 
