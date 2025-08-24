@@ -29,8 +29,8 @@ public class Citizen {
         if (Stat != CitizenStat.Curring)
         {
             _sicknessLevel += value;
-            if (_sicknessLevel > StaticData.DEADTHREASHOLD) ChangeCitizenStat(CitizenStat.Dead);
-            else if (_sicknessLevel > StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Sick);
+            if (_sicknessLevel > StaticData.DEADTHREASHOLD) { ChangeCitizenStat(CitizenStat.Dead); Debug.Log("I died. I was working at " + _workPlace.cell.type); } 
+            else if (_sicknessLevel > StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Sick); 
             else if (_sicknessLevel < StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Fine);
         }
     }

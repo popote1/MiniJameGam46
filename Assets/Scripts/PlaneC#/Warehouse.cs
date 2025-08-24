@@ -22,6 +22,17 @@ public class Warehouse : WorkingBuilding {
     }
 
     public override void RemoveCitizenToWork(Citizen citizen) {
+        int foodDiff = (StaticData.FoodStock - _foodStockAdded) - StaticData.CurrentFood;
+        if (foodDiff < 0) 
+        {
+            StaticData.ChangeFoodValue(foodDiff);
+        }
+        int woodDiff = (StaticData.WoodStock - _woodStockAdded) - StaticData.CurrentWood;
+        if (woodDiff < 0)
+        {
+            StaticData.ChangeFoodValue(woodDiff);
+        }
+
         StaticData.ChangeFoodStockValue(-_foodStockAdded);
         StaticData.ChangeWoodStockValue(-_woodStockAdded);
         base.AddCitizenToWork(citizen);
