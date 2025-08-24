@@ -317,7 +317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 379675693}
   - component: {fileID: 379675692}
-  - component: {fileID: 379675694}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -342,7 +341,7 @@ MonoBehaviour:
   mapWidth: 20
   waterLevel: 3
   text: {fileID: 0}
-  placeableSquare: {fileID: 11400000, guid: f1d0afcd47793f44b9ae0c77c3d9d821, type: 2}
+  placeableSquare: {fileID: 11400000, guid: f2df4a3af895cc542bdc8b334c553eef, type: 2}
   buildings:
   - name: Big house
     tile: {fileID: 11400000, guid: d197d40ceba03cb4195ddf2301f3c6bb, type: 2}
@@ -425,7 +424,7 @@ MonoBehaviour:
     requiresWater: 0
     type: 0
   - name: PlaceableSquare
-    tile: {fileID: 11400000, guid: f1d0afcd47793f44b9ae0c77c3d9d821, type: 2}
+    tile: {fileID: 11400000, guid: f2df4a3af895cc542bdc8b334c553eef, type: 2}
     woodCost: 0
     goldCost: 0
     canBuild: 0
@@ -456,23 +455,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &379675694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379675691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a05b8e7f46f241c087b9aada547eddc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playDialogueAtStart: 1
-  _description: "You have to survive 3 winters. \nBe prepare, in winter the farms
-    don't produces food and people are get sick ."
-  _saisonsToSurvive: 6
-  _winMessage: Your village had survive hise 3 first winters
 --- !u!1 &402419487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,9 +1385,11 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 2.1304457e-23, g: 2.1304457e-23, b: 2.1304457e-23, a: 2.1304457e-23}
+    m_Data: {r: 2.67738e-40, g: 2.67738e-40, b: 2.67738e-40, a: 2.67738e-40}
   - m_RefCount: 58
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: -402.22095, g: -402.22095, b: -402.22095, a: -402.22095}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2870,6 +2854,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 51561205967521020, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 156526973920792270, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 156526973920792270, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 156526973920792270, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 156526973920792270, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 488056481571979581, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2910,6 +2914,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 860155709804476028, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1205012115489817284, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2927,6 +2935,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1289322198797496140, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378154010313332731, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378154010313332731, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378154010313332731, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378154010313332731, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -2953,6 +2977,10 @@ PrefabInstance:
     - target: {fileID: 2640788656003773518, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663700441322331273, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2941685951636297200, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3000,6 +3028,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4945052932585922454, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331711534223190346, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331711534223190346, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331711534223190346, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331711534223190346, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333072769405485600, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333072769405485600, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333072769405485600, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333072769405485600, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6587315518740828802, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
@@ -3141,6 +3201,10 @@ PrefabInstance:
     - target: {fileID: 7928294357946198950, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067688441507712498, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9104074424767575783, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3806,6 +3870,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -147.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5212543757554527378, guid: 753955043a7ae364aa3158f14ed75923, type: 3}
+      propertyPath: _audioElementSfxSlection.Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5229792734691585172, guid: 753955043a7ae364aa3158f14ed75923, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -4171,6 +4239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2017961639}
   - component: {fileID: 2017961638}
+  - component: {fileID: 2017961640}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4212,6 +4281,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2017961640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017961637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05b8e7f46f241c087b9aada547eddc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playDialogueAtStart: 1
+  _description: "You have to survive 3 winters. \nBe prepare, in winter the farms
+    don't produces food and people are get sick ."
+  _saisonsToSurvive: 6
+  _winMessage: Your village had survive hise 3 first winters
 --- !u!1 &2032553213
 GameObject:
   m_ObjectHideFlags: 0

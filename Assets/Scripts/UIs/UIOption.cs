@@ -31,13 +31,13 @@ public class UIOption : MonoBehaviour
     private void SetUpSliders()
     {
         _audioMixer.GetFloat("MasterVolume", out float masterVolume);
-        _sliderAudioMaster.SetValueWithoutNotify(Mathf.Pow(10, masterVolume)*20);
+        _sliderAudioMaster.SetValueWithoutNotify(Mathf.Pow(10, masterVolume/20));
         _audioMixer.GetFloat("MusicVolume", out float MusicVolume);
-        _sliderAudioMusic.SetValueWithoutNotify(Mathf.Pow(10, MusicVolume)*20);
+        _sliderAudioMusic.SetValueWithoutNotify(Mathf.Pow(10, MusicVolume/20));
         _audioMixer.GetFloat("AmbianceVolume", out float AmbianceVolume);
-        _sliderAudioAmbiance.SetValueWithoutNotify(Mathf.Pow(10, AmbianceVolume)*20);
+        _sliderAudioAmbiance.SetValueWithoutNotify(Mathf.Pow(10, AmbianceVolume/20));
         _audioMixer.GetFloat("SFXVolume", out float SFXVolume);
-        _sliderAudioSFX.SetValueWithoutNotify(Mathf.Pow(10, SFXVolume)*20);
+        _sliderAudioSFX.SetValueWithoutNotify(Mathf.Pow(10, SFXVolume/20));
     }
 
     private void UIReturn() {

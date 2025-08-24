@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class HUDMarchantPanel : MonoBehaviour
     [SerializeField] private Button _bpClose;
 
     [SerializeField] private Transform _panelTransform;
+    [SerializeField] private AudioElementSFX _audioElementSfxSlection;
 
     WorkingBuilding _targetMerchant;
     
@@ -51,11 +53,37 @@ public class HUDMarchantPanel : MonoBehaviour
         StaticData.ChangerGameStat(StaticData.GameStat.Playing);
         _panelTransform.gameObject.SetActive(false);
     }
-    private void UIOnFoodToGoldSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.FoodToGold; } 
-    private void UIOnWoodToGoldSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.WoodToGold; } 
-    private void UIOnGoldToFoodSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.GoldToFood; } 
-    private void UIOnGoldToWoodSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.GoldToWood; } 
-    private void UIOnDontTradeSelected(bool value){if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.DontTrade; } 
+
+    private void UIOnFoodToGoldSelected(bool value)
+    {
+        if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.FoodToGold;
+        _audioElementSfxSlection.Play();
+    }
+
+    private void UIOnWoodToGoldSelected(bool value)
+    {
+        if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.WoodToGold;
+        _audioElementSfxSlection.Play();
+    }
+
+    private void UIOnGoldToFoodSelected(bool value)
+    {
+        if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.GoldToFood;
+        _audioElementSfxSlection.Play();
+    }
+
+    private void UIOnGoldToWoodSelected(bool value)
+    {
+        if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.GoldToWood;
+        _audioElementSfxSlection.Play();
+        
+    }
+
+    private void UIOnDontTradeSelected(bool value)
+    {
+        _audioElementSfxSlection.Play();
+        if( value)Debug.Log("Merchant Set On "); _targetMerchant.tradeType = StaticData.MerchantStat.DontTrade;
+    } 
 
 }
 

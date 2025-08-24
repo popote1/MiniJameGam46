@@ -12,7 +12,8 @@ public static class StaticEvent
     public static event EventHandler<String> OnPlayDialogue;
     public static event EventHandler<WorkingBuilding> OnOpenMarchent;
     public static event EventHandler<StructCueInformation> OnPlayCue;
-    public static event EventHandler<MerchantDocks> OnCallMerchant; 
+    public static event EventHandler<MerchantDocks> OnCallMerchant;
+    public static event EventHandler<Building> OnStartBuilding;
 
     public static void DoGameTick() {
         OnDoGameTick?.Invoke(null, EventArgs.Empty);
@@ -45,6 +46,8 @@ public static class StaticEvent
     public static void DoOpenMerchant( WorkingBuilding targetMerchant) => OnOpenMarchent?.Invoke(null,  targetMerchant );
 
     public static void DoMerchantCall(MerchantDocks merchantDocks) => OnCallMerchant?.Invoke(null,merchantDocks);
+
+    public static void DoStartBuilding(Building building) => OnStartBuilding?.Invoke(null, building);
 
 
 }

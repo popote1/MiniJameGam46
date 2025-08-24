@@ -27,16 +27,11 @@ public class MerchantDocks : WorkingBuilding
         //if (StaticData.CurrentSaison == StaticData.Saison.Winter) return;
         //if (tradeType == StaticData.MerchantStat.DontTrade) return;
         _timer += GetProductionFactor();
-        if (_timer >= _tickToPoduc - 10)
-        {
-            arrival.Play();
-        }
+       
+        
         if (_timer >= _tickToPoduc)
         {
-            if (UnityEngine.Random.Range(0.00f, 1.00f) <= StaticData.MERCHANTSICKNESCHANCE)
-            {
-                isMerchantSick = true;
-            }
+            
             StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Merchant, cell.type));
             _timer = 0;
             StaticEvent.DoMerchantCall(this);
@@ -65,10 +60,10 @@ public class MerchantDocks : WorkingBuilding
             //StaticData.ChangeFoodValue();
             */
         }
-        if (_timer >= _tickToPoduc + 10)
-        {
-            departure.Play();
-        }
+       
+       
+       
+       
         base.StaticEventOnOnDoGameTick(sender, e);
     }
 }
