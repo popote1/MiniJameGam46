@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2634728302346808239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56,6 +56,12 @@ MonoBehaviour:
   _txtButtonLabel: {fileID: 690801696340083550}
   _fadeInTime: 1
   _canvasGroup: {fileID: 2433667567374926843}
+  _aesGameLose:
+    Clip: {fileID: 8300000, guid: 1b595a3c334bcb94e9cdd414e38701dd, type: 3}
+    Volume: 0.75
+  _aesGameWin:
+    Clip: {fileID: 8300000, guid: 71172f8d87a3a9e4396599b9fa474767, type: 3}
+    Volume: 0.75
 --- !u!1 &1844796141399541613
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1535921675532389478
 RectTransform:
   m_ObjectHideFlags: 0

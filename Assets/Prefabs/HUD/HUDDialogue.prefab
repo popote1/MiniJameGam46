@@ -326,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1403405176782949728
 RectTransform:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4789285446740032009
 RectTransform:
   m_ObjectHideFlags: 0
@@ -453,6 +453,9 @@ MonoBehaviour:
   _txtDialogue: {fileID: 2799732051267423044}
   _bpContinue: {fileID: 740502858275865555}
   _fadeTime: 1
+  _aesOpen:
+    Clip: {fileID: 8300000, guid: ca78d464230a03849b88f39d8e9e2a33, type: 3}
+    Volume: 0.75
 --- !u!1 &6107052340812185838
 GameObject:
   m_ObjectHideFlags: 0

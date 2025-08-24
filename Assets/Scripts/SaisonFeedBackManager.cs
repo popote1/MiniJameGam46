@@ -5,13 +5,16 @@ using UnityEngine.Rendering.Universal;
 public class SaisonFeedBackManager : MonoBehaviour
 {
     [SerializeField] private Light2D _mainLight2D;
+
     [Header("Winter Effects")] 
+    [SerializeField] private AudioElementSFX _aesWinterStart;
     [SerializeField] private AudioClip _winterMusic;
     [SerializeField] private AudioClip _winterambiance;
     [SerializeField] private Color _winterLightColor;
     [SerializeField] private ParticleSystem _psWinter;
     
     [Header("Sunny Days")]
+    [SerializeField] private AudioElementSFX _aesWinterEnd;
     [SerializeField] private AudioClip _sunnyDaysMusic;
     [SerializeField] private AudioClip _sunnyDaysAmbiance;
     [SerializeField] private Gradient _sunnyDaysLightColor;
@@ -41,6 +44,7 @@ public class SaisonFeedBackManager : MonoBehaviour
             AudioManager.Instance.PlayMusic(_winterMusic);
             AudioManager.Instance.PlayAmbiance(_winterambiance);
         }
+        _aesWinterStart.Play();
         _psSunnyDays.Stop();
         _psWinter.Play();
     }
@@ -50,6 +54,7 @@ public class SaisonFeedBackManager : MonoBehaviour
             AudioManager.Instance.PlayMusic(_sunnyDaysMusic);
             AudioManager.Instance.PlayAmbiance(_sunnyDaysAmbiance);
         }
+        _aesWinterEnd.Play();
         _psSunnyDays.Play();
         _psWinter.Stop();
     }

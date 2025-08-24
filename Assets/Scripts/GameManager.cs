@@ -89,20 +89,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ManageLoseCondition()
-    {
+    private void ManageLoseCondition() {
         if (_debugIngnorLoseConditions) return;
+        if (_currentGameStat != StaticData.GameStat.Playing) return;
         if (StaticData.GetCitizenCount <= 0) {
             StaticEvent.DoEndGame(new EndGameMessage(false, "You don't have any citizens left"));
             return;
         }
-        
-        
-        if (StaticData.GetSickCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDSICKTOLOSE / 100) {
+
+        if (StaticData.GetSickCitizen().Count / (float)StaticData.GetCitizenCount >= (float)StaticData.THRESHHOLDSICKTOLOSE / 100) {
             StaticEvent.DoEndGame(new EndGameMessage(false, "Over 8 of 10 of your citizens are sick"));
         }
 
-        if (StaticData.GetDeadCitizen().Count / StaticData.GetCitizenCount >= StaticData.THRESHHOLDEADTOLOSE / 100) {
+        if (StaticData.GetDeadCitizen().Count / (float)StaticData.GetCitizenCount >= (float)StaticData.THRESHHOLDEADTOLOSE / 100) {
             StaticEvent.DoEndGame(new EndGameMessage(false, "2 of 10 of your cititzens are dead"));
         }
     }

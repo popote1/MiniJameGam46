@@ -15,6 +15,8 @@ public class HUDEndGamePanel : MonoBehaviour {
     [Space(10)]
     [SerializeField] private float _fadeInTime  =1;
     [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private AudioElementSFX _aesGameLose;
+    [SerializeField] private AudioElementSFX _aesGameWin;
 
 
     private bool _isWin;
@@ -55,10 +57,12 @@ public class HUDEndGamePanel : MonoBehaviour {
         {
             _txtLabel.text = "YOU SURVIVE";
             _txtButtonLabel.text = "CONTINUE PLAYING";
+            _aesGameWin.Play();
         }
         else {
             _txtLabel.text = "FALLEN TO THE PLAGUE";
             _txtButtonLabel.text = "RESTART";
+            _aesGameLose.Play();
         }
 
         _txtEndGameMessage.text = message.TxtEndGameMessage;

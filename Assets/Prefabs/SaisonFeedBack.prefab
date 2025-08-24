@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2351539675312784705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8992686118600511392}
+  - component: {fileID: 1842596084008604318}
+  m_Layer: 0
+  m_Name: SaisonFeedBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8992686118600511392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351539675312784705}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -108.93729, y: 19.23754, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1842596084008604318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351539675312784705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa1636ccbf2496c873cd7d7052c45f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainLight2D: {fileID: 0}
+  _aesWinterStart:
+    Clip: {fileID: 8300000, guid: 2d2db73806b77284cb6637cd1c9ae604, type: 3}
+    Volume: 0.4
+  _winterMusic: {fileID: 8300000, guid: 2bdc32ec40d0ac14db4ee1ea1503058a, type: 3}
+  _winterambiance: {fileID: 8300000, guid: 56c2a93224da00b47874b01798f9001a, type: 3}
+  _winterLightColor: {r: 0.33333334, g: 1, b: 0.9843137, a: 1}
+  _psWinter: {fileID: 0}
+  _aesWinterEnd:
+    Clip: {fileID: 8300000, guid: 2d91cd89806ac604c9ba7a3fad4655a5, type: 3}
+    Volume: 0.4
+  _sunnyDaysMusic: {fileID: 8300000, guid: 3b6ec42fd6bfd8f4f848d4e3ec763251, type: 3}
+  _sunnyDaysAmbiance: {fileID: 8300000, guid: 4c92b32c8d7506b41b2166a1108b97f4, type: 3}
+  _sunnyDaysLightColor:
+    serializedVersion: 2
+    key0: {r: 0.33333334, g: 1, b: 0.9843137, a: 1}
+    key1: {r: 0.6862745, g: 0.9254902, b: 0.38039216, a: 1}
+    key2: {r: 0.96862745, g: 1, b: 0.23921569, a: 0}
+    key3: {r: 1, g: 0.49411765, b: 0, a: 0}
+    key4: {r: 0.33333334, g: 1, b: 0.9843137, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 1989
+    ctime2: 27646
+    ctime3: 62253
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 2
+  _psSunnyDays: {fileID: 0}

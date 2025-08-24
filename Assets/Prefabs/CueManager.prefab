@@ -61,15 +61,15 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 3f473b82ee262d34aa0bd79bcd24d70c, type: 3}
     Volume: 0.75
   _aesDead:
-    Clip: {fileID: 0}
-    Volume: 0.75
+    Clip: {fileID: 8300000, guid: c9423c02c07b63549bafdd9294fd08e2, type: 3}
+    Volume: 0.509
   _aesCure:
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 40c828c855f36114eaf0de342ebbd7d9, type: 3}
     Volume: 0.75
   _audioClipSick:
   - {fileID: 8300000, guid: f4093f80b1ec3c742820530b232b8052, type: 3}
   - {fileID: 8300000, guid: 2f70b944355de364f804725696d0c988, type: 3}
-  _sickVolume: 0.75
+  _sickVolume: 0.58
   _aesSmallHouse:
     Clip: {fileID: 8300000, guid: 6b8fce2ffd5ff0a4197bd1e63d50b0f4, type: 3}
     Volume: 0.75
