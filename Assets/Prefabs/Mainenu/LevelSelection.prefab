@@ -409,15 +409,9 @@ MonoBehaviour:
   _bpPlay: {fileID: 8010122278130072456}
   _bpReturn: {fileID: 749261526161918777}
   _levelInfoDatas:
-  - LevelName: Popte Trach zone
-    Description: What to say ... it's mess
-    SceneName: PopoteStuff
-  - LevelName: KeyBats Laboratory
-    Description: 'The building system '
-    SceneName: KeyBatsStuff
-  - LevelName: Art Test Zone
-    Description: Art hell
-    SceneName: Tilemaptest
+  - LevelName: Level 1
+    Description: Survive your 3 first winters .
+    SceneName: Level1
   _OnOpenSFX:
     Clip: {fileID: 8300000, guid: 5bd7713f0ca3634499946079de06c5cc, type: 3}
     Volume: 0.75
