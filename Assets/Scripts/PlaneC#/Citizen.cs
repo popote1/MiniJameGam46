@@ -37,6 +37,23 @@ public class Citizen {
         if (newStat != Stat)
         {
             Stat = newStat;
+            switch(Stat)
+            {
+                case CitizenStat.Dead:
+                    _house.OnResidentDead();
+                    break;
+                case CitizenStat.Fine:
+                    _house.OnResidantCured();
+                    break;
+                case CitizenStat.Sick:
+                    _house.OnResidentSick();
+                    break;
+                case CitizenStat.Curring:
+                    _house.OnResidentCuring();
+                    break;
+                default:
+                    throw new Exception("Citizen stat broke :c");
+            }
         }
 
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Infirmary : WorkingBuilding
 {
+    int _tickToPoduc = 40;
     float _timer;
     Citizen patient;
     Vector3Int _postition;

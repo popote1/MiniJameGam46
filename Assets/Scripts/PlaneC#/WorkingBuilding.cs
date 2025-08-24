@@ -4,16 +4,15 @@ using UnityEngine;
 [System.Serializable]
 public class WorkingBuilding
 {
+    public StaticData.MerchantStat tradeType = StaticData.MerchantStat.DontTrade;
     protected int _workingCount =1;
     protected List<Citizen> _citizens = new List<Citizen>();
-    protected int _tickToPoduc = 40;
+    //protected int _tickToPoduc = 40;
 
     public Cell cell;
 
     public float sicknessPoints;
     public float neighboringSicknessPoints;
-    
-
 
     public List<Citizen> Workers { get => _citizens; }
     public int MaxWorker { get => _workingCount; }

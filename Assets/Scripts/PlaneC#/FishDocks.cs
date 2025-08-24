@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FishDocks : WorkingBuilding
 {
+    int _tickToPoduc = 12;
     float _timer = 0f;
     int _productionAmount = 24;
     protected override void CalculateSickness()

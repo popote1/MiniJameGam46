@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 public class Church : WorkingBuilding
 {
+    private int _tickToPoduc = 60;
     float _timer;
     Citizen patient;
     Vector3Int _postition;

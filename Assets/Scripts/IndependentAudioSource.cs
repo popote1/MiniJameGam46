@@ -53,7 +53,7 @@ public class IndependentAudioSource : MonoBehaviour
     private void ManageFadeOut() {
         _timer -= Time.deltaTime;
         _audioSource.volume = _timer / _fadeTime;
-        if (_timer >= _fadeTime) {
+        if (_timer <= 0) {
             _audioSource.volume = 0;
             if (_nextSong == null) {
                 _stat = Stat.Stop;

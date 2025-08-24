@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 public class Sawmill : WorkingBuilding {
-    
 
-    [SerializeField] private int _productionAmout = 3;
+    private int _tickToPoduc = 20;
+    private int _productionAmout = 3;
     private float _timer;
 
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e) {

@@ -115,6 +115,23 @@ public class House {
         _citizens.Remove(citizen);
     }
     
+    public void OnResidentSick()
+    {
+
+    }
+    public void OnResidentDead()
+    {
+
+    }
+    public void OnResidentCuring()
+    {
+
+    }
+    public void OnResidantCured()
+    {
+
+    }
+
     public void OnRemove()
     {
         for (int i = _citizens.Count; i > 0; i--)
