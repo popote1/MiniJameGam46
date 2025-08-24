@@ -13,6 +13,9 @@ public static class StaticData {
     public const float THRESHHOLDSICKTOLOSE = 80;
     public const float THRESHHOLDEADTOLOSE = 20;
     
+    public const float SICKNESSPREDFRACTION = 0.5f;
+    public const float MERCHANTSICKNESCHANCE = 0.4f; 
+    
 
     public static string[] CitizenNames = new[] {
         "Anskar", "Adalgrimus", "Sigebert", "Asselin", "Eberulf", "Notker", "Feroardus", "Suidger", "Rigunth", "Hubert",
