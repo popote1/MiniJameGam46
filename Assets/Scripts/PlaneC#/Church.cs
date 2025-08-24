@@ -63,6 +63,10 @@ public class Church : WorkingBuilding
 
     public override void RemoveCitizenToWork(Citizen citizen)
     {
+        if (patient != null)
+        {
+            patient.Stat = Citizen.CitizenStat.Fine;
+        }
         StaticData.ChangeFoodStockValue(-_foodStockAdded);
         StaticData.ChangeWoodStockValue(-_woodStockAdded);
         base.RemoveCitizenToWork(citizen);
