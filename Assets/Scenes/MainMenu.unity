@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: V 0.3
+  m_text: V 0.4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2391,6 +2391,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4012785031342795528, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4071418953625088101, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2535,6 +2539,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6076081594345248078, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6168855745230197339, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2632,7 +2640,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1340395161823294989, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4991126517304606743, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
       insertIndex: -1
