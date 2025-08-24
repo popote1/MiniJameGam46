@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1017176490487637015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8571069525778767634}
+  - component: {fileID: 2171672531302178598}
+  m_Layer: 0
+  m_Name: CueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8571069525778767634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017176490487637015}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.82403, y: 3.26378, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2171672531302178598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017176490487637015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384b1bd3ca70cb94da6830f34c6b63da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prfBuilding: {fileID: 1340440857777724777, guid: 772b5e28c050eab4db11b4fefac16aeb, type: 3}
+  _prfDestruction: {fileID: 471923999816407066, guid: e66457971cd721c40a9b389beb408235, type: 3}
+  _prfSick: {fileID: 7348729997950849889, guid: 884c0f925cedf9845907cca5754e39f4, type: 3}
+  _prfDead: {fileID: 7236071341434006116, guid: f76747db156eeca4f9703b60619d80b1, type: 3}
+  _prfCure: {fileID: 5849867193055055716, guid: 9941a7ec42b818548b92be5077e0987f, type: 3}
+  _prfProdFarm: {fileID: 8333016405464544355, guid: f9630d7125cb96a4494e4aeac6e401e8, type: 3}
+  _prfProdFish: {fileID: 6987658343474524462, guid: 6f8995518acaf1043b00f6fc6cb11734, type: 3}
+  _prfProdWood: {fileID: 6475160653756389185, guid: afdad5f60cb9bc44e89b62484b67132b, type: 3}
+  _prfGold: {fileID: 5984277772236089990, guid: 3b75e0c6f980d7942bb742e61a3ca112, type: 3}
+  _prfMerchant: {fileID: 5213499417184087313, guid: 6d745bc8b522db946a726b3917df6ccd, type: 3}
+  _aesConstruction:
+    Clip: {fileID: 8300000, guid: 7dc0032b86b339940946945b8039caf3, type: 3}
+    Volume: 0.75
+  _aesDestruction:
+    Clip: {fileID: 8300000, guid: 3f473b82ee262d34aa0bd79bcd24d70c, type: 3}
+    Volume: 0.75
+  _aesDead:
+    Clip: {fileID: 0}
+    Volume: 0.75
+  _aesCure:
+    Clip: {fileID: 0}
+    Volume: 0.75
+  _audioClipSick:
+  - {fileID: 8300000, guid: f4093f80b1ec3c742820530b232b8052, type: 3}
+  - {fileID: 8300000, guid: 2f70b944355de364f804725696d0c988, type: 3}
+  _sickVolume: 0.75
+  _aesSmallHouse:
+    Clip: {fileID: 8300000, guid: 6b8fce2ffd5ff0a4197bd1e63d50b0f4, type: 3}
+    Volume: 0.75
+  _aesBigHouse:
+    Clip: {fileID: 8300000, guid: 574a24b7aa7f8ea47a33485df7215f7d, type: 3}
+    Volume: 0.75
+  _aesFarm:
+    Clip: {fileID: 8300000, guid: a82c397fe7a6f3b4c8bfdbb46836b170, type: 3}
+    Volume: 0.75
+  _aesFishingDock:
+    Clip: {fileID: 8300000, guid: 0afe9a4b42937b5499a9a2216ec906d9, type: 3}
+    Volume: 0.75
+  _aesSawMill:
+    Clip: {fileID: 8300000, guid: c435ff9d4bb53d141b1a69e439604f82, type: 3}
+    Volume: 0.75
+  _aesMerchantDock:
+    Clip: {fileID: 8300000, guid: a239ec3bc3528234dbd3fbe560ccf456, type: 3}
+    Volume: 0.75
+  _aesInfirmery:
+    Clip: {fileID: 8300000, guid: 66ebd6ef0197c1c49afdd59fce5a6b16, type: 3}
+    Volume: 0.75
+  _aesWarehouse:
+    Clip: {fileID: 8300000, guid: e4be0ad780c101d4697362d166c206f7, type: 3}
+    Volume: 0.75
