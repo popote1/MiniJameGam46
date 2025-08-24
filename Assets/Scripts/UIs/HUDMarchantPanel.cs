@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,10 +52,5 @@ public class HUDMarchantPanel : MonoBehaviour
     private void UIOnGoldToWoodSelected(bool value){if( value)Debug.Log("Merchant Set On ");} 
     private void UIOnDontTradeSelected(bool value){if( value)Debug.Log("Merchant Set On ");} 
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+
