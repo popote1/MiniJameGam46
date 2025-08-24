@@ -28,6 +28,8 @@ public class GridMangaer: MonoBehaviour
 
     List<Vector3Int> demolishTileLocations = new List<Vector3Int>();
 
+
+
     public List<Cell> GetAdjacentCells(Cell origin)
     {
         List<Cell> cells = new List<Cell>();
@@ -162,6 +164,7 @@ public class GridMangaer: MonoBehaviour
 
     public void SelectBuilding()
     {
+        StaticEvent.DoStartBuilding(null);
         selectedBuilding = null;
         DetectPlaceableSquares();
     }
@@ -174,6 +177,14 @@ public class GridMangaer: MonoBehaviour
             {
                 selectedBuilding = building;
             }
+        }
+        if (selectedBuilding.tile == null)
+        {
+            StaticEvent.DoStartBuilding(null);
+        }
+        else
+        {
+            StaticEvent.DoStartBuilding(selectedBuilding);
         }
         selectedBuilding.woodCost = cost.WoodCost;
         selectedBuilding.goldCost = cost.GoldCost;
@@ -287,7 +298,7 @@ public class GridMangaer: MonoBehaviour
                         StaticData.ChangeGoldValue(-selectedBuilding.goldCost);
                         StaticData.ChangeWoodValue(-selectedBuilding.woodCost);
                         StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(mousePos.x, mousePos.y), StructCueInformation.CueType.Building, toBuild.type));
-                        selectedBuilding = null;
+                        SelectBuilding();
                         DetectPlaceableSquares();
 
                         switch (toBuild.type)
