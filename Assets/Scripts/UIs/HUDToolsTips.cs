@@ -4,10 +4,8 @@ using UnityEngine.InputSystem;
 
 public class HUDToolsTips : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
     [SerializeField] private HUDHouseToolTips _panelHouse;
     [SerializeField] private HUDWorkingPlaceToolTips _panelWorkingBuilding;
-
     private void Start() {
         StaticEvent.OnHoverCell+= StaticEventOnOnHoverCell;
     }

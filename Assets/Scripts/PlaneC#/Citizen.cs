@@ -17,6 +17,7 @@ public class Citizen {
     
     public House House { get => _house; }
     public WorkingBuilding WorkingBuilding { get => _workPlace; }
+    public float GetSicknessvalue { get => _sicknessLevel; }
 
     public void GetCured()
     {

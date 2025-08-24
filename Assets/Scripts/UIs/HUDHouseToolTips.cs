@@ -4,13 +4,18 @@ using UnityEngine;
 public class HUDHouseToolTips : MonoBehaviour
 {
     [SerializeField] private TMP_Text _txtHouseName;
-    [SerializeField] private TMP_Text _textCoordiates;
+    [SerializeField] private TMP_Text _txtGoldIncome;
     [SerializeField] private HUDCitizenPanel[] _citizenPanel;
 
     public void DisplayHouseInfo(House house) {
         gameObject.SetActive(true);
         _txtHouseName.text = house.cell.type.ToString();
-        _textCoordiates.text = house.cell.position.ToString();
+        int tax = 0;
+        foreach (var citizen in house.GetCitizens) {
+            if (citizen.Stat == Citizen.CitizenStat.Dead) continue;
+            tax += house._taxeByCitizens;
+        }
+        _txtGoldIncome.text = tax.ToString();
         for (int i = 0; i < _citizenPanel.Length; i++) {
             if (house.GetCitizens.Count > i && house.GetCitizens[i] != null) {
                 _citizenPanel[i].DisplayCitizen(house.GetCitizens[i]);
