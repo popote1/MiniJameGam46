@@ -8,12 +8,12 @@ public class GridMangaer: MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
 
+    [SerializeField] TileBase demolishTile;
+
     [SerializeField] int mapHeight;
     [SerializeField] int mapWidth;
 
     [SerializeField] int waterLevel;
-
-    [SerializeField] TMP_Text text;
 
     [SerializeField] TileBase placeableSquare;
 
@@ -22,10 +22,11 @@ public class GridMangaer: MonoBehaviour
     List<Cell.TileType> noDemolish = new List<Cell.TileType> { Cell.TileType.Air, Cell.TileType.Ground, Cell.TileType.Church };
 
     [SerializeField] Tilemap tilemap;
-
-    int OLDSelectedBuilding = 0;
+    [SerializeField] Tilemap otherMap;
 
     Building selectedBuilding;
+
+    List<Vector3Int> demolishTileLocations = new List<Vector3Int>();
 
     public List<Cell> GetAdjacentCells(Cell origin)
     {
@@ -105,6 +106,9 @@ public class GridMangaer: MonoBehaviour
                             break;
                         case Cell.TileType.FishDocks:
                             newCell.currentBuilding = new FishDocks();
+                            break;
+                        case Cell.TileType.Infirmary:
+                            newCell.currentBuilding = new Infirmary();
                             break;
                         case Cell.TileType.BigHouse:
                             newCell.currentHouse = new House { CitizenCount = 4, _taxeByCitizens = 3 };
@@ -192,6 +196,10 @@ public class GridMangaer: MonoBehaviour
 
                 }
             }
+            foreach (Vector3Int tile in demolishTileLocations)
+            {
+                otherMap.SetTile(tile, null);
+            }
         }
         
         else if (selectedBuilding.tile == null)
@@ -204,7 +212,16 @@ public class GridMangaer: MonoBehaviour
                     {
                         ReplaceTile(null, new Vector3Int(i, j));
                     }
-
+                    else if ((cellGrid[i, j].currentBuilding != null && cellGrid[i, j].type != Cell.TileType.Church))
+                    {
+                        otherMap.SetTile(new Vector3Int(i, j), demolishTile);
+                        demolishTileLocations.Add(new Vector3Int(i, j));
+                    }
+                    else if (cellGrid[i, j].currentHouse != null)
+                    {
+                        otherMap.SetTile(new Vector3Int(i, j), demolishTile);
+                        demolishTileLocations.Add(new Vector3Int(i, j));
+                    }
                 }
             }
         }
@@ -221,6 +238,10 @@ public class GridMangaer: MonoBehaviour
 
                 }
             }
+            foreach (Vector3Int tile in demolishTileLocations)
+            {
+                otherMap.SetTile(tile, null);
+            }
         }
         else
         {
@@ -231,12 +252,17 @@ public class GridMangaer: MonoBehaviour
                     if (cellGrid[i, j].type == Cell.TileType.Air && cellGrid[i, j - 1].canBuildAbove && j <= waterLevel)
                     {
                         ReplaceTile(placeableSquare, new Vector3Int(i, j));
+                        
                     }
                     else if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare && j > waterLevel )
                     {
                         ReplaceTile(null, new Vector3Int(i, j));
                     }
                 }
+            }
+            foreach (Vector3Int tile in demolishTileLocations)
+            {
+                otherMap.SetTile(tile, null);
             }
         }
         ReadMap(false);
@@ -310,11 +336,11 @@ public class GridMangaer: MonoBehaviour
                     {
                         ReplaceTile(toBuild.tile, mousePos);
                         StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(mousePos.x, mousePos.y), StructCueInformation.CueType.Destroy, toBuild.type));
-                        selectedBuilding = null;
+                        SelectBuilding();
                         if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
                         {
                             //Debug.Log(mousePos);
-                            //Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding);
+                            Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding);
                             cellGrid[mousePos.x, mousePos.y].currentBuilding.OnRemove();
                             cellGrid[mousePos.x, mousePos.y].currentBuilding = null;
                         }
