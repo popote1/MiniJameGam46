@@ -5574,6 +5574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2017961639}
   - component: {fileID: 2017961638}
+  - component: {fileID: 2017961640}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5615,6 +5616,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2017961640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017961637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33793d52ccdd418eb248152d328fb33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playDialogueAtStart: 1
+  _description: The only thing that new die is gold, Collect 300 gold !
+  GoldToGet: 300
+  _winMessage: We are rich with those 300 gold peaces
 --- !u!1 &2022648063
 GameObject:
   m_ObjectHideFlags: 0
