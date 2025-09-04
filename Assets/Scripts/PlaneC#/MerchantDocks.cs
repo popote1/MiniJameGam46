@@ -10,6 +10,9 @@ public class MerchantDocks : WorkingBuilding
     //float tradeMultiplier = 2f;
     bool isMerchantSick;
     
+    public override float GetCurrentWorkProgess() {
+        return _timer / _tickToPoduc;
+    }
     
     protected override void CalculateSickness()
     {

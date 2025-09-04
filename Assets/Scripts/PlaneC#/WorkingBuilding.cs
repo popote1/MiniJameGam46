@@ -22,6 +22,10 @@ public class WorkingBuilding
     {
         _workingCount = newMax;
     }
+
+    public virtual float GetCurrentWorkProgess() {
+        return 0;
+    }
     
     public virtual void AddCitizenToWork(Citizen citizen)=> _citizens.Add(citizen);
     public virtual void RemoveCitizenToWork(Citizen citizen)=> _citizens.Remove(citizen);
@@ -92,6 +96,9 @@ public class WorkingBuilding
     }
 
     public virtual void OnRemove() {
+        foreach (Citizen worker in _citizens) {
+            worker.FireFromJobs();
+        }
         StaticData.RemoveWorkingBuilding(this);
         StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;
         StaticEvent.OnDoLateGameTick-= StaticEventOnOnDoLateGameTick;

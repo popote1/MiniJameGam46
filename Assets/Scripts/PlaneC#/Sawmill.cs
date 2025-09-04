@@ -7,6 +7,9 @@ public class Sawmill : WorkingBuilding {
     private float _timer;
     private int _maxWorkers = 3;
 
+    public override float GetCurrentWorkProgess() {
+        return _timer / _tickToPoduc;
+    }
     public override void OnCreate () 
     {
         ChangeMaxWorkers(_maxWorkers);

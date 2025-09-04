@@ -24,6 +24,9 @@ public class Church : WorkingBuilding
         }
         base.StaticEventOnOnDoGameTick(sender, e);
     }
+    public override float GetCurrentWorkProgess() {
+        return _timer / _tickToPoduc;
+    }
     void LookForPatient()
     {
         Citizen bestPatient = null;

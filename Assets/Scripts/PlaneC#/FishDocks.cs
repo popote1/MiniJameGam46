@@ -14,6 +14,9 @@ public class FishDocks : WorkingBuilding
         base.OnCreate();
     }
 
+    public override float GetCurrentWorkProgess() {
+        return _timer / _tickToPoduc;
+    }
     protected override void CalculateSickness()
     {
         sicknessPoints += 2;

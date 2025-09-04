@@ -13,6 +13,12 @@ public class Farme : WorkingBuilding {
         base.OnCreate();
     }
 
+    public override float GetCurrentWorkProgess() {
+        return _timer / _tickToPoduc;
+    }
+
+    
+
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
         if (StaticData.CurrentSaison == StaticData.Saison.Winter) return;
         _timer+=GetProductionFactor();

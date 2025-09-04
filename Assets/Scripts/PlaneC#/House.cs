@@ -90,12 +90,16 @@ public class House {
         {
             sicknessPoints++;
         }
+        if (_citizens[0].IsMalnourish) {
+            sicknessPoints++;
+        }
+
+        if ((StaticData.CurrentSaison == StaticData.Saison.NoWinter) && !_citizens[0].IsMalnourish) {
+            sicknessPoints--;
+        }
         foreach (var citizen in _citizens)
         {
-            if (citizen.IsMalnourish)
-            {
-                sicknessPoints++;
-            }
+            
             if (citizen.Stat == Citizen.CitizenStat.Sick)
             {
                 sicknessPoints++;

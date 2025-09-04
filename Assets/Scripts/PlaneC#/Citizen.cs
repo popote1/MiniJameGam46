@@ -19,18 +19,16 @@ public class Citizen {
     public WorkingBuilding WorkingBuilding { get => _workPlace; }
     public float GetSicknessvalue { get => _sicknessLevel; }
 
-    public void GetCured()
-    {
+    public void GetCured() {
         _sicknessLevel = 0;
         ChangeCitizenStat(CitizenStat.Fine);
         House.OnResidantCured();
     }
 
     public void AddSicknessLevel(float value) {
-        if (Stat != CitizenStat.Curring)
-        {
-            _sicknessLevel += value;
-            if (_sicknessLevel > StaticData.DEADTHREASHOLD) ChangeCitizenStat(CitizenStat.Dead);
+        if (Stat != CitizenStat.Curring) {
+            _sicknessLevel = Mathf.Clamp(_sicknessLevel += value,0,StaticData.DEADTHREASHOLD);
+            if (_sicknessLevel >= StaticData.DEADTHREASHOLD) ChangeCitizenStat(CitizenStat.Dead);
             else if (_sicknessLevel > StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Sick);
             else if (_sicknessLevel < StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Fine);
         }
@@ -99,6 +97,10 @@ public class Citizen {
         StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;
         _house.RemoveCitizenFromHouse(this);
         StaticData.RemoveCitizen(this);
+    }
+
+    public void FireFromJobs() {
+        _workPlace =null;
     }
     
 }
