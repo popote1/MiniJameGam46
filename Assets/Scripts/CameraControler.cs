@@ -54,7 +54,7 @@ public class CameraControler : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize + _scroll * _scrollSpeed * Time.deltaTime,
+        _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize + -_scroll * _scrollSpeed * Time.deltaTime,
             _minZoomSize, _maxZoomSize);
 
         float minX = _bounds.min.x + (_camera.orthographicSize * _camera.aspect);
