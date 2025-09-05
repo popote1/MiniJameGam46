@@ -2,6 +2,7 @@ using System;
 
 [Serializable]
 public struct BuildingCost {
+    public Cell.TileType _type;
     public int WoodCost;
     public int GoldCost;
 

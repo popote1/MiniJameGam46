@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem;
@@ -30,6 +31,14 @@ public class GridMangaer: MonoBehaviour
     List<Vector3Int> demolishTileLocations = new List<Vector3Int>();
     private Cell _currenHoverCell;
 
+    private void Awake() {
+        StaticEvent.OnOrderBuilding += StaticEventOnOnOrderBuilding;
+    }
+    
+   
+    private void StaticEventOnOnOrderBuilding(object sender, BuildingCost e) { 
+        SelectBuilding(e);
+    }
 
 
     public List<Cell> GetAdjacentCells(Cell origin)
@@ -171,12 +180,10 @@ public class GridMangaer: MonoBehaviour
         DetectPlaceableSquares();
     }
 
-    public void SelectBuilding(Cell.TileType toBuild, BuildingCost cost)
+    public void SelectBuilding( BuildingCost cost)
     {
-        foreach(Building building in buildableBuildíngs)
-        {
-            if(building.type == toBuild)
-            {
+        foreach(Building building in buildableBuildíngs) {
+            if(building.type == cost._type) {
                 selectedBuilding = building;
             }
         }
@@ -384,6 +391,7 @@ public class GridMangaer: MonoBehaviour
 
     private void OnDestroy()
     {
+        StaticEvent.OnOrderBuilding -= StaticEventOnOnOrderBuilding;
         for (int i = 0; i < cellGrid.GetLength(0); i++)
         {
             for (int j = 1; j < cellGrid.GetLength(1); j++)

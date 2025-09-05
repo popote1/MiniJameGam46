@@ -2221,27 +2221,35 @@ MonoBehaviour:
   _bpInfermery: {fileID: 7656719178640508778}
   _bpDestruc: {fileID: 4827926656397573501}
   _costSmallHouse:
+    _type: 2
     WoodCost: 8
     GoldCost: 0
   _costBigHouse:
+    _type: 3
     WoodCost: 12
     GoldCost: 10
   _costFarm:
+    _type: 5
     WoodCost: 12
     GoldCost: 8
   _costSawMill:
+    _type: 4
     WoodCost: 8
     GoldCost: 10
   _costWareHouse:
+    _type: 6
     WoodCost: 15
     GoldCost: 10
   _costFishingDocks:
+    _type: 9
     WoodCost: 6
     GoldCost: 0
   _costMerchantDocks:
+    _type: 7
     WoodCost: 15
     GoldCost: 30
   _costInfermery:
+    _type: 8
     WoodCost: 10
     GoldCost: 12
 --- !u!1 &4563555669878172341

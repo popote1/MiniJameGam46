@@ -61,13 +61,16 @@ public class HUDBuildPanel : MonoBehaviour{
         }
     }
 
-    private void UIBuildSmallBuilding() { gridMangaer.SelectBuilding(Cell.TileType.LittleHouse, _costSmallHouse); }
-    private void UIBuildBigBuilding() { gridMangaer.SelectBuilding(Cell.TileType.BigHouse, _costBigHouse); }
-    private void UIBuildFarmlBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Farm, _costFarm); }
-    private void UIBuildSawMillBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Sawmill, _costSawMill); }
-    private void UIBuildWarehouseBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Warehouse, _costWareHouse); }
-    private void UIBuildFishingDockBuilding() { gridMangaer.SelectBuilding(Cell.TileType.FishDocks, _costFishingDocks); }
-    private void UIBuildMerchantDockBuilding() { gridMangaer.SelectBuilding(Cell.TileType.MerchantDock, _costMerchantDocks); }
-    private void UIBuildInfiermeryBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Infirmary, _costInfermery); }
-    private void UIBuildDestructionBuilding() { gridMangaer.SelectBuilding(Cell.TileType.Air, new BuildingCost {WoodCost = 0, GoldCost = 0 }); }
+    private void UIBuildSmallBuilding()
+    {
+        StaticEvent.DoOrderStartBuilfing( _costSmallHouse);
+    }
+    private void UIBuildBigBuilding() {StaticEvent.DoOrderStartBuilfing( _costBigHouse); }
+    private void UIBuildFarmlBuilding() { StaticEvent.DoOrderStartBuilfing( _costFarm); }
+    private void UIBuildSawMillBuilding() { StaticEvent.DoOrderStartBuilfing( _costSawMill); }
+    private void UIBuildWarehouseBuilding() { StaticEvent.DoOrderStartBuilfing(_costWareHouse); }
+    private void UIBuildFishingDockBuilding() { StaticEvent.DoOrderStartBuilfing( _costFishingDocks); }
+    private void UIBuildMerchantDockBuilding() { StaticEvent.DoOrderStartBuilfing( _costMerchantDocks); }
+    private void UIBuildInfiermeryBuilding() { StaticEvent.DoOrderStartBuilfing( _costInfermery); }
+    private void UIBuildDestructionBuilding() { StaticEvent.DoOrderStartBuilfing( new BuildingCost {_type = Cell.TileType.Air,WoodCost = 0, GoldCost = 0 }); }
 }
