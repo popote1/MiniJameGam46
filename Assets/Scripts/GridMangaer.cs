@@ -75,23 +75,18 @@ public class GridMangaer: MonoBehaviour
 
     private void ReadMap(bool initialRead)
     {
-        for (int i = 0; i < cellGrid.GetLength(0); i++)
-        {
-            for (int j = 0; j < cellGrid.GetLength(1); j++)
-            {
+        for (int i = 0; i < cellGrid.GetLength(0); i++) {
+            for (int j = 0; j < cellGrid.GetLength(1); j++) {
                 Cell newCell = new Cell();
-                if (!initialRead)
-                {
+                if (!initialRead) {
                     newCell.currentBuilding = cellGrid[i, j].currentBuilding;
                     newCell.currentHouse = cellGrid[i, j].currentHouse;
                 }
 
                 TileBase currentTile = tilemap.GetTile(new Vector3Int(i, j));
 
-                foreach (Building building in buildings)
-                {
-                    if (currentTile == building.tile)
-                    {
+                foreach (Building building in buildings) {
+                    if (currentTile == building.tile) {
                         newCell.type = building.type;
                         newCell.canBuildAbove = building.canBuildAbove;
                     }
@@ -173,26 +168,22 @@ public class GridMangaer: MonoBehaviour
     //    DetectPlaceableSquares();
     //}
 
-    public void SelectBuilding()
-    {
+    public void SelectBuilding() {
         StaticEvent.DoStartBuilding(null);
         selectedBuilding = null;
         DetectPlaceableSquares();
     }
 
-    public void SelectBuilding( BuildingCost cost)
-    {
+    public void SelectBuilding( BuildingCost cost) {
         foreach(Building building in buildableBuildíngs) {
             if(building.type == cost._type) {
                 selectedBuilding = building;
             }
         }
-        if (selectedBuilding.tile == null)
-        {
+        if (selectedBuilding.tile == null) {
             StaticEvent.DoStartBuilding(null);
         }
-        else
-        {
+        else {
             StaticEvent.DoStartBuilding(selectedBuilding);
         }
         selectedBuilding.woodCost = cost.WoodCost;
@@ -200,88 +191,66 @@ public class GridMangaer: MonoBehaviour
         DetectPlaceableSquares();
     }
     
-    void DetectPlaceableSquares()
-    {
-        
-        if (selectedBuilding == null)
-        {
-            for (int i = 0; i < cellGrid.GetLength(0); i++)
-            {
-                for (int j = 1; j < cellGrid.GetLength(1); j++)
-                {
-                    if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare)
-                    {
+    void DetectPlaceableSquares() {
+        if (selectedBuilding == null) {
+            for (int i = 0; i < cellGrid.GetLength(0); i++) {
+                for (int j = 1; j < cellGrid.GetLength(1); j++) {
+                    if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare) {
                         ReplaceTile(null, new Vector3Int(i, j));
                     }
 
                 }
             }
-            foreach (Vector3Int tile in demolishTileLocations)
-            {
+            foreach (Vector3Int tile in demolishTileLocations) {
                 otherMap.SetTile(tile, null);
             }
         }
         
-        else if (selectedBuilding.tile == null)
-        {
-            for (int i = 0; i < cellGrid.GetLength(0); i++)
-            {
-                for (int j = 1; j < cellGrid.GetLength(1); j++)
-                {
-                    if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare)
-                    {
-                        ReplaceTile(null, new Vector3Int(i, j));
+        else if (selectedBuilding.tile == null) {
+            for (int i = 0; i < cellGrid.GetLength(0); i++) {
+                for (int j = 1; j < cellGrid.GetLength(1); j++) {
+                    if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare) {
+                        ReplaceTile(null, new Vector3Int(i, j)); 
                     }
-                    else if ((cellGrid[i, j].currentBuilding != null && cellGrid[i, j].type != Cell.TileType.Church))
-                    {
+                    else if ((cellGrid[i, j].currentBuilding != null && cellGrid[i, j].type != Cell.TileType.Church)) {
                         otherMap.SetTile(new Vector3Int(i, j), demolishTile);
                         demolishTileLocations.Add(new Vector3Int(i, j));
                     }
-                    else if (cellGrid[i, j].currentHouse != null)
-                    {
+                    else if (cellGrid[i, j].currentHouse != null) {
                         otherMap.SetTile(new Vector3Int(i, j), demolishTile);
                         demolishTileLocations.Add(new Vector3Int(i, j));
                     }
                 }
             }
         }
-        else if (!selectedBuilding.requiresWater)
-        {
+        else if (!selectedBuilding.requiresWater) {
             for (int i = 0; i < cellGrid.GetLength(0); i++)
             {
-                for (int j = 1; j < cellGrid.GetLength(1); j++)
-                {
-                    if (cellGrid[i, j].type == Cell.TileType.Air && cellGrid[i, j - 1].canBuildAbove)
-                    {
+                for (int j = 1; j < cellGrid.GetLength(1); j++) {
+                    if (cellGrid[i, j].type == Cell.TileType.Air && cellGrid[i, j - 1].canBuildAbove) {
                         ReplaceTile(placeableSquare, new Vector3Int(i, j));
                     }
 
                 }
             }
-            foreach (Vector3Int tile in demolishTileLocations)
-            {
+            foreach (Vector3Int tile in demolishTileLocations) {
                 otherMap.SetTile(tile, null);
             }
         }
         else
         {
-            for (int i = 0; i < cellGrid.GetLength(0); i++)
-            {
-                for (int j = 1; j < cellGrid.GetLength(1); j++)
-                {
-                    if (cellGrid[i, j].type == Cell.TileType.Air && cellGrid[i, j - 1].canBuildAbove && j <= waterLevel)
-                    {
+            for (int i = 0; i < cellGrid.GetLength(0); i++) {
+                for (int j = 1; j < cellGrid.GetLength(1); j++) {
+                    if (cellGrid[i, j].type == Cell.TileType.Air && cellGrid[i, j - 1].canBuildAbove && j <= waterLevel) {
                         ReplaceTile(placeableSquare, new Vector3Int(i, j));
                         
                     }
-                    else if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare && j > waterLevel )
-                    {
+                    else if (cellGrid[i, j].type == Cell.TileType.PlaceableSquare && j > waterLevel ) {
                         ReplaceTile(null, new Vector3Int(i, j));
                     }
                 }
             }
-            foreach (Vector3Int tile in demolishTileLocations)
-            {
+            foreach (Vector3Int tile in demolishTileLocations) {
                 otherMap.SetTile(tile, null);
             }
         }
@@ -290,8 +259,7 @@ public class GridMangaer: MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
+        if (Mouse.current.leftButton.wasPressedThisFrame) {
             Vector3Int mousePos = tilemap.WorldToCell(mainCamera.ScreenToWorldPoint(Mouse.current.position.value));
             if (0 <= mousePos.x && mousePos.x < cellGrid.GetLength(0) && 0 <= mousePos.y && mousePos.y < cellGrid.GetLength(1)) {
                 
@@ -309,8 +277,7 @@ public class GridMangaer: MonoBehaviour
                         SelectBuilding();
                         DetectPlaceableSquares();
 
-                        switch (toBuild.type)
-                        {
+                        switch (toBuild.type) {
                             case Cell.TileType.Warehouse:
                                 cellGrid[mousePos.x, mousePos.y].currentBuilding = new Warehouse();
                                 break;
@@ -351,72 +318,60 @@ public class GridMangaer: MonoBehaviour
                             cellGrid[mousePos.x, mousePos.y].currentHouse.OnCreate();
                         }
                     }
-                    else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) - 1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1))
+                    else if (!noDemolish.Contains(cellGrid[mousePos.x, mousePos.y].type) && toBuild.tile == null && (cellGrid[mousePos.x, Mathf.Clamp(mousePos.y + 1, 0, cellGrid.GetLength(1) - 1)].type == Cell.TileType.Air || mousePos.y == cellGrid.GetLength(1) - 1)) 
                     {
                         ReplaceTile(toBuild.tile, mousePos);
                         StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(mousePos.x, mousePos.y), StructCueInformation.CueType.Destroy, toBuild.type));
                         SelectBuilding();
-                        if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null)
-                        {
+                        if (cellGrid[mousePos.x, mousePos.y].currentBuilding != null) {
                             //Debug.Log(mousePos);
                             Debug.Log(cellGrid[mousePos.x, mousePos.y].currentBuilding);
                             cellGrid[mousePos.x, mousePos.y].currentBuilding.OnRemove();
                             cellGrid[mousePos.x, mousePos.y].currentBuilding = null;
                         }
-                        if (cellGrid[mousePos.x, mousePos.y].currentHouse != null)
-                        {
+                        if (cellGrid[mousePos.x, mousePos.y].currentHouse != null) {
                             cellGrid[mousePos.x, mousePos.y].currentHouse.OnRemove();
                             cellGrid[mousePos.x, mousePos.y].currentHouse = null;
                         }
                         ReadMap(false);
                     }
                 }
-                else if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.MerchantDock)
-                {
+                else if (cellGrid[mousePos.x, mousePos.y].type == Cell.TileType.MerchantDock) {
                     StaticEvent.DoOpenMerchant(cellGrid[mousePos.x, mousePos.y].currentBuilding);
                 }
             }
         }
-        if(Mouse.current.rightButton.wasPressedThisFrame)
-        {
+        if(Mouse.current.rightButton.wasPressedThisFrame) {
             SelectBuilding();
         }
         ManagerOnHover();
     }
 
-    public void ReplaceTile(TileBase newTile, Vector3Int coordinates)
-    {
+    public void ReplaceTile(TileBase newTile, Vector3Int coordinates) {
         tilemap.SetTile(coordinates, newTile);
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         StaticEvent.OnOrderBuilding -= StaticEventOnOnOrderBuilding;
-        for (int i = 0; i < cellGrid.GetLength(0); i++)
-        {
-            for (int j = 1; j < cellGrid.GetLength(1); j++)
-            {
-                if (cellGrid[i, j].currentHouse != null)
-                {
+        for (int i = 0; i < cellGrid.GetLength(0); i++) {
+            for (int j = 1; j < cellGrid.GetLength(1); j++) {
+                if (cellGrid[i, j].currentHouse != null) {
                     cellGrid[i, j].currentHouse.OnRemove();
                 }
-                if (cellGrid[i, j].currentBuilding != null)
-                {
+                if (cellGrid[i, j].currentBuilding != null) {
                     cellGrid[i, j].currentBuilding.OnRemove();
                 }
             }
         }
     }
 
-    private void ManagerOnHover()
-    {
+    private void ManagerOnHover() {
         Vector3Int mousePos = tilemap.WorldToCell(mainCamera.ScreenToWorldPoint(Mouse.current.position.value));
         if (0 <= mousePos.x 
             && mousePos.x < cellGrid.GetLength(0) 
             && 0 <= mousePos.y 
             && mousePos.y < cellGrid.GetLength(1)
             && selectedBuilding==null)
-            
         {
             if (cellGrid[mousePos.x, mousePos.y] == _currenHoverCell) return;
             _currenHoverCell = cellGrid[mousePos.x, mousePos.y];
@@ -425,7 +380,6 @@ public class GridMangaer: MonoBehaviour
         else {
             StaticEvent.DoHoverCell(_currenHoverCell);
         }
-           
     }
     
     

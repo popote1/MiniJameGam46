@@ -70,16 +70,11 @@ public class CueManager : MonoBehaviour {
                 Instantiate(_prfCure, e.TargetPosition, Quaternion.identity);
                 _aesCure.Play();
                 break;
-            case StructCueInformation.CueType.ProdFram:Instantiate(_prfProdFarm, e.TargetPosition, Quaternion.identity);
-                break;
-            case StructCueInformation.CueType.ProdFish:Instantiate(_prfProdFish, e.TargetPosition, Quaternion.identity);
-                break;
-            case StructCueInformation.CueType.ProdWoof:Instantiate(_prfProdWood, e.TargetPosition, Quaternion.identity);
-                break;
-            case StructCueInformation.CueType.Gold:Instantiate(_prfGold, e.TargetPosition, Quaternion.identity);
-                break;
-            case StructCueInformation.CueType.Merchant:Instantiate(_prfMerchant, e.TargetPosition, Quaternion.identity);
-                break;
+            case StructCueInformation.CueType.ProdFram:Instantiate(_prfProdFarm, e.TargetPosition, Quaternion.identity); break;
+            case StructCueInformation.CueType.ProdFish:Instantiate(_prfProdFish, e.TargetPosition, Quaternion.identity); break;
+            case StructCueInformation.CueType.ProdWoof:Instantiate(_prfProdWood, e.TargetPosition, Quaternion.identity); break;
+            case StructCueInformation.CueType.Gold:Instantiate(_prfGold, e.TargetPosition, Quaternion.identity); break;
+            case StructCueInformation.CueType.Merchant:Instantiate(_prfMerchant, e.TargetPosition, Quaternion.identity); break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -88,47 +83,24 @@ public class CueManager : MonoBehaviour {
     private void PlayerBuildingSFX(StructCueInformation cue) {
         _aesConstruction.Play();
 
-        switch (cue.CellType)
-        {
-            case Cell.TileType.Air:
-                break;
-            case Cell.TileType.Ground:
-                break;
-            case Cell.TileType.LittleHouse:
-                _aesSmallHouse.Play();
-                break;
-            case Cell.TileType.BigHouse:
-                _aesBigHouse.Play();
-                break;
-            case Cell.TileType.Sawmill:
-                _aesSawMill.Play();
-                break;
-            case Cell.TileType.Farm:
-                _aesFarm.Play();
-                break;
-            case Cell.TileType.Warehouse:
-                _aesWarehouse.Play();
-                break;
-            case Cell.TileType.MerchantDock:
-                _aesMerchantDock.Play();
-                break;
-            case Cell.TileType.Infirmary:
-                _aesInfirmery.Play();
-                break;
-            case Cell.TileType.FishDocks:
-                _aesFishingDock.Play();
-                break;
-            case Cell.TileType.Church:
-                break;
-            case Cell.TileType.PlaceableSquare:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+        switch (cue.CellType) {
+            case Cell.TileType.Air: break;
+            case Cell.TileType.Ground: break;
+            case Cell.TileType.LittleHouse: _aesSmallHouse.Play(); break;
+            case Cell.TileType.BigHouse: _aesBigHouse.Play(); break;
+            case Cell.TileType.Sawmill: _aesSawMill.Play(); break;
+            case Cell.TileType.Farm: _aesFarm.Play(); break;
+            case Cell.TileType.Warehouse: _aesWarehouse.Play(); break;
+            case Cell.TileType.MerchantDock: _aesMerchantDock.Play(); break;
+            case Cell.TileType.Infirmary: _aesInfirmery.Play(); break;
+            case Cell.TileType.FishDocks: _aesFishingDock.Play(); break;
+            case Cell.TileType.Church: break;
+            case Cell.TileType.PlaceableSquare: break;
+            default: throw new ArgumentOutOfRangeException();
         }
     }
 
-    private void PlaySick()
-    {
+    private void PlaySick() {
         if (AudioManager.Instance == null) return;
         AudioManager.Instance.PlaySFX(_audioClipSick[Random.Range(0,_audioClipSick.Length)], _sickVolume);
     }
