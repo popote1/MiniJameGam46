@@ -4,26 +4,36 @@ using UnityEditor;
 using UnityEngine;
 
 public class House {
-    public int CitizenCount = 2;
+    
     private List<Citizen> _citizens = new List<Citizen>();
-    public int _taxeByCitizens = 2;
+    public int TaxByCitizens { get => _taxByCitizens; }
     private int _tickBeforeFood = 8;
-
+    private int _citizenCount = 2;
     private int _foodTimer;
 
     public float sicknessPoints;
     float neighborSicknessPoints;
 
-    public Cell cell;
+    public Cell Cell { get => _cell; }
+
+    private Cell _cell;
+    private int _taxByCitizens;
     
     public List<Citizen> GetCitizens { get => _citizens; }
+
+    public House(Cell cell, int taxByCitizens = -1, int citizenCount = -1) {
+        if( taxByCitizens!= -1) _taxByCitizens = taxByCitizens;
+        if( citizenCount!=-1) _citizenCount = citizenCount;
+        _cell = cell;
+        OnCreate();
+    }
     public void OnCreate() {
         StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
         StaticEvent.OnDoLateGameTick+= StaticEventOnOnDoLateGameTick;
         StaticEvent.OnDoVeryLateGameTick+= StaticEventOnOnDoVeryLateGameTick;
         StaticEvent.OnTimeToTax+= StaticEventOnOnTimeToTax;
         
-        for (int i = 0; i < CitizenCount; i++) {
+        for (int i = 0; i < _citizenCount; i++) {
             CreateNewCitizen();
         }
     }
@@ -33,10 +43,10 @@ public class House {
         foreach (var citizen in _citizens) {
             if (citizen == null) continue;
             if (citizen.Stat == Citizen.CitizenStat.Dead) continue;
-            taxegain += _taxeByCitizens;
+            taxegain += _taxByCitizens;
         }
         StaticData.ChangeGoldValue(taxegain);
-        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Gold, cell.type));
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.Gold, Cell.type));
     }
 
     private void StaticEventOnOnDoGameTick(object sender, EventArgs e) {
@@ -60,7 +70,7 @@ public class House {
     private void StaticEventOnOnDoLateGameTick(object sender, EventArgs e)
     {
         //Debug.Log("hello");
-        foreach (var neighbor in cell.gridManager.GetAdjacentCells(cell))
+        foreach (var neighbor in GridMangaer.Instance.GetAdjacentCells(Cell))
         {
             //Debug.Log(cell.type);
             if (neighbor.currentBuilding != null)
@@ -123,11 +133,11 @@ public class House {
     
     public void OnResidentSick()
     {
-        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y) , StructCueInformation.CueType.Sick, cell.type));
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y) , StructCueInformation.CueType.Sick, Cell.type));
     }
     public void OnResidentDead()
     {
-        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Dead, cell.type));
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.Dead, Cell.type));
     }
     public void OnResidentCuring()
     {
@@ -135,7 +145,7 @@ public class House {
     }
     public void OnResidantCured()
     {
-        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Cure, cell.type));
+        StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.Cure, Cell.type));
     }
 
     public void OnRemove()

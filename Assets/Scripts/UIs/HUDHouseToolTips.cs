@@ -9,11 +9,11 @@ public class HUDHouseToolTips : MonoBehaviour
 
     public void DisplayHouseInfo(House house) {
         gameObject.SetActive(true);
-        _txtHouseName.text = house.cell.type.ToString();
+        _txtHouseName.text = house.Cell.type.ToString();
         int tax = 0;
         foreach (var citizen in house.GetCitizens) {
             if (citizen.Stat == Citizen.CitizenStat.Dead) continue;
-            tax += house._taxeByCitizens;
+            tax += house.TaxByCitizens;
         }
         _txtGoldIncome.text = tax.ToString();
         for (int i = 0; i < _citizenPanel.Length; i++) {

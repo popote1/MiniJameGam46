@@ -7,6 +7,11 @@ public class Farme : WorkingBuilding {
     private int _tickToPoduc = 24;
     int _maxWorkers = 2;
 
+    public Farme(Cell cell) : base(cell)
+    {
+        _cell = cell;
+    }
+
     public override void OnCreate()
     {
         ChangeMaxWorkers(_maxWorkers);
@@ -25,7 +30,7 @@ public class Farme : WorkingBuilding {
         if (_timer >= _tickToPoduc) {
             _timer = 0;
             StaticData.ChangeFoodValue(_productionAmout);
-            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.ProdFram, cell.type));
+            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.ProdFram, Cell.type));
         }
         base.StaticEventOnOnDoGameTick(sender, e);
     }

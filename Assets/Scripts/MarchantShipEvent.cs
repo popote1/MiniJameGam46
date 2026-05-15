@@ -52,7 +52,7 @@ public class MarchantShipEvent:MonoBehaviour
     }
 
     public void StartMarchantAnimation(MerchantDocks merchantDocks) {
-        transform.position = (Vector2)(Vector3)merchantDocks.cell.position + _offsetPos;
+        transform.position = (Vector2)(Vector3)merchantDocks.Cell.position + _offsetPos;
         _merchantDocksTarget = merchantDocks;
         _splineAnimateLeaving.gameObject.SetActive(false);
         _hadLanded = false;

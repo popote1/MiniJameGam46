@@ -53,7 +53,7 @@ public static class StaticEvent
 
     public static void DoStartBuilding(Building building) => OnStartBuilding?.Invoke(null, building);
     public static void DoHoverCell(Cell cell) => OnHoverCell?.Invoke(null, cell);
-    public static void DoOrderStartBuilfing(BuildingCost building) => OnOrderBuilding?.Invoke(null, building);
+    public static void DoOrderStartBuilding(BuildingCost building) => OnOrderBuilding?.Invoke(null, building);
 
 
 }

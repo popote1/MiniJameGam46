@@ -15,6 +15,11 @@ public class Warehouse : WorkingBuilding {
     //    base.OnRemove();
     //}
 
+    public Warehouse(Cell cell) : base(cell)
+    {
+        _cell = cell;
+    }
+
     public override void AddCitizenToWork(Citizen citizen) {
         StaticData.ChangeFoodStockValue(_foodStockAdded);
         StaticData.ChangeWoodStockValue(_woodStockAdded);

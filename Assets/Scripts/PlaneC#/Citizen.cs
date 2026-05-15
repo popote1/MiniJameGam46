@@ -75,13 +75,13 @@ public class Citizen {
     }
 
     private void ManagerLookingForJobs() {
-        Vector3 pos = _house.cell.position;
+        Vector3 pos = _house.Cell.position;
         float bestdistance = Mathf.Infinity;
         WorkingBuilding bestbuilding = null;
         foreach (var testedBuilding in StaticData.GetWorkingBuildingsLookingForWorkers()) {
-            Debug.Log(testedBuilding.cell.type.ToString());
-            if (Vector3.Distance(testedBuilding.cell.position, pos) < bestdistance) {
-                bestdistance = Vector3.Distance(testedBuilding.cell.position, pos);
+            Debug.Log(testedBuilding.Cell.type.ToString());
+            if (Vector3.Distance(testedBuilding.Cell.position, pos) < bestdistance) {
+                bestdistance = Vector3.Distance(testedBuilding.Cell.position, pos);
                 bestbuilding = testedBuilding;
             }
         }

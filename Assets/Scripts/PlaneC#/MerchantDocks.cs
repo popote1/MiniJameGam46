@@ -9,7 +9,12 @@ public class MerchantDocks : WorkingBuilding
     float _timer;
     //float tradeMultiplier = 2f;
     bool isMerchantSick;
-    
+
+    public MerchantDocks(Cell cell) : base(cell)
+    {
+        _cell = cell;
+    }
+
     public override float GetCurrentWorkProgess() {
         return _timer / _tickToPoduc;
     }
@@ -35,7 +40,7 @@ public class MerchantDocks : WorkingBuilding
         if (_timer >= _tickToPoduc)
         {
             
-            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.Merchant, cell.type));
+            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.Merchant, Cell.type));
             _timer = 0;
             StaticEvent.DoMerchantCall(this);
             

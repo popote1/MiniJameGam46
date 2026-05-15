@@ -8,6 +8,11 @@ public class FishDocks : WorkingBuilding
     int _productionAmount = 24;
     int _maxWorkers = 3;
 
+    public FishDocks(Cell cell) : base(cell)
+    {
+        _cell = cell;
+    }
+
     public override void OnCreate()
     {
         ChangeMaxWorkers(_maxWorkers);
@@ -28,7 +33,7 @@ public class FishDocks : WorkingBuilding
         if (_timer >= _tickToPoduc)
         {
             _timer = 0;
-            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.ProdFish, cell.type));
+            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.ProdFish, Cell.type));
             StaticData.ChangeFoodValue(_productionAmount);
         }
         base.StaticEventOnOnDoGameTick(sender, e);

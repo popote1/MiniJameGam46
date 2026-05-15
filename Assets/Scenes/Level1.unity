@@ -3861,9 +3861,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 284453820}
     - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _mapWidth
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: mapHeight
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _mapHeight
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2032553215}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 2032553215}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _waterLevel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4172,8 +4192,8 @@ MonoBehaviour:
   _minZoomSize: 2
   _maxZoomSize: 6
   _bounds:
-    m_Center: {x: 10, y: 5, z: 0}
-    m_Extent: {x: 10, y: 5, z: 0}
+    m_Center: {x: 11.26, y: 5, z: 0}
+    m_Extent: {x: 10.49, y: 5, z: 0}
   _camera: {fileID: 2032553215}
 --- !u!1 &2083462644 stripped
 GameObject:

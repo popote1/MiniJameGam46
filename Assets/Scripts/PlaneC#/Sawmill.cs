@@ -7,6 +7,11 @@ public class Sawmill : WorkingBuilding {
     private float _timer;
     private int _maxWorkers = 3;
 
+    public Sawmill(Cell cell) : base(cell)
+    {
+        _cell = cell;
+    }
+
     public override float GetCurrentWorkProgess() {
         return _timer / _tickToPoduc;
     }
@@ -21,7 +26,7 @@ public class Sawmill : WorkingBuilding {
         if (_timer >= _tickToPoduc) {
             _timer = 0;
             StaticData.ChangeWoodValue(_productionAmout);
-            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(cell.position.x, cell.position.y), StructCueInformation.CueType.ProdWoof, cell.type));
+            StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.ProdWoof, Cell.type));
         }
         base.StaticEventOnOnDoGameTick(sender, e);
     }

@@ -6,6 +6,13 @@ public class Church : WorkingBuilding
     float _timer;
     Citizen patient;
     Vector3Int _postition;
+
+    public Church(Cell cell) : base(cell)
+    {
+        _cell = cell;
+        OnCreate();
+    }
+
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e)
     {
         if (patient == null)
@@ -33,15 +40,15 @@ public class Church : WorkingBuilding
         float bestDistance = Mathf.Infinity;
         foreach (Citizen citizen in StaticData.GetSickCitizen())
         {
-            if (bestDistance > Vector3.Distance(cell.position, citizen.House.cell.position))
+            if (bestDistance > Vector3.Distance(Cell.position, citizen.House.Cell.position))
             {
                 bestPatient = citizen;
-                bestDistance = Vector3.Distance(cell.position, citizen.House.cell.position);
+                bestDistance = Vector3.Distance(Cell.position, citizen.House.Cell.position);
             }
         }
         if (bestPatient != null)
         {
-            Debug.Log("found patient living in " + bestPatient.House.cell.position);
+            Debug.Log("found patient living in " + bestPatient.House.Cell.position);
             patient = bestPatient;
             patient.Stat = Citizen.CitizenStat.Curring;
         }

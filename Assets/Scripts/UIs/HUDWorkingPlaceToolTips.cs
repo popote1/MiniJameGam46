@@ -25,7 +25,7 @@ public class HUDWorkingPlaceToolTips : MonoBehaviour
     public void DisplayHouseInfo(WorkingBuilding building) {
         gameObject.SetActive(true);
         _currentbuilding = building;
-        _txtBuildingName.text = building.cell.type.ToString();
+        _txtBuildingName.text = building.Cell.type.ToString();
         _txtWorkerCount.text = building.Workers.Count + "/" + building.MaxWorker;
         for (int i = 0; i < _citizenPanel.Length; i++) {
             if (building.Workers.Count > i && building.Workers[i] != null) {

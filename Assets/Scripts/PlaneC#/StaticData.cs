@@ -64,6 +64,8 @@ public static class StaticData {
     public static int WoodStock=>_woodStock;
     public static int FoodStock=>_foodStock;
     public static Saison CurrentSaison => _currentSaison;
+    public static List<WorkingBuilding> WorkingBuildings => _workingBuildings;
+    public static List<Citizen> Citizens => _citizens;
     
     public static void ChangeFoodValue(int value)=> _currentFood = Mathf.Clamp(_currentFood + value,0,FoodStock);
     public static void ChangeWoodValue(int value) => _currentWood = Mathf.Clamp(_currentWood + value,0,WoodStock);

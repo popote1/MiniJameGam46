@@ -63,14 +63,14 @@ public class HUDBuildPanel : MonoBehaviour{
 
     private void UIBuildSmallBuilding()
     {
-        StaticEvent.DoOrderStartBuilfing( _costSmallHouse);
+        StaticEvent.DoOrderStartBuilding( _costSmallHouse);
     }
-    private void UIBuildBigBuilding() {StaticEvent.DoOrderStartBuilfing( _costBigHouse); }
-    private void UIBuildFarmlBuilding() { StaticEvent.DoOrderStartBuilfing( _costFarm); }
-    private void UIBuildSawMillBuilding() { StaticEvent.DoOrderStartBuilfing( _costSawMill); }
-    private void UIBuildWarehouseBuilding() { StaticEvent.DoOrderStartBuilfing(_costWareHouse); }
-    private void UIBuildFishingDockBuilding() { StaticEvent.DoOrderStartBuilfing( _costFishingDocks); }
-    private void UIBuildMerchantDockBuilding() { StaticEvent.DoOrderStartBuilfing( _costMerchantDocks); }
-    private void UIBuildInfiermeryBuilding() { StaticEvent.DoOrderStartBuilfing( _costInfermery); }
-    private void UIBuildDestructionBuilding() { StaticEvent.DoOrderStartBuilfing( new BuildingCost {_type = Cell.TileType.Air,WoodCost = 0, GoldCost = 0 }); }
+    private void UIBuildBigBuilding() {StaticEvent.DoOrderStartBuilding( _costBigHouse); }
+    private void UIBuildFarmlBuilding() { StaticEvent.DoOrderStartBuilding( _costFarm); }
+    private void UIBuildSawMillBuilding() { StaticEvent.DoOrderStartBuilding( _costSawMill); }
+    private void UIBuildWarehouseBuilding() { StaticEvent.DoOrderStartBuilding(_costWareHouse); }
+    private void UIBuildFishingDockBuilding() { StaticEvent.DoOrderStartBuilding( _costFishingDocks); }
+    private void UIBuildMerchantDockBuilding() { StaticEvent.DoOrderStartBuilding( _costMerchantDocks); }
+    private void UIBuildInfiermeryBuilding() { StaticEvent.DoOrderStartBuilding( _costInfermery); }
+    private void UIBuildDestructionBuilding() { StaticEvent.DoOrderStartBuilding( new BuildingCost {_type = Cell.TileType.Air,WoodCost = 0, GoldCost = 0 }); }
 }

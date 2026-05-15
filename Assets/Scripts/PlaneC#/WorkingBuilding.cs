@@ -9,15 +9,23 @@ public class WorkingBuilding
     protected List<Citizen> _citizens = new List<Citizen>();
     //protected int _tickToPoduc = 40;
 
-    public Cell cell;
+    protected Cell _cell;
+    
 
     public float sicknessPoints;
     public float neighboringSicknessPoints;
 
+    public  Cell Cell {
+        get => _cell;
+    }
     public List<Citizen> Workers { get => _citizens; }
     public int MaxWorker { get => _workingCount; }
     public bool IsLookingForWorker => _citizens.Count < _workingCount;
-    
+
+    public WorkingBuilding(Cell cell) {
+        _cell = cell;
+        OnCreate();
+    }
     protected void ChangeMaxWorkers( int newMax)
     {
         _workingCount = newMax;
@@ -31,6 +39,7 @@ public class WorkingBuilding
     public virtual void RemoveCitizenToWork(Citizen citizen)=> _citizens.Remove(citizen);
 
     public virtual void OnCreate() {
+        Debug.Log("OnCreate");
         StaticData.AddWorkingBuilding(this);
         StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
         StaticEvent.OnDoLateGameTick += StaticEventOnOnDoLateGameTick;
@@ -43,7 +52,7 @@ public class WorkingBuilding
 
     protected void StaticEventOnOnDoLateGameTick(object sender, EventArgs e) {
         
-        foreach (var neighbor in cell.gridManager.GetAdjacentCells(cell))
+        foreach (var neighbor in GridMangaer.Instance.GetAdjacentCells(Cell))
         {
             if (neighbor.currentBuilding != null)
             {
@@ -100,6 +109,7 @@ public class WorkingBuilding
             worker.FireFromJobs();
         }
         StaticData.RemoveWorkingBuilding(this);
+        Debug.Log("Désabonement");
         StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;
         StaticEvent.OnDoLateGameTick-= StaticEventOnOnDoLateGameTick;
         StaticEvent.OnDoVeryLateGameTick-= StaticEventOnOnDoVeryLateGameTick;

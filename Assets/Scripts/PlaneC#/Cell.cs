@@ -1,3 +1,4 @@
+using System.Xml;
 using UnityEngine;
 
 public class Cell
@@ -22,7 +23,28 @@ public class Cell
     public bool canBuildAbove = true;
     public WorkingBuilding currentBuilding;
     public House currentHouse;
-    public GridMangaer gridManager;
+    //public GridMangaer gridManager;
 
+    public Cell(int x, int y) {
+        position = new Vector3Int(x, y);
+    }
+
+    public bool CanBeBuildOnTop() {
+        return type != TileType.Air && canBuildAbove;
+    }
+
+    public void DestroyBuilding() {
+        if (currentBuilding != null) {
+            currentBuilding.OnRemove();
+            currentBuilding = null;
+        }
+
+        if (currentHouse != null) {
+            currentHouse.OnRemove();
+            currentHouse = null;
+        }
+
+        type = TileType.Air;
+    }
 
 }
