@@ -31,7 +31,7 @@ public class HUDContructionInfoPanel : MonoBehaviour
     }
 
     private void StaticEventOnOnStartBuilding(object sender, Building e) {
-        if (e == null) {
+        if (e == null || e.type == Cell.TileType.Ground) {
             _panel.SetActive(false);
             return;
         }

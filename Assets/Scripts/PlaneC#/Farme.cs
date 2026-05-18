@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class Farme : WorkingBuilding {
-    [SerializeField] private int _productionAmout = 3;
+    [SerializeField] private int _productionAmout = 20;
     private float _timer;
     private int _tickToPoduc = 24;
     int _maxWorkers = 2;

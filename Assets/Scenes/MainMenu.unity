@@ -3131,6 +3131,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.4379438
       objectReference: {fileID: 0}
+    - target: {fileID: 6577351399681243087, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
+      propertyPath: _levelInfoDatas.Array.data[1].Description
+      value: Collect 260 food
+      objectReference: {fileID: 0}
     - target: {fileID: 6611032436048000621, guid: 269e697611f4f204d8cfd92fb63321c5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.4379438

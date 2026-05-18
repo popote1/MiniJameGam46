@@ -52,23 +52,18 @@ public class WorkingBuilding
 
     protected void StaticEventOnOnDoLateGameTick(object sender, EventArgs e) {
         
-        foreach (var neighbor in GridMangaer.Instance.GetAdjacentCells(Cell))
-        {
-            if (neighbor.currentBuilding != null)
-            {
+        foreach (var neighbor in GridMangaer.Instance.GetAdjacentCells(Cell)) {
+            if (neighbor.currentBuilding != null) {
                 neighboringSicknessPoints += neighbor.currentBuilding.sicknessPoints * StaticData.SICKNESSPREDFRACTION;
             }
-            else if (neighbor.currentHouse != null)
-            {
+            else if (neighbor.currentHouse != null) {
                 neighboringSicknessPoints += neighbor.currentHouse.sicknessPoints * StaticData.SICKNESSPREDFRACTION;
             }
         }
     }
 
-    protected virtual void StaticEventOnOnDoVeryLateGameTick(object sender, EventArgs e)
-    {
-        for ( int i = _citizens.Count; i > 0; i--)
-        {
+    protected virtual void StaticEventOnOnDoVeryLateGameTick(object sender, EventArgs e) {
+        for ( int i = _citizens.Count; i > 0; i--) {
             _citizens[i - 1].AddSicknessLevel(sicknessPoints + neighboringSicknessPoints);
         }
         sicknessPoints = 0;
@@ -90,14 +85,11 @@ public class WorkingBuilding
 
     protected virtual void CalculateSickness()
     {
-        if (StaticData.CurrentSaison == StaticData.Saison.Winter)
-        {
+        if (StaticData.CurrentSaison == StaticData.Saison.Winter) {
             sicknessPoints++;
         }
-        foreach (var citizen in _citizens)
-        {
-            if (citizen.Stat == Citizen.CitizenStat.Sick)
-            {
+        foreach (var citizen in _citizens) {
+            if (citizen.Stat == Citizen.CitizenStat.Sick) {
                 sicknessPoints++;
             }
         }
@@ -109,7 +101,6 @@ public class WorkingBuilding
             worker.FireFromJobs();
         }
         StaticData.RemoveWorkingBuilding(this);
-        Debug.Log("Désabonement");
         StaticEvent.OnDoGameTick-= StaticEventOnOnDoGameTick;
         StaticEvent.OnDoLateGameTick-= StaticEventOnOnDoLateGameTick;
         StaticEvent.OnDoVeryLateGameTick-= StaticEventOnOnDoVeryLateGameTick;

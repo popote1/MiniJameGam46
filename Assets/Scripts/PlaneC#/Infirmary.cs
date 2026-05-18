@@ -8,24 +8,20 @@ public class Infirmary : WorkingBuilding
     Citizen patient;
     Vector3Int _postition;
 
-    public Infirmary(Cell cell) : base(cell)
-    {
+    public Infirmary(Cell cell) : base(cell) {
         _cell = cell;
     }
 
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e)
     {
-        if (patient == null)
-        {
+        if (patient == null) {
             LookForPatient();
         }
-        else
-        {
+        else {
             _timer += GetProductionFactor();
             if (_timer >= _tickToPoduc)
             {
                 _timer = 0;
-                patient.Stat = Citizen.CitizenStat.Fine;
                 patient.GetCured();
                 patient = null;
             }
@@ -35,8 +31,7 @@ public class Infirmary : WorkingBuilding
     public override float GetCurrentWorkProgess() {
         return _timer / _tickToPoduc;
     }
-    void LookForPatient()
-    {
+    void LookForPatient() {
         Citizen bestPatient = null;
         float bestDistance = Mathf.Infinity;
         foreach (Citizen citizen in StaticData.GetSickCitizen())
@@ -47,11 +42,18 @@ public class Infirmary : WorkingBuilding
                 bestDistance = Vector3.Distance(Cell.position, citizen.House.Cell.position);
             }
         }
-        if (bestPatient != null)
-        {
+        if (bestPatient != null) {
             Debug.Log("found patient living in " + bestPatient.House.Cell.position);
             patient = bestPatient;
-            patient.Stat = Citizen.CitizenStat.Curring;
+            patient.ChangeCitizenStat(Citizen.CitizenStat.Curring);
         }
+    }
+    
+    public override void RemoveCitizenToWork(Citizen citizen)
+    {
+        if (patient != null) {
+            patient.GetCured();
+        }
+        base.RemoveCitizenToWork(citizen);
     }
 }

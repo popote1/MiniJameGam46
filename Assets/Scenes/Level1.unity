@@ -2976,6 +2976,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1237428480514688912, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1289322198797496140, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2995,6 +2999,10 @@ PrefabInstance:
     - target: {fileID: 1649350581536576278, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693982626971179448, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1748777908087200849, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3103,6 +3111,10 @@ PrefabInstance:
     - target: {fileID: 3853342234427324303, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328241544795384910, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5013309392259622562, guid: 274468120b0debd4a823dfa088950aa1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3861,29 +3873,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 284453820}
     - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
-      propertyPath: _mapWidth
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
-      propertyPath: mapHeight
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
-      propertyPath: _mapHeight
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 2032553215}
-    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 2032553215}
-    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
-      propertyPath: _waterLevel
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4192,8 +4184,8 @@ MonoBehaviour:
   _minZoomSize: 2
   _maxZoomSize: 6
   _bounds:
-    m_Center: {x: 11.26, y: 5, z: 0}
-    m_Extent: {x: 10.49, y: 5, z: 0}
+    m_Center: {x: 11.26, y: 4, z: 0}
+    m_Extent: {x: 10.49, y: 6, z: 0}
   _camera: {fileID: 2032553215}
 --- !u!1 &2083462644 stripped
 GameObject:

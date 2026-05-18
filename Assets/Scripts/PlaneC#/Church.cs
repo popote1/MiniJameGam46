@@ -2,6 +2,8 @@ using UnityEngine;
 using System;
 public class Church : WorkingBuilding
 {
+    [SerializeField] private int _foodStockAdded = 20;
+    [SerializeField] private int _woodStockAdded = 30;
     private int _tickToPoduc = 60;
     float _timer;
     Citizen patient;
@@ -15,18 +17,15 @@ public class Church : WorkingBuilding
 
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e)
     {
-        if (patient == null)
-        {
+        if (patient == null) {
             LookForPatient();
         }
-        else
-        {
+        else {
             _timer += GetProductionFactor();
-            if (_timer >= _tickToPoduc)
-            {
+            if (_timer >= _tickToPoduc) {
                 _timer = 0;
-                patient.Stat = Citizen.CitizenStat.Fine;
                 patient.GetCured();
+                patient = null;
             }
         }
         base.StaticEventOnOnDoGameTick(sender, e);
@@ -50,11 +49,10 @@ public class Church : WorkingBuilding
         {
             Debug.Log("found patient living in " + bestPatient.House.Cell.position);
             patient = bestPatient;
-            patient.Stat = Citizen.CitizenStat.Curring;
+            patient.ChangeCitizenStat(Citizen.CitizenStat.Curring);
         }
     }
-    [SerializeField] private int _foodStockAdded = 20;
-    [SerializeField] private int _woodStockAdded = 30;
+    
 
 
 
@@ -73,9 +71,8 @@ public class Church : WorkingBuilding
 
     public override void RemoveCitizenToWork(Citizen citizen)
     {
-        if (patient != null)
-        {
-            patient.Stat = Citizen.CitizenStat.Fine;
+        if (patient != null) {
+            patient.GetCured();
         }
         StaticData.ChangeFoodStockValue(-_foodStockAdded);
         StaticData.ChangeWoodStockValue(-_woodStockAdded);

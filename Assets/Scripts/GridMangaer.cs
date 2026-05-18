@@ -41,6 +41,7 @@ public class GridMangaer : MonoBehaviour
     private bool _inDemolitionMode;
     
 
+    public bool InBuildingMode => _inBuildingMode;
 
     private void Awake()
     {
@@ -218,7 +219,12 @@ public class GridMangaer : MonoBehaviour
                 ReplaceTile(_selectedBuilding.tile, cell.position);
                 StaticData.ChangeGoldValue(-_selectedBuilding.goldCost);
                 StaticData.ChangeWoodValue(-_selectedBuilding.woodCost);
-                _selectedBuilding.SetUpCell(cell);
+                _selectedBuilding.SetUpCell(cell); 
+                
+                StructCueInformation cue = new StructCueInformation();
+                cue.Type = StructCueInformation.CueType.Building;
+                cue.TargetPosition = (Vector3)cell.position;
+                StaticEvent.DoPlayCue(cue);
                 
                 ClearInteractablecells();
                 StaticEvent.DoStartBuilding(null);
@@ -232,6 +238,12 @@ public class GridMangaer : MonoBehaviour
         if (_currentInteractibleCells.Contains(cell)) {
             ReplaceTile(null, cell.position);
             cell.DestroyBuilding();
+            
+            StructCueInformation cue = new StructCueInformation();
+            cue.Type = StructCueInformation.CueType.Destroy;
+            cue.TargetPosition = (Vector3)cell.position;
+            StaticEvent.DoPlayCue(cue);
+            
             ClearInteractablecells();
             StaticEvent.DoStartBuilding(null);
             _selectedBuilding =null;
@@ -242,6 +254,8 @@ public class GridMangaer : MonoBehaviour
         Debug.Log("ActionRightClickOnstarted");
         if (_inDemolitionMode || _inBuildingMode) {
             ClearInteractablecells();
+            StaticEvent.DoStartBuilding(null);
+            _selectedBuilding = null;
             _inDemolitionMode = false;
             _inBuildingMode = false;
         }

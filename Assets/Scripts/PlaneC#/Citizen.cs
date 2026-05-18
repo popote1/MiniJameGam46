@@ -8,7 +8,7 @@ public class Citizen {
     }
 
     public string Name;
-    public CitizenStat Stat;
+    public CitizenStat _stat;
     public bool IsMalnourish;
     
     private float _sicknessLevel;
@@ -18,6 +18,15 @@ public class Citizen {
     public House House { get => _house; }
     public WorkingBuilding WorkingBuilding { get => _workPlace; }
     public float GetSicknessvalue { get => _sicknessLevel; }
+    public CitizenStat Stat {
+        get => _stat;
+    }
+    
+    public Citizen(House house) {
+        _house = house;
+        Name = StaticData.GetRandomName();
+        StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
+    }
 
     public void GetCured() {
         _sicknessLevel = 0;
@@ -26,7 +35,7 @@ public class Citizen {
     }
 
     public void AddSicknessLevel(float value) {
-        if (Stat != CitizenStat.Curring) {
+        if (_stat != CitizenStat.Curring) {
             _sicknessLevel = Mathf.Clamp(_sicknessLevel += value,0,StaticData.DEADTHREASHOLD);
             if (_sicknessLevel >= StaticData.DEADTHREASHOLD) ChangeCitizenStat(CitizenStat.Dead);
             else if (_sicknessLevel > StaticData.SICKTHREASHOLD) ChangeCitizenStat(CitizenStat.Sick);
@@ -34,40 +43,24 @@ public class Citizen {
         }
     }
 
-    private void ChangeCitizenStat(CitizenStat newStat) {
-        if (newStat == CitizenStat.Dead) {
-            if (_workPlace != null) {
-                _workPlace.RemoveCitizenToWork(this);
-            }
-        }
-        if (newStat != Stat)
-        {
-            Stat = newStat;
-            switch(Stat)
-            {
-                case CitizenStat.Dead:
+    public void ChangeCitizenStat(CitizenStat newStat) {
+       
+        
+        if (newStat != _stat) {
+            Debug.Log ("citizen Change Stat To "+ newStat);
+            _stat = newStat;
+            switch(_stat) {
+                case CitizenStat.Dead: 
                     _house.OnResidentDead();
+                    if (_workPlace != null) _workPlace.RemoveCitizenToWork(this);
                     break;
-                case CitizenStat.Fine:
-                    _house.OnResidantCured();
-                    break;
-                case CitizenStat.Sick:
-                    _house.OnResidentSick();
-                    break;
-                case CitizenStat.Curring:
-                    _house.OnResidentCuring();
-                    break;
-                default:
-                    throw new Exception("Citizen stat broke :c");
+                case CitizenStat.Fine: _house.OnResidantCured(); break;
+                case CitizenStat.Sick: _house.OnResidentSick(); break;
+                case CitizenStat.Curring: _house.OnResidentCuring(); break;
+                default: throw new Exception("Citizen stat broke :c");
             }
         }
 
-    }
-
-    public Citizen(House house) {
-        _house = house;
-        Name = StaticData.GetRandomName();
-        StaticEvent.OnDoGameTick+= StaticEventOnOnDoGameTick;
     }
 
     private void StaticEventOnOnDoGameTick(object sender, EventArgs e) {

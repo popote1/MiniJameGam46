@@ -40,6 +40,6 @@ public class Warehouse : WorkingBuilding {
 
         StaticData.ChangeFoodStockValue(-_foodStockAdded);
         StaticData.ChangeWoodStockValue(-_woodStockAdded);
-        base.AddCitizenToWork(citizen);
+        base.RemoveCitizenToWork(citizen);
     }
 }

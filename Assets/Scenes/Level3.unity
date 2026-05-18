@@ -4642,6 +4642,14 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2032553215}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 2032553215}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _waterLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

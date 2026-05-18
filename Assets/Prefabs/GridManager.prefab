@@ -44,12 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412ac64da0c4e6146875cb66eccc1058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  demolishTile: {fileID: 11400000, guid: 0b85129c2698ae04b91365fb56bd563d, type: 2}
-  mapHeight: 10
-  mapWidth: 20
-  waterLevel: 3
+  _mainCamera: {fileID: 0}
+  _mapHeight: 7
+  _mapWidth: 21
+  _waterLevel: 1
+  tilemap: {fileID: 0}
+  otherMap: {fileID: 0}
   placeableSquare: {fileID: 11400000, guid: 8dcb6879c51a6c04395d5d051aa75cde, type: 2}
+  demolishTile: {fileID: 11400000, guid: 0b85129c2698ae04b91365fb56bd563d, type: 2}
   buildings:
   - name: Big house
     tile: {fileID: 11400000, guid: d197d40ceba03cb4195ddf2301f3c6bb, type: 2}
@@ -147,5 +149,3 @@ MonoBehaviour:
     canBuildAbove: 0
     requiresWater: 0
     type: 10
-  tilemap: {fileID: 0}
-  otherMap: {fileID: 0}

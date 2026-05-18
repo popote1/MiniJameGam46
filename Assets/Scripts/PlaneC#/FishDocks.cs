@@ -24,7 +24,7 @@ public class FishDocks : WorkingBuilding
     }
     protected override void CalculateSickness()
     {
-        sicknessPoints += 2;
+        sicknessPoints += StaticData.SICKNESSMOD_FICHINGDOCK;
         base.CalculateSickness();
     }
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e)

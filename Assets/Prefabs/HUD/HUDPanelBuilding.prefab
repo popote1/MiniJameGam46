@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 2710164471312216119}
   - component: {fileID: 6793571648636634413}
   - component: {fileID: 8069726588597099283}
+  - component: {fileID: 204120506360767259}
   m_Layer: 5
   m_Name: BpSawnMill
   m_TagString: Untagged
@@ -942,6 +943,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &204120506360767259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632287049170797664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: SawMill
+    tile: {fileID: 0}
+    woodCost: 8
+    goldCost: 10
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 4
 --- !u!1 &1650411202119950503
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +977,7 @@ GameObject:
   - component: {fileID: 3828898901745601586}
   - component: {fileID: 5145524350932178339}
   - component: {fileID: 3617899093102021094}
+  - component: {fileID: 3614343934957758365}
   m_Layer: 5
   m_Name: BPSmallHouse
   m_TagString: Untagged
@@ -1115,6 +1138,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &3614343934957758365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650411202119950503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: Little House
+    tile: {fileID: 0}
+    woodCost: 8
+    goldCost: 0
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 2
 --- !u!1 &2333504129990938987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1533,7 @@ GameObject:
   - component: {fileID: 4391125343366327436}
   - component: {fileID: 2827190931876482784}
   - component: {fileID: 6427255159978197477}
+  - component: {fileID: 2676202726925897839}
   m_Layer: 5
   m_Name: BPWareHouse
   m_TagString: Untagged
@@ -1649,6 +1694,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &2676202726925897839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546991516367782595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: WareHouse
+    tile: {fileID: 0}
+    woodCost: 15
+    goldCost: 10
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 6
 --- !u!1 &3840005502930453347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1728,7 @@ GameObject:
   - component: {fileID: 6536167574515727223}
   - component: {fileID: 8343919696683270151}
   - component: {fileID: 6987810635427290068}
+  - component: {fileID: 1965598983009096431}
   m_Layer: 5
   m_Name: BPBigHouse
   m_TagString: Untagged
@@ -1823,6 +1890,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &1965598983009096431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840005502930453347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: Big House
+    tile: {fileID: 0}
+    woodCost: 12
+    goldCost: 10
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 3
 --- !u!1 &4317678827857179212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,6 +1924,7 @@ GameObject:
   - component: {fileID: 6983765152636154133}
   - component: {fileID: 6606602195377858995}
   - component: {fileID: 4146180038963206010}
+  - component: {fileID: 1597187534207452814}
   m_Layer: 5
   m_Name: BPFarm
   m_TagString: Untagged
@@ -1996,6 +2085,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &1597187534207452814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317678827857179212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: Farm
+    tile: {fileID: 0}
+    woodCost: 12
+    goldCost: 8
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 5
 --- !u!1 &4403680681183284928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,6 +2450,7 @@ GameObject:
   - component: {fileID: 9203116295567659819}
   - component: {fileID: 8347816006552780817}
   - component: {fileID: 6317970382430307139}
+  - component: {fileID: 6832859273717242100}
   m_Layer: 5
   m_Name: BPFiishingDock
   m_TagString: Untagged
@@ -2500,6 +2611,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &6832859273717242100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039330994828072275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: Fishing Dock
+    tile: {fileID: 0}
+    woodCost: 6
+    goldCost: 0
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 9
 --- !u!1 &6110910615504138592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,6 +3053,7 @@ GameObject:
   - component: {fileID: 1304663508811999803}
   - component: {fileID: 4827926656397573501}
   - component: {fileID: 2784006387434067794}
+  - component: {fileID: 362598322608624925}
   m_Layer: 5
   m_Name: BPDestruction
   m_TagString: Untagged
@@ -3081,6 +3214,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &362598322608624925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6455198034718489565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: Destruction
+    tile: {fileID: 0}
+    woodCost: 0
+    goldCost: 0
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 1
 --- !u!1 &6685438327517066752
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,6 +3248,7 @@ GameObject:
   - component: {fileID: 2548304899908900010}
   - component: {fileID: 7656719178640508778}
   - component: {fileID: 7742450583509412936}
+  - component: {fileID: 8611517418854106763}
   m_Layer: 5
   m_Name: BPInfirmeray
   m_TagString: Untagged
@@ -3254,6 +3409,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &8611517418854106763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685438327517066752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: Infarmery
+    tile: {fileID: 0}
+    woodCost: 10
+    goldCost: 12
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 8
 --- !u!1 &6756090501466240724
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,6 +3654,7 @@ GameObject:
   - component: {fileID: 6022993311657171586}
   - component: {fileID: 6166947286759967593}
   - component: {fileID: 6579388402763467269}
+  - component: {fileID: 684402914870714235}
   m_Layer: 5
   m_Name: BPMerchantDoc
   m_TagString: Untagged
@@ -3638,6 +3815,27 @@ MonoBehaviour:
   _onPointerSFX:
     Clip: {fileID: 8300000, guid: 4e281745d8955b44ba9e234e22ea9daa, type: 3}
     Volume: 0.75
+--- !u!114 &684402914870714235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978838058869785722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422118ca6aca4a3b85f3b8ae3d988a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _building:
+    name: Merchant Dock
+    tile: {fileID: 0}
+    woodCost: 15
+    goldCost: 30
+    canBuild: 0
+    canBuildAbove: 0
+    requiresWater: 0
+    type: 7
 --- !u!1 &8986441839555005737
 GameObject:
   m_ObjectHideFlags: 0

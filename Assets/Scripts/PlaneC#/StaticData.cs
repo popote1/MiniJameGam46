@@ -7,8 +7,16 @@ public static class StaticData {
 
     //-------------------------Constants------------------------------------//
     public const int MAXSTOCKVALUE = 20000;
-    public const int SICKTHREASHOLD = 400;
-    public const int DEADTHREASHOLD = 1000;
+    public const int SICKTHREASHOLD = 4000;
+    public const int DEADTHREASHOLD = 10000;
+
+    public const int SICKNESSMOD_WINTER = 5;
+    public const int SICKNESSMOD_MALNOURISH = 5;
+    public const int SICKNESSMOD_SUMMER = -2;
+    public const int SICKNESSMOD_ROOMMATSICK = 2;
+    public const int SICKNESSMOD_ROOMMATDEAD = 5;
+    public const int SICKNESSMOD_FICHINGDOCK = 4;
+    
     // threshHold in 100%
     public const float THRESHHOLDSICKTOLOSE = 100;
     public const float THRESHHOLDEADTOLOSE = 50;

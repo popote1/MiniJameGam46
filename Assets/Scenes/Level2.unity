@@ -5801,9 +5801,11 @@ MonoBehaviour:
   _description: 'We have to prepare for the dark days that are comming.
 
     Collect
-    600 Food.'
-  FoodToGet: 600
-  _winMessage: Wiith all that food, we should be safe.
+    260 Food.'
+  FoodToGet: 260
+  _winMessage: 'With all that food, we should be safe.
+
+'
 --- !u!1 &2032553213
 GameObject:
   m_ObjectHideFlags: 0
@@ -5950,8 +5952,8 @@ MonoBehaviour:
   _minZoomSize: 2
   _maxZoomSize: 6
   _bounds:
-    m_Center: {x: 10, y: 5, z: 0}
-    m_Extent: {x: 10, y: 5, z: 0}
+    m_Center: {x: 12, y: 4, z: 0}
+    m_Extent: {x: 10, y: 6, z: 0}
   _camera: {fileID: 0}
 --- !u!1001 &1559979015618107874
 PrefabInstance:
@@ -6131,6 +6133,14 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2032553215}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 2032553215}
+    - target: {fileID: 6652907916254110508, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
+      propertyPath: _waterLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2433588983266903944, guid: 26bb22f13eaaac14486816fbbcb27825, type: 3}
     m_RemovedGameObjects: []

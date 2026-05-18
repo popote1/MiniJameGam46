@@ -1,6 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +25,11 @@ public class HUDMarchantPanel : MonoBehaviour
         _toggleGoldToFood.onValueChanged.AddListener(UIOnGoldToFoodSelected);
         _toggleGoldToWood.onValueChanged.AddListener(UIOnGoldToWoodSelected);
         _toggleDontTrade.onValueChanged.AddListener(UIOnDontTradeSelected);
+    }
+
+    private void OnDestroy()
+    {
+        StaticEvent.OnOpenMarchent-= StaticEventOnOnOpenMarchent;
     }
 
     private void StaticEventOnOnOpenMarchent(object sender, WorkingBuilding targetMerchant) {

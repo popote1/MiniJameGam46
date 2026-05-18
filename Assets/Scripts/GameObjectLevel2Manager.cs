@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameObjectLevel2Manager : GameObjectiveManager
 {
 
-    [SerializeField] private int FoodToGet = 600;
+    [SerializeField] private int FoodToGet = 260;
     [SerializeField, TextArea] private string _winMessage;
 
     protected override void StaticEventOnOnDoGameTick(object sender, EventArgs e) {

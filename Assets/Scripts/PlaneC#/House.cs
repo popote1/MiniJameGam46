@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class House {
@@ -73,13 +72,10 @@ public class House {
         foreach (var neighbor in GridMangaer.Instance.GetAdjacentCells(Cell))
         {
             //Debug.Log(cell.type);
-            if (neighbor.currentBuilding != null)
-            {
+            if (neighbor.currentBuilding != null) {
                 neighborSicknessPoints += neighbor.currentBuilding.sicknessPoints * StaticData.SICKNESSPREDFRACTION;
             }
-            else if (neighbor.currentHouse != null)
-            {
-                
+            else if (neighbor.currentHouse != null) {
                 neighborSicknessPoints += neighbor.currentHouse.sicknessPoints * StaticData.SICKNESSPREDFRACTION;
             }
         }
@@ -87,8 +83,7 @@ public class House {
     }
     protected virtual void StaticEventOnOnDoVeryLateGameTick(object sender, EventArgs e)
     {
-        for (int i = _citizens.Count; i > 0; i--)
-        {
+        for (int i = _citizens.Count; i > 0; i--) {
             _citizens[i - 1].AddSicknessLevel(sicknessPoints + neighborSicknessPoints);
         }
         sicknessPoints = 0;
@@ -96,27 +91,20 @@ public class House {
     }
     private void CalculateSickness()
     {
-        if (StaticData.CurrentSaison == StaticData.Saison.Winter)
-        {
-            sicknessPoints++;
-        }
-        if (_citizens[0].IsMalnourish) {
-            sicknessPoints++;
-        }
-
+        if (StaticData.CurrentSaison == StaticData.Saison.Winter) 
+            sicknessPoints+= StaticData.SICKNESSMOD_WINTER;
+        if (_citizens[0].IsMalnourish) 
+            sicknessPoints+= StaticData.SICKNESSMOD_MALNOURISH;;
         if ((StaticData.CurrentSaison == StaticData.Saison.NoWinter) && !_citizens[0].IsMalnourish) {
-            sicknessPoints--;
+            sicknessPoints+= StaticData.SICKNESSMOD_SUMMER;
         }
-        foreach (var citizen in _citizens)
-        {
-            
-            if (citizen.Stat == Citizen.CitizenStat.Sick)
-            {
-                sicknessPoints++;
+        
+        foreach (var citizen in _citizens) {
+            if (citizen.Stat == Citizen.CitizenStat.Sick) {
+                sicknessPoints+= StaticData.SICKNESSMOD_ROOMMATSICK;
             }
-            if (citizen.Stat == Citizen.CitizenStat.Dead)
-            {
-                sicknessPoints += 2;
+            if (citizen.Stat == Citizen.CitizenStat.Dead) {
+                sicknessPoints+= StaticData.SICKNESSMOD_ROOMMATDEAD;;
             }
         }
         //Debug.Log(sicknessPoints);
@@ -143,8 +131,7 @@ public class House {
     {
         
     }
-    public void OnResidantCured()
-    {
+    public void OnResidantCured() {
         StaticEvent.DoPlayCue(new StructCueInformation(new Vector2(Cell.position.x, Cell.position.y), StructCueInformation.CueType.Cure, Cell.type));
     }
 

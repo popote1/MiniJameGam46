@@ -62,7 +62,7 @@ public class HUDCitizenPanel : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
 
-        _imgsickness.fillAmount = (float)citizen.GetSicknessvalue / 1000;
+        _imgsickness.fillAmount = (float)citizen.GetSicknessvalue / 10000;
         _txtStat.enabled = citizen.Stat != Citizen.CitizenStat.Dead;
         _txtStat.text = citizen.GetSicknessvalue.ToString();
         if (citizen.WorkingBuilding == null) _txtWorkBuilding.text = "NoWork";
