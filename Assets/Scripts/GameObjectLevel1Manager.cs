@@ -12,8 +12,15 @@ public class GameObjectLevel1Manager : GameObjectiveManager
         base.Start();
     }
 
+    protected override void OnDestroy()
+    {
+        StaticEvent.OnSaisonChange-= StaticEventOnOnSaisonChange;
+        base.OnDestroy();
+    }
+
     private void StaticEventOnOnSaisonChange(object sender, StaticData.Saison e) {
         SaisonCount++;
+        Debug.Log("Count saison", this);
         if( SaisonCount>=_saisonsToSurvive) PlayWin(_winMessage);
     }
 }

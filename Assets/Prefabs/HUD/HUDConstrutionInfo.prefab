@@ -329,7 +329,7 @@ MonoBehaviour:
   _imgIcon: {fileID: 7787408910023609022}
   _aesOnOpenPanel:
     Clip: {fileID: 8300000, guid: ca78d464230a03849b88f39d8e9e2a33, type: 3}
-    Volume: 0.75
+    Volume: 0
   _buildingInfos:
   - type: 2
     ImgIcon: {fileID: 4545377945811096002, guid: 27da37e4e909c434da3c7918c5055a6b, type: 3}

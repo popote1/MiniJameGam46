@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class HUDToolsTips : MonoBehaviour
@@ -16,6 +17,7 @@ public class HUDToolsTips : MonoBehaviour
 
     private void StaticEventOnOnHoverCell(object sender, Cell e)
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (e == null) {
             _panelHouse.HidePanel();
             _panelWorkingBuilding.HidePanel();
@@ -47,7 +49,23 @@ public class HUDToolsTips : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_panelHouse.gameObject.activeSelf) _panelHouse.transform.position = Mouse.current.position.value;
-        if (_panelWorkingBuilding.gameObject.activeSelf) _panelWorkingBuilding.transform.position = Mouse.current.position.value;
+        if (_panelHouse.gameObject.activeSelf) {
+            _panelHouse.transform.position = Mouse.current.position.value;
+            RectTransform rectTransform = _panelHouse.GetComponent<RectTransform>();
+            Vector2 pivot = Vector2.zero;
+            if (rectTransform.position.x + rectTransform.rect.width > Screen.width) pivot.x = 1;
+            if (rectTransform.position.y + rectTransform.rect.height > Screen.height) pivot.y = 1;
+            rectTransform.pivot = pivot;
+        }
+
+        if (_panelWorkingBuilding.gameObject.activeSelf)
+        {
+            _panelWorkingBuilding.transform.position = Mouse.current.position.value;
+            RectTransform rectTransform = _panelWorkingBuilding.GetComponent<RectTransform>();
+            Vector2 pivot = Vector2.zero;
+            if (rectTransform.position.x + rectTransform.rect.width > Screen.width) pivot.x = 1;
+            if (rectTransform.position.y + rectTransform.rect.height > Screen.height) pivot.y = 1;
+            rectTransform.pivot = pivot;
+        }
     }
 }

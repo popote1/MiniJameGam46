@@ -6,7 +6,7 @@ public class ParalaxBackGround: MonoBehaviour
 
     [SerializeField] private CameraControler _cameraameraControler;
     [SerializeField] private ParallaxPlane[] _planes;
-    [SerializeField] private float _parrallaxGeneralPower;
+    [SerializeField] private Vector2 _parrallaxGeneralPower = new Vector2(1,0);
     
     [Serializable]
     private class ParallaxPlane {

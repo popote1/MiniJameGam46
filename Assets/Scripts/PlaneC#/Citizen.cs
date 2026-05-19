@@ -17,7 +17,7 @@ public class Citizen {
     
     public House House { get => _house; }
     public WorkingBuilding WorkingBuilding { get => _workPlace; }
-    public float GetSicknessvalue { get => _sicknessLevel; }
+    public float GetSicknessvalue { get =>Mathf.FloorToInt(_sicknessLevel/100); }
     public CitizenStat Stat {
         get => _stat;
     }
@@ -47,7 +47,7 @@ public class Citizen {
        
         
         if (newStat != _stat) {
-            Debug.Log ("citizen Change Stat To "+ newStat);
+            //Debug.Log ("citizen Change Stat To "+ newStat);
             _stat = newStat;
             switch(_stat) {
                 case CitizenStat.Dead: 
@@ -72,7 +72,7 @@ public class Citizen {
         float bestdistance = Mathf.Infinity;
         WorkingBuilding bestbuilding = null;
         foreach (var testedBuilding in StaticData.GetWorkingBuildingsLookingForWorkers()) {
-            Debug.Log(testedBuilding.Cell.type.ToString());
+            //Debug.Log(testedBuilding.Cell.type.ToString());
             if (Vector3.Distance(testedBuilding.Cell.position, pos) < bestdistance) {
                 bestdistance = Vector3.Distance(testedBuilding.Cell.position, pos);
                 bestbuilding = testedBuilding;
@@ -81,7 +81,7 @@ public class Citizen {
         if (bestbuilding != null) {
             bestbuilding.AddCitizenToWork(this);
             _workPlace = bestbuilding;
-            Debug.Log("Job found at "+ _workPlace);
+            //Debug.Log("Job found at "+ _workPlace);
         }
     }
 

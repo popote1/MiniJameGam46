@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class StaticEvent
 {
@@ -42,6 +43,7 @@ public static class StaticEvent
     }
 
     public static void DoDialogue(string dialogue) {
+        Debug.Log("Dialogue playe !");
         OnPlayDialogue?.Invoke(null, dialogue);
     }
     

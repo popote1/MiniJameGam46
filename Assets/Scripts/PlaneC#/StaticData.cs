@@ -138,6 +138,7 @@ public static class StaticData {
         _currentWood = 0;
         _foodStock = 10;
         _woodStock = 10;
+        _currentGold = 0;
         _currentSaison = Saison.NoWinter;
         _currentgameStat = GameStat.Paused;
         _citizens.Clear();

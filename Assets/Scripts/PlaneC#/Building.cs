@@ -25,7 +25,7 @@ public class Building {
             case Cell.TileType.FishDocks: cell.currentBuilding = new FishDocks(cell); break;
             case Cell.TileType.Infirmary: cell.currentBuilding = new Infirmary(cell); break;
             case Cell.TileType.BigHouse: cell.currentHouse = new House ( cell, 3,4 ); break;
-            case Cell.TileType.LittleHouse: cell.currentHouse = new House(cell); break;
+            case Cell.TileType.LittleHouse: cell.currentHouse = new House(cell,2,2); break;
             default: break;
         }
     }

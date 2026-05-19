@@ -803,16 +803,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bpPlay: {fileID: 2863534460067549658}
+  _bpTutorial: {fileID: 0}
   _bpOptions: {fileID: 7615309615315999644}
   _bpCredits: {fileID: 4560165985058431171}
   _bpQuit: {fileID: 7859028519652745168}
   _uiLevelSelection: {fileID: 0}
   _uiOption: {fileID: 0}
   _uiCredit: {fileID: 0}
+  _uiTutorial: {fileID: 0}
   _OnOpenSFX:
     Clip: {fileID: 8300000, guid: 5bd7713f0ca3634499946079de06c5cc, type: 3}
     Volume: 0.75
-  _MusiqueToPlay: {fileID: 0}
+  _MusiqueToPlay: {fileID: 8300000, guid: 5f2285af544c2fd41b145e5bd97b1443, type: 3}
 --- !u!114 &5178454518931615339
 MonoBehaviour:
   m_ObjectHideFlags: 0

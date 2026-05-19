@@ -413,7 +413,7 @@ MonoBehaviour:
     Description: Survive your 3 first winters .
     SceneName: Level1
   - LevelName: Level 2
-    Description: Collect 600 food
+    Description: Collect 260 food
     SceneName: Level2
   - LevelName: Level 3
     Description: Collect 600 Gold

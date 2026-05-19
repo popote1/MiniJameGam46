@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour {
     [SerializeField] private Button _bpPlay;
+    [SerializeField] private Button _bpTutorial;
     [SerializeField] private Button _bpOptions;
     [SerializeField] private Button _bpCredits;
     [SerializeField] private Button _bpQuit;
@@ -11,6 +12,7 @@ public class UIMainMenu : MonoBehaviour {
     [SerializeField] private UILevelSelection _uiLevelSelection;
     [SerializeField] private UIOption _uiOption;
     [SerializeField] private UICredit _uiCredit;
+    [SerializeField] private UICredit _uiTutorial;
 
     [SerializeField] private AudioElementSFX _OnOpenSFX;
 
@@ -21,10 +23,12 @@ public class UIMainMenu : MonoBehaviour {
         _bpOptions.onClick.AddListener(UIOnOption);
         _bpCredits.onClick.AddListener(UIOnCredits);
         _bpQuit.onClick.AddListener(UIOnQuite);
+        _bpTutorial.onClick.AddListener(UIOnTutorial);
         
         _uiLevelSelection.OnPanelClose+= UiLevelSelectionOnOnPanelClose;
         _uiOption.OnPanelClose+= UiOptionOnOnPanelClose;
         _uiCredit.OnPanelClose+= UiCreditOnOnPanelClose;
+        _uiTutorial.OnPanelClose += UiTutorialOnOnPanelClose;
         
         AudioManager.Instance.PlayMusic(_MusiqueToPlay);
     }
@@ -39,6 +43,11 @@ public class UIMainMenu : MonoBehaviour {
     private void UiCreditOnOnPanelClose(object sender, EventArgs e) {
         gameObject.SetActive(true);
         _bpCredits.Select();
+        _OnOpenSFX.Play();
+    }
+    private void UiTutorialOnOnPanelClose(object sender, EventArgs e) {
+        gameObject.SetActive(true);
+        _bpTutorial.Select();
         _OnOpenSFX.Play();
     }
 
@@ -69,6 +78,11 @@ public class UIMainMenu : MonoBehaviour {
     {
         gameObject.SetActive(false);
         _uiCredit.OpenPanel();
+    }
+    private void UIOnTutorial()
+    {
+        gameObject.SetActive(false);
+        _uiTutorial.OpenPanel();
     }
 
     private void UIOnQuite()

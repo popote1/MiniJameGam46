@@ -55,7 +55,7 @@ MonoBehaviour:
   _prfGold: {fileID: 5984277772236089990, guid: 3b75e0c6f980d7942bb742e61a3ca112, type: 3}
   _prfMerchant: {fileID: 5213499417184087313, guid: 6d745bc8b522db946a726b3917df6ccd, type: 3}
   _aesConstruction:
-    Clip: {fileID: 8300000, guid: 7dc0032b86b339940946945b8039caf3, type: 3}
+    Clip: {fileID: 8300000, guid: 6afa8fa1f00d874489785ff748f57b86, type: 3}
     Volume: 0.75
   _aesDestruction:
     Clip: {fileID: 8300000, guid: 3f473b82ee262d34aa0bd79bcd24d70c, type: 3}
